@@ -35,7 +35,7 @@ include '../layouts/sidebar.php';
                <h3>Stok Barang Gudang</h3> 
             </div>
             <div class="card-footer">
-               <a href="" class="btn btn-md btn-info">More Info --></a> 
+               <a href="stok_gudang.php" class="btn btn-md btn-info">More Info --></a> 
             </div>
             </div>
             <!-- /.card -->
