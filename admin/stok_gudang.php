@@ -47,6 +47,7 @@ include '../layouts/sidebar.php';
                     <th>Gambar</th>
                     <th>Stok Awal Barang</th>
                     <th>Stok Akhir Barang</th>
+                    <th>Jumlah Order</th>
                     <th>Jumlah Return Barang</th>
                     <th>Action</th>
                   </tr>
@@ -56,7 +57,16 @@ include '../layouts/sidebar.php';
                     // menghubungkan dengan koneksi
                     include '../config/koneksi.php';
                     // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
-                    $query = "SELECT * FROM stok_gudang_barang ORDER BY id_stok ASC";
+                    $query = "SELECT stok_gudang_barang.kode_barang,
+                    stok_gudang_barang.nama_barang,
+                    stok_gudang_barang.gambar,
+                    stok_gudang_barang.stok_awal,
+                    stok_gudang_barang.stok_akhir,
+                    sum(orders.jumlah_order) as jumlah_order,
+                    stok_gudang_barang.jumlah_return_barang 
+                    FROM stok_gudang_barang LEFT JOIN orders
+                    ON stok_gudang_barang.kode_barang = orders.kode_barang 
+                    GROUP BY stok_gudang_barang.kode_barang";
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
                     if(!$result){
@@ -78,6 +88,14 @@ include '../layouts/sidebar.php';
                     <td><img src="../img/<?php echo $row['gambar']; ?>" width="100" height="100"></td>
                     <td><?php echo $row['stok_awal']; ?></td>
                     <td><?php echo $row['stok_akhir']; ?></td>
+                    <td>
+                      <?php if($row['jumlah_order']==null)
+                      {
+                        echo "0";
+                      }else{
+                        echo $row['jumlah_order'];
+                      }; 
+                      ?></td>
                     <td><?php echo $row['jumlah_return_barang']; ?></td>
                     <td>
                         <a href="edit_barang.php?id_stok=<?php echo $row['id_stok']; ?>" class="btn btn-xs btn-warning">Edit</a>

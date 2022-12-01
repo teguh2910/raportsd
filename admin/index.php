@@ -68,7 +68,7 @@ include '../layouts/sidebar.php';
                <h3>Order</h3> 
             </div>
             <div class="card-footer">
-               <a href="" class="btn btn-md btn-info">More Info --></a> 
+               <a href="order_tambah.php" class="btn btn-md btn-info">More Info --></a> 
             </div>
             </div>
             <!-- /.card -->

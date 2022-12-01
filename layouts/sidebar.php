@@ -85,6 +85,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="order_tambah.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Order</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Stock Opname</p>

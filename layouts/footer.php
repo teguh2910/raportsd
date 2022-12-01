@@ -47,5 +47,25 @@ $(function () {
   bsCustomFileInput.init();
 });
 </script>
+<!-- <script>
+$('body').on('change', '#nama_barang', function() {
+$('#nama_barang').val($('#kode_barang option:selected').val());
+});
+</script> -->
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+   $("#nama_barang").change(function() {                
+    $.post("display.php",
+    {
+      nama_barang: $('#nama_barang option:selected').val()
+    },
+    function(data, status){
+      $('#kode_barang').val(data);
+    });
+  });
+});
+</script>
 </body>
 </html>
