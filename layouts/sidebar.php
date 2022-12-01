@@ -71,7 +71,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-warehouse"></i>
               <p>
                 Stok
                 <i class="right fas fa-angle-left"></i>
@@ -83,13 +83,7 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Barang Gudang</p>
                 </a>
-              </li>
-              <li class="nav-item">
-                <a href="order_tambah.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Order</p>
-                </a>
-              </li>
+              </li>              
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -102,11 +96,17 @@
                   <p>Stock Limit</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Laporan</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-list"></i>
               <p>
                 Transksi
                 <i class="right fas fa-angle-left"></i>
@@ -114,27 +114,27 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="return_barang.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Return</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="order_tambah.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Order</p>
                 </a>
               </li>              
             </ul>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="index.php" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Manage Users
               </p>
             </a>
-          </li>
+          </li> -->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

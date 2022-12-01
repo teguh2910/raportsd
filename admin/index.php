@@ -43,7 +43,7 @@ include '../layouts/sidebar.php';
           <div class="col-lg-4">
           <div class="card card-outline card-info">
             <div class="card-body">
-               <h3>Cetak Invoice</h3> 
+               <h3>Laporan</h3> 
             </div>
             <div class="card-footer">
                <a href="" class="btn btn-md btn-info">More Info --></a> 
@@ -57,7 +57,7 @@ include '../layouts/sidebar.php';
                <h3>Return</h3> 
             </div>
             <div class="card-footer">
-               <a href="" class="btn btn-md btn-info">More Info --></a> 
+               <a href="return_barang.php" class="btn btn-md btn-info">More Info --></a> 
             </div>
             </div>
             <!-- /.card -->
@@ -94,18 +94,7 @@ include '../layouts/sidebar.php';
             </div>
             </div>
             <!-- /.card -->
-          </div> <!-- /.col-md-4 -->
-          <div class="col-lg-4">
-          <div class="card card-outline card-info">
-            <div class="card-body">
-               <h3>Users</h3> 
-            </div>
-            <div class="card-footer">
-               <a href="" class="btn btn-md btn-info">More Info --></a> 
-            </div>
-            </div>
-            <!-- /.card -->
-          </div> <!-- /.col-md-4 -->
+          </div> <!-- /.col-md-4 -->          
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
