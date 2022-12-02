@@ -79,7 +79,7 @@ include '../layouts/sidebar.php';
                <h3>Stok Limit</h3> 
             </div>
             <div class="card-footer">
-               <a href="" class="btn btn-md btn-info">More Info --></a> 
+               <a href="stok_limit.php" class="btn btn-md btn-info">More Info --></a> 
             </div>
             </div>
             <!-- /.card -->
@@ -90,7 +90,7 @@ include '../layouts/sidebar.php';
                <h3>Stok Opname</h3> 
             </div>
             <div class="card-footer">
-               <a href="" class="btn btn-md btn-info">More Info --></a> 
+               <a href="stok_limit.php" class="btn btn-md btn-info">More Info --></a> 
             </div>
             </div>
             <!-- /.card -->

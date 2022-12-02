@@ -12,12 +12,12 @@ include '../layouts/sidebar.php';
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Stok Barang Gudang</h1>
+            <h1 class="m-0">Stok Limit</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Stok Barang Gudang</li>
+              <li class="breadcrumb-item active">Stok Limit</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -32,9 +32,8 @@ include '../layouts/sidebar.php';
           <div class="col-12">
           <div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title">
-                <a href="tambah_barang.php" class="btn btn-sm btn-primary">Tambah</a>    
-                Stok Barang Gudang</h3>
+                <h3 class="card-title">                
+                Stok Limit kurang dari 10 Hari</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -49,7 +48,6 @@ include '../layouts/sidebar.php';
                     <th>Stok Akhir Barang</th>
                     <th>Jumlah Order</th>
                     <th>Jumlah Return Barang</th>
-                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -67,7 +65,8 @@ include '../layouts/sidebar.php';
                     sum(orders.jumlah_order) as jumlah_order,
                     stok_gudang_barang.jumlah_return_barang 
                     FROM stok_gudang_barang LEFT JOIN orders
-                    ON stok_gudang_barang.kode_barang = orders.kode_barang 
+                    ON stok_gudang_barang.kode_barang = orders.kode_barang
+                    WHERE stok_gudang_barang.stok_akhir < 10 
                     GROUP BY stok_gudang_barang.kode_barang";
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
@@ -98,11 +97,7 @@ include '../layouts/sidebar.php';
                         echo $row['jumlah_order'];
                       }; 
                       ?></td>
-                    <td><?php echo $row['jumlah_return_barang']; ?></td>
-                    <td>
-                        <a href="edit_barang.php?id_stok=<?php echo $row['id_stok']; ?>" class="btn btn-xs btn-warning">Edit</a>
-                        <a href="proses_hapus.php?id_stok=<?php echo $row['id_stok']; ?>" onclick="return confirm('Anda yakin akan menghapus data ini?')" class="btn btn-xs btn-danger">Hapus</a>
-                    </td>
+                    <td><?php echo $row['jumlah_return_barang']; ?></td>                    
                   </tr>
                   <?php
                         $no++; //untuk nomor urut terus bertambah 1

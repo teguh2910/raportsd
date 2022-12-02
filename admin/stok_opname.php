@@ -12,12 +12,12 @@ include '../layouts/sidebar.php';
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Stok Barang Gudang</h1>
+            <h1 class="m-0">Stok Opname</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Stok Barang Gudang</li>
+              <li class="breadcrumb-item active">Stok Opname</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -33,8 +33,8 @@ include '../layouts/sidebar.php';
           <div class="card card-info">
               <div class="card-header">
                 <h3 class="card-title">
-                <a href="tambah_barang.php" class="btn btn-sm btn-primary">Tambah</a>    
-                Stok Barang Gudang</h3>
+                <a href="tambah_barang_sto.php" class="btn btn-sm btn-primary">Tambah</a>    
+                Stok Opname</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -45,10 +45,8 @@ include '../layouts/sidebar.php';
                     <th>Kode Barang</th>
                     <th>Nama Barang</th>
                     <th>Gambar</th>
-                    <th>Stok Awal Barang</th>
                     <th>Stok Akhir Barang</th>
-                    <th>Jumlah Order</th>
-                    <th>Jumlah Return Barang</th>
+                    <th>Jumlah Stock Opname</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -64,10 +62,10 @@ include '../layouts/sidebar.php';
                     stok_gudang_barang.gambar,
                     stok_gudang_barang.stok_awal,
                     stok_gudang_barang.stok_akhir,
-                    sum(orders.jumlah_order) as jumlah_order,
+                    sum(stock_opname.jumlah_stok_opname) as jumlah_stok_opname,
                     stok_gudang_barang.jumlah_return_barang 
-                    FROM stok_gudang_barang LEFT JOIN orders
-                    ON stok_gudang_barang.kode_barang = orders.kode_barang 
+                    FROM stok_gudang_barang LEFT JOIN stock_opname
+                    ON stok_gudang_barang.kode_barang = stock_opname.kode_barang 
                     GROUP BY stok_gudang_barang.kode_barang";
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
@@ -88,20 +86,17 @@ include '../layouts/sidebar.php';
                     <td><?php echo $row['kode_barang']; ?></td>
                     <td><?php echo $row['nama_barang']; ?></td>
                     <td><img src="../img/<?php echo $row['gambar']; ?>" width="100" height="100"></td>
-                    <td><?php echo $row['stok_awal']; ?></td>
                     <td><?php echo $row['stok_akhir']; ?></td>
                     <td>
-                      <?php if($row['jumlah_order']==null)
+                      <?php if($row['jumlah_stok_opname']==null)
                       {
-                        echo "0";
+                        echo "Belum Dilakukan Stok Opname";
                       }else{
-                        echo $row['jumlah_order'];
+                        echo $row['jumlah_stok_opname'];
                       }; 
                       ?></td>
-                    <td><?php echo $row['jumlah_return_barang']; ?></td>
                     <td>
-                        <a href="edit_barang.php?id_stok=<?php echo $row['id_stok']; ?>" class="btn btn-xs btn-warning">Edit</a>
-                        <a href="proses_hapus.php?id_stok=<?php echo $row['id_stok']; ?>" onclick="return confirm('Anda yakin akan menghapus data ini?')" class="btn btn-xs btn-danger">Hapus</a>
+                        <a href="edit_barang_sto.php?id_stok=<?php echo $row['id_stok']; ?>" class="btn btn-xs btn-warning">Edit</a>                        
                     </td>
                   </tr>
                   <?php
