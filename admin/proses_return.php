@@ -9,7 +9,7 @@ include '../config/koneksi.php';
 
 //cek dulu jika ada gambar produk jalankan coding ini
 $query ="UPDATE stok_gudang_barang 
-SET stok_akhir = stok_akhir-'$jumlah_return',jumlah_return_barang='$jumlah_return' 
+SET stok_akhir = stok_akhir-'$jumlah_return',jumlah_return_barang=jumlah_return_barang+'$jumlah_return' 
 WHERE kode_barang = '$kode_barang'";
 $result = mysqli_query($koneksi, $query);
 // periska query apakah ada error

@@ -46,7 +46,7 @@ include '../layouts/sidebar.php';
                <h3>Laporan</h3> 
             </div>
             <div class="card-footer">
-               <a href="" class="btn btn-md btn-info">More Info --></a> 
+               <a href="laporan.php" class="btn btn-md btn-info">More Info --></a> 
             </div>
             </div>
             <!-- /.card -->
