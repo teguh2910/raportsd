@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>E-Gudang</title>
+  <title>E-Raport</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -43,7 +43,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="../dist/img/AdminLTELogo.png" alt="E-Gudang" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">E-Gudang</span>
+      <span class="brand-text font-weight-light">E-Raport</span>
     </a>
 
     <!-- Sidebar -->
@@ -54,87 +54,96 @@
           <img src="../dist/img/user1-128x128.jpg" class="img-circle elevation-2" alt="">
         </div>
         <div class="info">
-          <a href="#">Admin</a>
+          <a href="#"><?php echo $_SESSION['username'] ?></a>
         </div>
       </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">         
+        <?php if($_SESSION['hak_akses']=="admin"){ ?>  
+        <li class="nav-item">
+            <a href="index.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Manage User Login
+              </p>
+            </a>
+          </li> 
+
+          <?php } ?>
+        <?php if($_SESSION['hak_akses']!="siswa"){ ?>  
+        <li class="nav-item">
+            <a href="index.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Data Guru
+              </p>
+            </a>
+          </li> 
+
           <li class="nav-item">
             <a href="index.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Dashborad
+                Data Siswa
               </p>
             </a>
           </li>
+          <?php } ?>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-warehouse"></i>
-              <p>
-                Stok
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="stok_gudang.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Barang Gudang</p>
-                </a>
-              </li>              
-              <li class="nav-item">
-                <a href="stok_opname.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Stock Opname</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="stok_limit.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Stock Limit</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="laporan.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Laporan</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-list"></i>
-              <p>
-                Transksi
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="return_barang.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Return</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="order_tambah.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Order</p>
-                </a>
-              </li>              
-            </ul>
-          </li>
-          <!-- <li class="nav-item">
             <a href="index.php" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
+              <i class="nav-icon fas fa-th"></i>
               <p>
-                Manage Users
+                Data Mata Pelajaran
               </p>
             </a>
-          </li> -->
+          </li> 
+
+          <li class="nav-item">
+            <a href="index.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Data Nilai
+              </p>
+            </a>
+          </li> 
+
+          <li class="nav-item">
+            <a href="index.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Data Presensi Siswa
+              </p>
+            </a>
+          </li> 
+
+          <li class="nav-item">
+            <a href="index.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Data Kasus Siswa
+              </p>
+            </a>
+          </li> 
+
+          <li class="nav-item">
+            <a href="index.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Data Raport Siswa
+              </p>
+            </a>
+          </li> 
+
+          <li class="nav-item">
+            <a href="index.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Grafik Perkembangan
+              </p>
+            </a>
+          </li> 
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

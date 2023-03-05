@@ -32,7 +32,7 @@ include '../layouts/sidebar.php';
           <div class="col-lg-4">
           <div class="card card-outline card-info">
             <div class="card-body">
-               <h3>Stok Barang Gudang</h3> 
+               <h3>Data Nilai</h3> 
             </div>
             <div class="card-footer">
                <a href="stok_gudang.php" class="btn btn-md btn-info">More Info --></a> 
@@ -43,7 +43,7 @@ include '../layouts/sidebar.php';
           <div class="col-lg-4">
           <div class="card card-outline card-info">
             <div class="card-body">
-               <h3>Laporan</h3> 
+               <h3>Data Kasus</h3> 
             </div>
             <div class="card-footer">
                <a href="laporan.php" class="btn btn-md btn-info">More Info --></a> 
@@ -54,7 +54,7 @@ include '../layouts/sidebar.php';
           <div class="col-lg-4">
           <div class="card card-outline card-info">
             <div class="card-body">
-               <h3>Return</h3> 
+               <h3>Data Presensi</h3> 
             </div>
             <div class="card-footer">
                <a href="return_barang.php" class="btn btn-md btn-info">More Info --></a> 
@@ -65,7 +65,7 @@ include '../layouts/sidebar.php';
           <div class="col-lg-4">
           <div class="card card-outline card-info">
             <div class="card-body">
-               <h3>Order</h3> 
+               <h3>Data Raport</h3> 
             </div>
             <div class="card-footer">
                <a href="order_tambah.php" class="btn btn-md btn-info">More Info --></a> 
@@ -76,7 +76,7 @@ include '../layouts/sidebar.php';
           <div class="col-lg-4">
           <div class="card card-outline card-info">
             <div class="card-body">
-               <h3>Stok Limit</h3> 
+               <h3>Perkembangan Belajar</h3> 
             </div>
             <div class="card-footer">
                <a href="stok_limit.php" class="btn btn-md btn-info">More Info --></a> 
@@ -87,7 +87,7 @@ include '../layouts/sidebar.php';
           <div class="col-lg-4">
           <div class="card card-outline card-info">
             <div class="card-body">
-               <h3>Stok Opname</h3> 
+               <h3>Data Mata Pelajaran</h3> 
             </div>
             <div class="card-footer">
                <a href="stok_limit.php" class="btn btn-md btn-info">More Info --></a> 
