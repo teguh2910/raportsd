@@ -74,7 +74,7 @@
           <?php } ?>
         <?php if($_SESSION['hak_akses']!="siswa"){ ?>  
         <li class="nav-item">
-            <a href="index.php" class="nav-link">
+            <a href="data_guru.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Data Guru
@@ -83,7 +83,7 @@
           </li> 
 
           <li class="nav-item">
-            <a href="index.php" class="nav-link">
+            <a href="data_siswa.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Data Siswa
@@ -92,7 +92,7 @@
           </li>
           <?php } ?>
           <li class="nav-item">
-            <a href="index.php" class="nav-link">
+            <a href="data_mapel.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Data Mata Pelajaran
@@ -101,7 +101,7 @@
           </li> 
 
           <li class="nav-item">
-            <a href="index.php" class="nav-link">
+            <a href="data_nilai.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Data Nilai
@@ -110,7 +110,7 @@
           </li> 
 
           <li class="nav-item">
-            <a href="index.php" class="nav-link">
+            <a href="data_presensi.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Data Presensi Siswa
@@ -119,7 +119,7 @@
           </li> 
 
           <li class="nav-item">
-            <a href="index.php" class="nav-link">
+            <a href="data_kasus.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Data Kasus Siswa
@@ -128,7 +128,7 @@
           </li> 
 
           <li class="nav-item">
-            <a href="index.php" class="nav-link">
+            <a href="data_raport_siswa.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Data Raport Siswa
@@ -137,7 +137,7 @@
           </li> 
 
           <li class="nav-item">
-            <a href="index.php" class="nav-link">
+            <a href="data_grafik_perkembangan.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Grafik Perkembangan
