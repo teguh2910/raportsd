@@ -8,26 +8,49 @@ include 'config/koneksi.php';
 // menangkap data yang dikirim dari form
 $username = $_POST['username'];
 $password = $_POST['password'];
- 
+$login_as = $_POST['login_as'];
 // menyeleksi data admin dengan username dan password yang sesuai
-$data = mysqli_query($koneksi,"select * from user where username='$username' and password='$password'");
-$row = mysqli_fetch_assoc($data); 
-// menghitung jumlah data yang ditemukan
-$cek = mysqli_num_rows($data);
-
-if($cek > 0){
+if($login_as == 'siswa'){
+	$data = mysqli_query($koneksi,"select * from data_siswa where nama_siswa='$username' and password='$password'");
+	$row = mysqli_fetch_assoc($data); 
+	$cek = mysqli_num_rows($data);
+	if($cek > 0){
 	$_SESSION['username'] = $username;
-	$_SESSION['hak_akses'] = $row['hak_akses'];
+	$_SESSION['hak_akses'] = 'siswa';
+	$_SESSION['status'] = "login";
+	$_SESSION['id_user'] = $row['id_siswa'];
+		header("location:siswa/index.php");
+	}else
+	{
+		header("location:index.php?pesan=gagal");
+	}	
+}elseif($login_as == 'guru'){
+	$data = mysqli_query($koneksi,"select * from data_guru where nama_guru='$username' and password='$password'");
+	$row = mysqli_fetch_assoc($data);
+	$cek = mysqli_num_rows($data);
+	if($cek>0){
+	$_SESSION['username'] = $username;
+	$_SESSION['hak_akses'] = 'guru';
+	$_SESSION['status'] = "login";
+	$_SESSION['id_user'] = $row['id_guru'];
+		header("location:guru/index.php");
+	}else
+	{
+		header("location:index.php?pesan=gagal");
+	}
+}elseif($login_as == 'admin'){
+	$data = mysqli_query($koneksi,"select * from user where username='$username' and password='$password'");
+	$row = mysqli_fetch_assoc($data);
+	$cek = mysqli_num_rows($data);
+	if($cek>0){
+	$_SESSION['username'] = $username;
+	$_SESSION['hak_akses'] = 'admin';
 	$_SESSION['status'] = "login";
 	$_SESSION['id_user'] = $row['id_user'];
-	if($row['hak_akses'] == "siswa"){
-		header("location:siswa/index.php");
-	}elseif($row['hak_akses']=="guru"){
-		header("location:guru/index.php");
-	}elseif($row['hak_akses']=="admin"){
 		header("location:admin/index.php");
+	}else
+	{
+		header("location:index.php?pesan=gagal");
 	}
-}else{
-	header("location:index.php?pesan=gagal");
 }
 ?>

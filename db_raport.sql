@@ -32,7 +32,7 @@ CREATE TABLE `data_guru` (
   `nama_guru` varchar(40) NOT NULL,
   `jabatan` varchar(10) NOT NULL,
   `id_user` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `data_guru`
@@ -50,11 +50,11 @@ INSERT INTO `data_guru` (`id_guru`, `nama_guru`, `jabatan`, `id_user`) VALUES
 
 CREATE TABLE `data_siswa` (
   `id_siswa` int NOT NULL,
-  `nama_siswa` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `nama_siswa` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat` text NOT NULL,
   `kelas` varchar(10) NOT NULL,
   `id_user` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `data_siswa`
@@ -75,7 +75,7 @@ CREATE TABLE `kasus_siswa` (
   `id_siswa` int NOT NULL,
   `kasus` text NOT NULL,
   `tgl_kasus` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `kasus_siswa`
@@ -95,7 +95,7 @@ CREATE TABLE `mata_pelajaran` (
   `id_pelajaran` int NOT NULL,
   `nama_mata_pelajaran` varchar(30) NOT NULL,
   `id_guru` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `mata_pelajaran`
@@ -117,7 +117,7 @@ CREATE TABLE `nilai_siswa` (
   `nilai` int NOT NULL,
   `semester` int NOT NULL,
   `tahun` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `nilai_siswa`
@@ -141,7 +141,7 @@ CREATE TABLE `presensi_siswa` (
   `id_pelajaran` int NOT NULL,
   `presensi` varchar(10) NOT NULL,
   `tgl` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `presensi_siswa`
@@ -162,7 +162,7 @@ CREATE TABLE `user` (
   `username` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
   `hak_akses` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `user`

@@ -12,12 +12,12 @@ include '../layouts/sidebar.php';
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Data Kasus</h1>
+            <h1 class="m-0">Data Mapel</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Data Kasus</li>
+              <li class="breadcrumb-item active">Data Mapel</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -33,8 +33,7 @@ include '../layouts/sidebar.php';
           <div class="card card-info">
               <div class="card-header">
                 <h3 class="card-title">
-                <a href="tambah_data_kasus.php" class="btn btn-sm btn-primary">Tambah</a>    
-                Data Kasus</h3>
+                Data Mapel</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -42,10 +41,8 @@ include '../layouts/sidebar.php';
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>Nama Siswa</th>
-                    <th>Kasus</th>
-                    <th>Tanggal</th>
-                    <th>Action</th>
+                    <th>Nama Mapel</th>
+                    <th>Guru</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -53,14 +50,8 @@ include '../layouts/sidebar.php';
                     // menghubungkan dengan koneksi
                     include '../config/koneksi.php';
                     // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
-                    if (isset($_GET['id_siswa'])) {
-                      $query = "SELECT * FROM kasus_siswa 
-                      INNER JOIN data_siswa ON kasus_siswa.id_siswa  = data_siswa.id_siswa
-                      WHERE kasus_siswa.id_siswa = '$_GET[id_siswa]'";
-                    } else {
-                      $query = "SELECT * FROM kasus_siswa 
-                      INNER JOIN data_siswa ON kasus_siswa.id_siswa  = data_siswa.id_siswa";
-                    }
+                    $query = "SELECT * FROM mata_pelajaran 
+                    INNER JOIN data_guru ON mata_pelajaran.id_guru = data_guru.id_guru ORDER BY id_pelajaran ASC";
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
                     if(!$result){
@@ -77,13 +68,9 @@ include '../layouts/sidebar.php';
                     ?>
                   <tr>
                     <td><?php echo $no; ?></td>
-                    <td><?php echo $row['nama_siswa']; ?></td>
-                    <td><?php echo $row['kasus']; ?></td>
-                    <td><?php echo $row['tgl_kasus']; ?></td>
-                    <td>
-                        <a href="edit_data_kasus.php?id_kasus=<?php echo $row['id_kasus']; ?>" class="btn btn-xs btn-warning">Edit</a>
-                        <a href="kasus/hapus_data_kasus.php?id_kasus=<?php echo $row['id_kasus']; ?>" class="btn btn-xs btn-danger">Delete</a>                        
-                    </td>
+                    <td><?php echo $row['nama_mata_pelajaran']; ?></td>
+                    <td><?php echo $row['nama_guru']; ?></td>
+                    
                   </tr>
                   <?php
                         $no++; //untuk nomor urut terus bertambah 1

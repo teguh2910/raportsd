@@ -37,7 +37,19 @@
       </p>
 
       <form action="cek_login.php" method="post">
-        <div class="input-group mb-3">
+      <div class="input-group mb-3">
+      <select name="login_as" class="form-control">
+        <option value="siswa">Siswa</option>
+        <option value="guru">Guru</option>
+        <option value="admin">Admin</option>
+      </select>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>  
+      <div class="input-group mb-3">
           <input type="text" name="username" autofocus class="form-control" placeholder="Username">
           <div class="input-group-append">
             <div class="input-group-text">

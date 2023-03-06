@@ -52,6 +52,10 @@ include '../layouts/sidebar.php';
                     <label>Alamat</label>
                     <textarea name="alamat" rows="3" class="form-control"></textarea>
                   </div>
+                  <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control">
+                  </div>
                 </div>
                 <!-- /.card-body -->
 

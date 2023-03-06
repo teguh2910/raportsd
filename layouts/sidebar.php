@@ -62,19 +62,8 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">         
         <?php if($_SESSION['hak_akses']=="admin"){ ?>  
-        <li class="nav-item">
-            <a href="index.php" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Manage User Login
-              </p>
-            </a>
-          </li> 
-
-          <?php } ?>
-        <?php if($_SESSION['hak_akses']!="siswa"){ ?>  
-        <li class="nav-item">
-            <a href="data_guru.php" class="nav-link">
+          <li class="nav-item">
+            <a href="../guru/data_guru.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Data Guru
@@ -83,14 +72,16 @@
           </li> 
 
           <li class="nav-item">
-            <a href="data_siswa.php" class="nav-link">
+            <a href="../guru/data_siswa.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Data Siswa
               </p>
             </a>
           </li>
+
           <?php } ?>
+        <?php if($_SESSION['hak_akses']=="guru" || $_SESSION['hak_akses']=="siswa"){ ?>                    
           <li class="nav-item">
             <a href="data_mapel.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -143,7 +134,10 @@
                 Grafik Perkembangan
               </p>
             </a>
-          </li> 
+          </li>
+          <?php } ?> 
+
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -29,68 +29,12 @@ include '../layouts/sidebar.php';
     <div class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-lg-4">
+          <div class="col-lg-12">
           <div class="card card-outline card-info">
             <div class="card-body">
-               <h3>Data Nilai</h3> 
+               <h3> <center> Welcome Admin</center></h3> 
             </div>
             <div class="card-footer">
-               <a href="stok_gudang.php" class="btn btn-md btn-info">More Info --></a> 
-            </div>
-            </div>
-            <!-- /.card -->
-          </div> <!-- /.col-md-4 -->
-          <div class="col-lg-4">
-          <div class="card card-outline card-info">
-            <div class="card-body">
-               <h3>Data Kasus</h3> 
-            </div>
-            <div class="card-footer">
-               <a href="laporan.php" class="btn btn-md btn-info">More Info --></a> 
-            </div>
-            </div>
-            <!-- /.card -->
-          </div> <!-- /.col-md-4 -->
-          <div class="col-lg-4">
-          <div class="card card-outline card-info">
-            <div class="card-body">
-               <h3>Data Presensi</h3> 
-            </div>
-            <div class="card-footer">
-               <a href="return_barang.php" class="btn btn-md btn-info">More Info --></a> 
-            </div>
-            </div>
-            <!-- /.card -->
-          </div> <!-- /.col-md-4 -->
-          <div class="col-lg-4">
-          <div class="card card-outline card-info">
-            <div class="card-body">
-               <h3>Data Raport</h3> 
-            </div>
-            <div class="card-footer">
-               <a href="order_tambah.php" class="btn btn-md btn-info">More Info --></a> 
-            </div>
-            </div>
-            <!-- /.card -->
-          </div> <!-- /.col-md-4 -->
-          <div class="col-lg-4">
-          <div class="card card-outline card-info">
-            <div class="card-body">
-               <h3>Perkembangan Belajar</h3> 
-            </div>
-            <div class="card-footer">
-               <a href="stok_limit.php" class="btn btn-md btn-info">More Info --></a> 
-            </div>
-            </div>
-            <!-- /.card -->
-          </div> <!-- /.col-md-4 -->
-          <div class="col-lg-4">
-          <div class="card card-outline card-info">
-            <div class="card-body">
-               <h3>Data Mata Pelajaran</h3> 
-            </div>
-            <div class="card-footer">
-               <a href="stok_limit.php" class="btn btn-md btn-info">More Info --></a> 
             </div>
             </div>
             <!-- /.card -->
