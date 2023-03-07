@@ -85,8 +85,16 @@ include '../layouts/sidebar.php';
                     </select>
                   </div>
                   <div class="form-group">
-                    <label>Nilai</label>
-                    <input type="number" name="nilai" class="form-control" />
+                    <label>Nilai Harian</label>
+                    <input type="number" name="nilai_harian" class="form-control" />
+                  </div>
+                  <div class="form-group">
+                    <label>Nilai UTS</label>
+                    <input type="number" name="nilai_uts" class="form-control" />
+                  </div>
+                  <div class="form-group">
+                    <label>Nilai UAS</label>
+                    <input type="number" name="nilai_uas" class="form-control" />
                   </div>
                   <div class="form-group">
                     <label>Semester</label>

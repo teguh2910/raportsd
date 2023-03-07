@@ -11,13 +11,20 @@
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  
 </head>
+
 <body class="hold-transition login-page">
-<div class="login-box">
-  <!-- /.login-logo -->
+<div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="#" class="h1"><b>E-</b>Raport</a>
+    <b> <h2> Selamat datang di sistem penilaian siswa 
+    <br> SDN 2 KEMLAKAGEDE 
+    <br> KABUPATEN CIREBON
+    </h2> </b>
     </div>
     <div class="card-body">
       <p class="login-box-msg">       
@@ -71,7 +78,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
           </div>
           <!-- /.col -->
         </div>

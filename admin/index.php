@@ -5,20 +5,14 @@ header("location:../index.php?pesan=belum_login");
 }
 include '../layouts/sidebar.php';
 ?>
-  <!-- Content Wrapper. Contains page content -->
+
+ <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -32,13 +26,13 @@ include '../layouts/sidebar.php';
           <div class="col-lg-12">
           <div class="card card-outline card-info">
             <div class="card-body">
-               <h3> <center> Welcome Admin</center></h3> 
+              <h1><center> Selamat Datang </center></h1>
+               <img src="../img/guru.jpg" width="100%"> 
             </div>
-            <div class="card-footer">
-            </div>
+           
             </div>
             <!-- /.card -->
-          </div> <!-- /.col-md-4 -->          
+          </div> <!-- /.col-md-4 -->         
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->

@@ -40,7 +40,15 @@ include '../layouts/sidebar.php';
               <div class="card-body">
               <form method="POST" action="siswa/proses_tambah_data_siswa.php" enctype="multipart/form-data">
                 <div class="card-body">
+                <div class="form-group">
+                    <label>NIS</label>
+                    <input type="text" name="nis" class="form-control" />
+                  </div>   
                   <div class="form-group">
+                    <label>Jenis Kelamin</label>
+                    <input type="text" name="jen_kel" class="form-control" />
+                  </div> 
+                <div class="form-group">
                     <label>Nama Siswa</label>
                     <input type="text" name="nama_siswa" class="form-control" />
                   </div>                  

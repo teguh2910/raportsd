@@ -136,7 +136,8 @@ include '../layouts/sidebar.php';
                     <select name="presensi" class="form-control">
                       <option value="Hadir">Hadir</option>
                       <option value="Izin">Izin</option>
-                      <option value="Alpa">Alpa</option>
+                      <option value="Alpha">Alpa</option>
+                      <option value="Sakit">Sakit</option>
                     </select>
                   </div>                         
                 </div>

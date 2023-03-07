@@ -8,12 +8,16 @@ include '../../config/koneksi.php';
   $kelas  = $_POST['kelas'];
   $alamat    = $_POST['alamat'];
   $password  = $_POST['password'];
+  $nis  = $_POST['nis'];
+  $jen_kel  = $_POST['jen_kel'];
       // jalankan query UPDATE berdasarkan ID yang produknya kita edit
       $query  = "UPDATE data_siswa SET 
       nama_siswa = '$nama_siswa', 
       kelas = '$kelas', 
       alamat = '$alamat',
-      password = '$password'";
+      password = '$password',
+      nis = '$nis',
+      jen_kel = '$jen_kel'";
       $query .= "WHERE id_siswa = '$id'";
       $result = mysqli_query($koneksi, $query);
       // periska query apakah ada error

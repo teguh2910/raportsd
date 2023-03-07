@@ -7,8 +7,10 @@ include '../../config/koneksi.php';
   $kelas         = $_POST['kelas'];
   $alamat        = $_POST['alamat'];
   $password      = $_POST['password'];
-    $query = "INSERT INTO data_siswa (nama_siswa, kelas, alamat, password) 
-    VALUES ('$nama_siswa', '$kelas', '$alamat', '$password')";
+  $nis          = $_POST['nis'];
+  $jen_kel       = $_POST['jen_kel'];
+    $query = "INSERT INTO data_siswa (nama_siswa, kelas, alamat, password, nis, jen_kel) 
+    VALUES ('$nama_siswa', '$kelas', '$alamat', '$password', '$nis', '$jen_kel')";
                   $result = mysqli_query($koneksi, $query);
                   // periska query apakah ada error
                   if(!$result){

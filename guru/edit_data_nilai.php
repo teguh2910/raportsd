@@ -128,8 +128,16 @@ include '../layouts/sidebar.php';
                     </select>
                   </div>     
                   <div class="form-group">
-                    <label>Nilai</label>
-                    <input type="number" name="nilai" value="<?php echo $data['nilai']; ?>" class="form-control" />
+                    <label>Nilai Harian</label>
+                    <input type="number" name="nilai_harian" value="<?php echo $data['nilai_harian']; ?>" class="form-control" />
+                  </div>
+                  <div class="form-group">
+                    <label>Nilai UTS</label>
+                    <input type="number" name="nilai_uts" value="<?php echo $data['nilai_uts']; ?>" class="form-control" />
+                  </div>
+                  <div class="form-group">
+                    <label>Nilai UAS</label>
+                    <input type="number" name="nilai_uas" value="<?php echo $data['nilai_uas']; ?>" class="form-control" />
                   </div>
                   <div class="form-group">
                     <label>Semester</label>

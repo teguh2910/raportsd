@@ -32,8 +32,9 @@ include '../layouts/sidebar.php';
           <div class="col-12">
           <div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title">
-                Data Nilai</h3>
+                <h1 class="card-title">
+                <a href="cetak_raport.php" class="btn btn-sm btn-primary"> <h3> Cetak Raport</h3></a>    
+                </h1>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -42,8 +43,12 @@ include '../layouts/sidebar.php';
                   <tr>
                     <th>No</th>
                     <th>Nama Siswa</th>
+                    <th>Jenis Kelamin</th>
                     <th>Mata Pelajaran</th>
-                    <th>Nilai</th>
+                    <th>Nilai Harian</th>
+                    <th>Nilai UTS</th>
+                    <th>Nilai UAS</th>
+                    <th>Nilai Akhir</th>
                     <th>Semester</th>
                     <th>Tahun</th>
                   </tr>
@@ -56,7 +61,7 @@ include '../layouts/sidebar.php';
                     $query = "SELECT * FROM nilai_siswa 
                     INNER JOIN data_siswa ON nilai_siswa.id_siswa  = data_siswa.id_siswa
                     INNER JOIN mata_pelajaran ON nilai_siswa.id_pelajaran  = mata_pelajaran.id_pelajaran
-                    WHERE nilai_siswa.id_siswa = '$_SESSION[id_user]' ORDER BY id_nilai DESC";
+                    WHERE nilai_siswa.id_siswa = '$_SESSION[id_user]'";
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
                     if(!$result){
@@ -74,8 +79,12 @@ include '../layouts/sidebar.php';
                   <tr>
                     <td><?php echo $no; ?></td>
                     <td><?php echo $row['nama_siswa']; ?></td>
+                    <td><?php echo $row['jen_kel']; ?></td>
                     <td><?php echo $row['nama_mata_pelajaran']; ?></td>
-                    <td><?php echo $row['nilai']; ?></td>
+                    <td><?php echo $row['nilai_harian']; ?></td>
+                    <td><?php echo $row['nilai_uts']; ?></td>
+                    <td><?php echo $row['nilai_uas']; ?></td>
+                    <td><?php echo round(($row['nilai_harian']+$row['nilai_uts']+$row['nilai_uas'])/3,0); ?></td>
                     <td><?php echo $row['semester']; ?></td>
                     <td><?php echo $row['tahun']; ?></td>
                     

@@ -7,11 +7,13 @@ include '../../config/koneksi.php';
   $nama_guru  = $_POST['nama_guru'];
   $jabatan  = $_POST['jabatan'];
   $password = $_POST['password'];
+  $nip = $_POST['nip'];
       // jalankan query UPDATE berdasarkan ID yang produknya kita edit
       $query  = "UPDATE data_guru SET 
       nama_guru = '$nama_guru', 
       jabatan = '$jabatan',
-      password = '$password'";
+      password = '$password',
+      nip = '$nip'";
       $query .= "WHERE id_guru = '$id'";
       $result = mysqli_query($koneksi, $query);
       // periska query apakah ada error

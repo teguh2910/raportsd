@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1deb5ubuntu1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Mar 06, 2023 at 08:32 PM
--- Server version: 8.0.32-0ubuntu0.22.04.2
--- PHP Version: 8.1.2-1ubuntu2.11
+-- Host: 127.0.0.1
+-- Generation Time: Mar 06, 2023 at 04:15 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,19 +28,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `data_guru` (
-  `id_guru` int NOT NULL,
-  `nama_guru` varchar(40) NOT NULL,
-  `jabatan` varchar(10) NOT NULL,
-  `id_user` int DEFAULT NULL
+  `id_guru` int(11) NOT NULL,
+  `nama_guru` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jabatan` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `data_guru`
 --
 
-INSERT INTO `data_guru` (`id_guru`, `nama_guru`, `jabatan`, `id_user`) VALUES
-(2, 'sri', 'wali_kelas', NULL),
-(3, 'teguh', 'wali_kelas', NULL);
+INSERT INTO `data_guru` (`id_guru`, `nama_guru`, `jabatan`, `password`) VALUES
+(2, 'sri', 'wali_kelas', 'password'),
+(3, 'teguh', 'wali_kelas', 'pass');
 
 -- --------------------------------------------------------
 
@@ -49,20 +49,20 @@ INSERT INTO `data_guru` (`id_guru`, `nama_guru`, `jabatan`, `id_user`) VALUES
 --
 
 CREATE TABLE `data_siswa` (
-  `id_siswa` int NOT NULL,
-  `nama_siswa` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `alamat` text NOT NULL,
-  `kelas` varchar(10) NOT NULL,
-  `id_user` int DEFAULT NULL
+  `id_siswa` int(11) NOT NULL,
+  `nama_siswa` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kelas` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `data_siswa`
 --
 
-INSERT INTO `data_siswa` (`id_siswa`, `nama_siswa`, `alamat`, `kelas`, `id_user`) VALUES
-(2, 'teguh', 'solo', '4', NULL),
-(4, 'rizky', 'Karawang', '3', NULL);
+INSERT INTO `data_siswa` (`id_siswa`, `nama_siswa`, `alamat`, `kelas`, `password`) VALUES
+(2, 'teguh', 'solo', '4', 'password'),
+(4, 'rizky', 'Karawang', '3', 'pass');
 
 -- --------------------------------------------------------
 
@@ -71,9 +71,9 @@ INSERT INTO `data_siswa` (`id_siswa`, `nama_siswa`, `alamat`, `kelas`, `id_user`
 --
 
 CREATE TABLE `kasus_siswa` (
-  `id_kasus` int NOT NULL,
-  `id_siswa` int NOT NULL,
-  `kasus` text NOT NULL,
+  `id_kasus` int(11) NOT NULL,
+  `id_siswa` int(11) NOT NULL,
+  `kasus` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl_kasus` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -92,9 +92,9 @@ INSERT INTO `kasus_siswa` (`id_kasus`, `id_siswa`, `kasus`, `tgl_kasus`) VALUES
 --
 
 CREATE TABLE `mata_pelajaran` (
-  `id_pelajaran` int NOT NULL,
-  `nama_mata_pelajaran` varchar(30) NOT NULL,
-  `id_guru` int NOT NULL
+  `id_pelajaran` int(11) NOT NULL,
+  `nama_mata_pelajaran` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_guru` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -111,12 +111,12 @@ INSERT INTO `mata_pelajaran` (`id_pelajaran`, `nama_mata_pelajaran`, `id_guru`) 
 --
 
 CREATE TABLE `nilai_siswa` (
-  `id_nilai` int NOT NULL,
-  `id_siswa` int NOT NULL,
-  `id_pelajaran` int NOT NULL,
-  `nilai` int NOT NULL,
-  `semester` int NOT NULL,
-  `tahun` int NOT NULL
+  `id_nilai` int(11) NOT NULL,
+  `id_siswa` int(11) NOT NULL,
+  `id_pelajaran` int(11) NOT NULL,
+  `nilai` int(11) NOT NULL,
+  `semester` int(11) NOT NULL,
+  `tahun` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -136,10 +136,10 @@ INSERT INTO `nilai_siswa` (`id_nilai`, `id_siswa`, `id_pelajaran`, `nilai`, `sem
 --
 
 CREATE TABLE `presensi_siswa` (
-  `id_presensi` int NOT NULL,
-  `id_siswa` int NOT NULL,
-  `id_pelajaran` int NOT NULL,
-  `presensi` varchar(10) NOT NULL,
+  `id_presensi` int(11) NOT NULL,
+  `id_siswa` int(11) NOT NULL,
+  `id_pelajaran` int(11) NOT NULL,
+  `presensi` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -158,10 +158,10 @@ INSERT INTO `presensi_siswa` (`id_presensi`, `id_siswa`, `id_pelajaran`, `presen
 --
 
 CREATE TABLE `user` (
-  `id_user` int NOT NULL,
-  `username` varchar(30) NOT NULL,
-  `password` varchar(30) NOT NULL,
-  `hak_akses` varchar(10) NOT NULL
+  `id_user` int(11) NOT NULL,
+  `username` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hak_akses` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -169,8 +169,6 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `hak_akses`) VALUES
-(1, 'siswa', 'siswa', 'siswa'),
-(2, 'guru', 'guru', 'guru'),
 (3, 'admin', 'admin', 'admin');
 
 --
@@ -227,43 +225,43 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `data_guru`
 --
 ALTER TABLE `data_guru`
-  MODIFY `id_guru` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_guru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `data_siswa`
 --
 ALTER TABLE `data_siswa`
-  MODIFY `id_siswa` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `kasus_siswa`
 --
 ALTER TABLE `kasus_siswa`
-  MODIFY `id_kasus` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kasus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `mata_pelajaran`
 --
 ALTER TABLE `mata_pelajaran`
-  MODIFY `id_pelajaran` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pelajaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `nilai_siswa`
 --
 ALTER TABLE `nilai_siswa`
-  MODIFY `id_nilai` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `presensi_siswa`
 --
 ALTER TABLE `presensi_siswa`
-  MODIFY `id_presensi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_presensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

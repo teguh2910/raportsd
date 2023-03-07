@@ -6,16 +6,20 @@ include '../../config/koneksi.php';
   $id= $_POST['id'];
   $id_siswa    = $_POST['id_siswa'];
   $id_pelajaran= $_POST['id_pelajaran'];
-  $nilai= $_POST['nilai'];
+  $nilai_harian= $_POST['nilai_harian'];
   $semester= $_POST['semester'];
   $tahun= $_POST['tahun'];
+  $nilai_uts= $_POST['nilai_uts'];
+  $nilai_uas= $_POST['nilai_uas'];
       // jalankan query UPDATE berdasarkan ID yang produknya kita edit
       $query  = "UPDATE nilai_siswa SET 
       id_siswa = '$id_siswa', 
       id_pelajaran = '$id_pelajaran',
-      nilai = '$nilai',
+      nilai_harian = '$nilai_harian',
       semester = '$semester',
-      tahun = '$tahun'";
+      tahun = '$tahun',
+      nilai_uts = '$nilai_uts',
+      nilai_uas = '$nilai_uas'";
       $query .= "WHERE id_nilai = '$id'";
       $result = mysqli_query($koneksi, $query);
       // periska query apakah ada error

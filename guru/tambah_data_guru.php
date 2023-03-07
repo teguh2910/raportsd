@@ -40,7 +40,11 @@ include '../layouts/sidebar.php';
               <div class="card-body">
               <form method="POST" action="guru/proses_tambah_data_guru.php" enctype="multipart/form-data">
                 <div class="card-body">
-                  <div class="form-group">
+                <div class="form-group">
+                    <label>NIP</label>
+                    <input type="text" name="nip" class="form-control" />
+                  </div>   
+                <div class="form-group">
                     <label>Nama Guru</label>
                     <input type="text" name="nama_guru" class="form-control" />
                   </div>                  

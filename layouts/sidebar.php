@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -81,7 +82,28 @@
           </li>
 
           <?php } ?>
+          <?php if($_SESSION['hak_akses']=="siswa"){ ?>
+            <li class="nav-item">
+            <a href="data_siswa.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Data Siswa
+              </p>
+            </a>
+          </li>
+            <?php } ?>
+            <?php if($_SESSION['hak_akses']=="guru"){ ?>
+            <li class="nav-item">
+            <a href="data_guru.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Data Guru
+              </p>
+            </a>
+          </li>
+            <?php } ?>
         <?php if($_SESSION['hak_akses']=="guru" || $_SESSION['hak_akses']=="siswa"){ ?>                    
+          
           <li class="nav-item">
             <a href="data_mapel.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -118,14 +140,14 @@
             </a>
           </li> 
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="data_raport_siswa.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Data Raport Siswa
               </p>
             </a>
-          </li> 
+          </li>  -->
 
           <li class="nav-item">
             <a href="data_grafik_perkembangan.php" class="nav-link">

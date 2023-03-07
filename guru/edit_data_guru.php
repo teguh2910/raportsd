@@ -69,7 +69,11 @@ include '../layouts/sidebar.php';
                  <!-- menampung nilai id produk yang akan di edit -->
                 <input name="id" value="<?php echo $data['id_guru']; ?>"  hidden />
                 <div class="card-body">
-                  <div class="form-group">
+                <div class="form-group">
+                    <label>NIP</label>
+                    <input type="text" name="nip" value="<?php echo $data['nip']; ?>" class="form-control">
+                  </div>  
+                <div class="form-group">
                     <label>Nama Guru</label>
                     <input type="text" name="nama_guru" value="<?php echo $data['nama_guru']; ?>" class="form-control">
                   </div>
