@@ -33,6 +33,7 @@ include '../layouts/sidebar.php';
           <div class="card card-info">
               <div class="card-header">
                 <h3 class="card-title">
+                <a href="../guru/tambah_data_siswa.php" class="btn btn-sm btn-primary">Tambah</a>    
                 Data Siswa</h3>
               </div>
               <!-- /.card-header -->
@@ -54,7 +55,7 @@ include '../layouts/sidebar.php';
                     // menghubungkan dengan koneksi
                     include '../config/koneksi.php';
                     // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
-                    $query = "SELECT * FROM data_siswa WHERE id_siswa='$_SESSION[id_user]'";
+                    $query = "SELECT * FROM data_siswa";
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
                     if(!$result){
@@ -78,7 +79,8 @@ include '../layouts/sidebar.php';
                     <td><?php echo $row['kelas']; ?></td>                    
                     <td>
                         <a href="../guru/edit_data_siswa.php?id_siswa=<?php echo $row['id_siswa']; ?>" class="btn btn-xs btn-warning">Edit</a>
-                       </td>
+                        <a href="../guru/siswa/hapus_data_siswa.php?id_siswa=<?php echo $row['id_siswa']; ?>" class="btn btn-xs btn-danger">Delete</a>                        
+                    </td>
                   </tr>
                   <?php
                         $no++; //untuk nomor urut terus bertambah 1

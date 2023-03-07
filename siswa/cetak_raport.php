@@ -15,7 +15,8 @@
                     
     $query = "SELECT * FROM nilai_siswa 
     INNER JOIN data_siswa ON nilai_siswa.id_siswa  = data_siswa.id_siswa
-    INNER JOIN mata_pelajaran ON nilai_siswa.id_pelajaran  = mata_pelajaran.id_pelajaran";                    
+    INNER JOIN mata_pelajaran ON nilai_siswa.id_pelajaran  = mata_pelajaran.id_pelajaran
+    WHERE nilai_siswa.id_siswa = '$_SESSION[id_user]' AND nilai_siswa.semester = '$_POST[semester]' AND nilai_siswa.tahun = '$_POST[tahun]'";                    
     $result = mysqli_query($koneksi, $query);
     // jika data gagal diambil maka akan tampil error berikut
     if(!$result){
@@ -24,6 +25,7 @@
     }
     // mengambil data dari database
     $data = mysqli_fetch_assoc($result);
+    
     ?>
 </head>
 <body>
@@ -131,7 +133,7 @@
                     $query = "SELECT * FROM nilai_siswa 
                     INNER JOIN data_siswa ON nilai_siswa.id_siswa  = data_siswa.id_siswa
                     INNER JOIN mata_pelajaran ON nilai_siswa.id_pelajaran  = mata_pelajaran.id_pelajaran
-                    WHERE nilai_siswa.id_siswa = '$_SESSION[id_user]'";
+                    WHERE nilai_siswa.id_siswa = '$_SESSION[id_user]' AND nilai_siswa.semester = '$_POST[semester]' AND nilai_siswa.tahun = '$_POST[tahun]'";
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
                     if(!$result){
@@ -151,13 +153,37 @@
             <td><?php echo $no; ?></td>
             <td><?php echo $row['nama_mata_pelajaran']; ?></td>
             <td><?php echo $nilai_akhir; ?></td>
-            <td><?php echo terbilang($nilai_akhir); ?></td>
-            <?php $no++; } ?>
+            <td><?php echo terbilang($nilai_akhir); ?></td>            
+        </tr>
+        <?php $no++; } ?>
+        <tr>
+            <?php
+            $query_update="DROP VIEW nilai_siswa_ranked";
+            $query2="CREATE VIEW nilai_siswa_ranked AS
+            SELECT id_siswa,avg(nilai_harian+nilai_uts+nilai_uas) as nilai_akhir_avg,
+            DENSE_RANK() OVER (ORDER BY avg(nilai_harian+nilai_uts+nilai_uas) DESC) as rank               
+            FROM nilai_siswa
+            GROUP BY id_siswa";
+            $query_rank="SELECT rank FROM nilai_siswa_ranked WHERE id_siswa = '$_SESSION[id_user]'";
+            $result_update = mysqli_query($koneksi, $query_update);
+            $query2 = mysqli_query($koneksi, $query2);
+            $result_rank = mysqli_query($koneksi, $query_rank);
+            // jika data gagal diambil maka akan tampil error berikut
+            if(!$result_rank){
+            die ("Query Error: ".mysqli_errno($koneksi).
+            " - ".mysqli_error($koneksi));
+            }
+            // mengambil data dari database
+            $data_rank = mysqli_fetch_assoc($result_rank);                                  
+            ?>
+           <td colspan=3>PERINGKAT KELAS</td>
+           <td><?php echo $data_rank['rank']; ?></td>            
         </tr>
     </table>
     </div> 
     </div>
     <div class="row"> 
+        
     <div class="col-3">
     <table class="table table-bordered table-sm text-center">
         <?php

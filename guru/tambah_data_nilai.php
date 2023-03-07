@@ -98,7 +98,10 @@ include '../layouts/sidebar.php';
                   </div>
                   <div class="form-group">
                     <label>Semester</label>
-                    <input type="number" name="semester" class="form-control" />
+                    <select name="semester" class="form-control">
+                      <option value="1">Ganjil</option>
+                      <option value="2">Genap</option>
+                    </select>
                   </div>                    
                   <div class="form-group">
                     <label>Tahun</label>

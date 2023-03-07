@@ -69,7 +69,7 @@ include '../layouts/sidebar.php';
               <div class="card-body">
               <form method="POST" action="nilai/proses_edit_data_nilai.php" enctype="multipart/form-data">
                  <!-- menampung nilai id produk yang akan di edit -->
-                <input name="id" value="<?php echo $data['id_nilai']; ?>"  hidden />
+                <input name="id" value="<?php echo $_GET["id_nilai"]; ?>"  hidden />
                 <div class="card-body">
                 <div class="form-group">
                     <label>Nama Siswa</label>
@@ -141,7 +141,10 @@ include '../layouts/sidebar.php';
                   </div>
                   <div class="form-group">
                     <label>Semester</label>
-                    <input type="number" name="semester" value="<?php echo $data['semester']; ?>" class="form-control" />
+                    <select name="semester" class="form-control">
+                      <option value="1">Ganjil</option>
+                      <option value="2">Genap</option>
+                    </select>
                   </div>                    
                   <div class="form-group">
                     <label>Tahun</label>

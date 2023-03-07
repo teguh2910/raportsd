@@ -84,7 +84,7 @@ include '../layouts/sidebar.php';
                     <td><?php echo $row['nilai_harian']; ?></td>
                     <td><?php echo $row['nilai_uts']; ?></td>
                     <td><?php echo $row['nilai_uas']; ?></td>
-                    <td><?php echo round($row['nilai_harian']+$row['nilai_uts']+$row['nilai_uas'])/3; ?></td>
+                    <td><?php echo round(($row['nilai_harian']+$row['nilai_uts']+$row['nilai_uas'])/3,0); ?></td>
                     <td><?php echo $row['semester']; ?></td>
                     <td><?php echo $row['tahun']; ?></td>
                     <td>
