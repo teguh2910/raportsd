@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2023 at 03:40 PM
+-- Generation Time: Mar 07, 2023 at 06:24 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -134,8 +134,21 @@ CREATE TABLE `nilai_siswa` (
 INSERT INTO `nilai_siswa` (`id_nilai`, `id_siswa`, `id_pelajaran`, `nilai_harian`, `nilai_uts`, `nilai_uas`, `semester`, `tahun`) VALUES
 (2, 2, 4, 100, 10, 80, 2, 2022),
 (3, 4, 2, 100, 100, 100, 2, 2022),
-(4, 2, 2, 100, 100, 100, 3, 2022),
-(5, 2, 2, 100, 100, 100, 1, 2022);
+(4, 2, 4, 100, 10, 80, 1, 2022),
+(5, 2, 2, 100, 100, 100, 1, 2022),
+(6, 4, 4, 11, 22, 33, 1, 2022);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `nilai_siswa_ranked`
+-- (See below for the actual view)
+--
+CREATE TABLE `nilai_siswa_ranked` (
+`id_siswa` int(11)
+,`nilai_akhir_avg` decimal(16,4)
+,`rank` bigint(21)
+);
 
 -- --------------------------------------------------------
 
@@ -181,6 +194,15 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `hak_akses`) VALUES
 (3, 'admin', 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `nilai_siswa_ranked`
+--
+DROP TABLE IF EXISTS `nilai_siswa_ranked`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `nilai_siswa_ranked`  AS SELECT `nilai_siswa`.`id_siswa` AS `id_siswa`, avg(`nilai_siswa`.`nilai_harian` + `nilai_siswa`.`nilai_uts` + `nilai_siswa`.`nilai_uas`) AS `nilai_akhir_avg`, dense_rank() over ( order by avg(`nilai_siswa`.`nilai_harian` + `nilai_siswa`.`nilai_uts` + `nilai_siswa`.`nilai_uas`) desc) AS `rank` FROM `nilai_siswa` GROUP BY `nilai_siswa`.`id_siswa``id_siswa`  ;
 
 --
 -- Indexes for dumped tables
@@ -260,7 +282,7 @@ ALTER TABLE `mata_pelajaran`
 -- AUTO_INCREMENT for table `nilai_siswa`
 --
 ALTER TABLE `nilai_siswa`
-  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `presensi_siswa`
