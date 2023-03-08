@@ -12,5 +12,5 @@ $id = $_GET["id_mapel"];
       die ("Gagal menghapus data: ".mysqli_errno($koneksi).
        " - ".mysqli_error($koneksi));
     } else {
-      echo "<script>alert('Data berhasil dihapus.');window.location='../data_mapel.php';</script>";
+      echo "<script>alert('Data berhasil dihapus.');window.location='../../admin/data_mapel.php';</script>";
     }

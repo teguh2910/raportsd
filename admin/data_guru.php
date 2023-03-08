@@ -43,6 +43,7 @@ include '../layouts/sidebar.php';
                     <th>No</th>
                     <th>NIP</th>
                     <th>Nama Guru</th>
+					  <th>Kelas</th>
                     <th>Jabatan</th>
                     <th>Action</th>
                   </tr>
@@ -52,7 +53,7 @@ include '../layouts/sidebar.php';
                     // menghubungkan dengan koneksi
                     include '../config/koneksi.php';
                     // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
-                    $query = "SELECT * FROM data_guru WHERE id_guru='$_SESSION[id_user]'";
+                    $query = "SELECT * FROM data_guru";
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
                     if(!$result){
@@ -71,6 +72,7 @@ include '../layouts/sidebar.php';
                     <td><?php echo $no; ?></td>
                     <td><?php echo $row['nip']; ?></td>
                     <td><?php echo $row['nama_guru']; ?></td>
+					  <td><?php echo $row['kelas']; ?></td>
                     <td><?php echo $row['jabatan']; ?></td>
                     <td>
                         <a href="../guru/edit_data_guru.php?id_guru=<?php echo $row['id_guru']; ?>" class="btn btn-xs btn-warning">Edit</a>

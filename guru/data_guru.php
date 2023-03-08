@@ -44,6 +44,7 @@ include '../layouts/sidebar.php';
                     <th>NIP</th>
                     <th>Nama Guru</th>
                     <th>Jabatan</th>
+					  <th>Kelas</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -72,6 +73,7 @@ include '../layouts/sidebar.php';
                     <td><?php echo $row['nip']; ?></td>
                     <td><?php echo $row['nama_guru']; ?></td>
                     <td><?php echo $row['jabatan']; ?></td>
+					  <td><?php echo $row['kelas']; ?></td>
                     <td>
                         <a href="edit_data_guru.php?id_guru=<?php echo $row['id_guru']; ?>" class="btn btn-xs btn-warning">Edit</a>                                                
                     </td>

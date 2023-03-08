@@ -43,7 +43,11 @@ include '../layouts/sidebar.php';
                   <div class="form-group">
                     <label>Nama Mapel</label>
                     <input type="text" name="nama_mapel" class="form-control" />
-                  </div>                  
+                  </div>
+					<div class="form-group">
+                    <label>Kelas</label>
+                    <input type="text" name="kelas" class="form-control" />
+                  </div>
                   <div class="form-group">
                     <label>Nama Guru</label>
                     <select name="id_guru" class="form-control">

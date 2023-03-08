@@ -77,6 +77,10 @@ include '../layouts/sidebar.php';
                     <label>Nama Guru</label>
                     <input type="text" name="nama_guru" value="<?php echo $data['nama_guru']; ?>" class="form-control">
                   </div>
+					<div class="form-group">
+                    <label>Kelas</label>
+                    <input type="text" name="kelas" value="<?php echo $data['kelas']; ?>" class="form-control">
+                  </div>
                   <div class="form-group">
                     <label>Jabatan</label>
                     <input type="text" name="jabatan" value="<?php echo $data['jabatan']; ?>" class="form-control">

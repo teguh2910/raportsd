@@ -64,7 +64,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">         
         <?php if($_SESSION['hak_akses']=="admin"){ ?>  
           <li class="nav-item">
-            <a href="data_guru.php" class="nav-link">
+            <a href="../admin/data_guru.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Data Guru
@@ -73,10 +73,19 @@
           </li> 
 
           <li class="nav-item">
-            <a href="data_siswa.php" class="nav-link">
+            <a href="../admin/data_siswa.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Data Siswa
+              </p>
+            </a>
+          </li>
+			
+			<li class="nav-item">
+            <a href="../admin/data_mapel.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Data Mata Pelajaran
               </p>
             </a>
           </li>

@@ -61,7 +61,9 @@ include '../layouts/sidebar.php';
                     // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
                     $query = "SELECT * FROM nilai_siswa 
                     INNER JOIN data_siswa ON nilai_siswa.id_siswa  = data_siswa.id_siswa
-                    INNER JOIN mata_pelajaran ON nilai_siswa.id_pelajaran  = mata_pelajaran.id_pelajaran";
+                    INNER JOIN mata_pelajaran ON nilai_siswa.id_pelajaran  = mata_pelajaran.id_pelajaran
+					INNER JOIN data_guru ON data_guru.kelas = data_siswa.kelas
+					WHERE data_guru.id_guru='$_SESSION[id_user]'";
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
                     if(!$result){

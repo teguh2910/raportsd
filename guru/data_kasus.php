@@ -59,7 +59,9 @@ include '../layouts/sidebar.php';
                       WHERE kasus_siswa.id_siswa = '$_GET[id_siswa]'";
                     } else {
                       $query = "SELECT * FROM kasus_siswa 
-                      INNER JOIN data_siswa ON kasus_siswa.id_siswa  = data_siswa.id_siswa";
+                      INNER JOIN data_siswa ON kasus_siswa.id_siswa  = data_siswa.id_siswa
+					  INNER JOIN data_guru ON data_guru.kelas=data_siswa.kelas
+					  WHERE data_guru.id_guru='$_SESSION[id_user]'";
                     }
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query

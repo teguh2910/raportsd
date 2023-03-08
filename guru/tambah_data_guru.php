@@ -47,7 +47,11 @@ include '../layouts/sidebar.php';
                 <div class="form-group">
                     <label>Nama Guru</label>
                     <input type="text" name="nama_guru" class="form-control" />
-                  </div>                  
+                  </div> 
+					<div class="form-group">
+                    <label>Kelas</label>
+                    <input type="text" name="kelas" class="form-control" />
+                  </div> 
                   <div class="form-group">
                     <label>Jabatan</label>
                     <input type="text" name="jabatan" class="form-control">
