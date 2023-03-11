@@ -13,18 +13,25 @@ include '../layouts/sidebar.php';
         }
         </style>
 <?php
-// Generate some sample data
-$nilai_matematika = [75, 80, 85, 90, 95, 100];
-$nilai_bahasa_inggris = [80, 85, 90, 95, 100, 95];
-$nilai_ipa = [90, 95, 100, 95, 90, 85];
-$nilai_ips = [70, 75, 80, 85, 90, 95];
-
-// Convert data into arrays for Chart.js
-$labels = ['Semester 1 2021', 'Semester 2 2021', 'Semester 1 2022', 'Semester 2 2022', 'Semester 1 2023', 'Semester 2 2023'];
-$nilai_matematika = $nilai_matematika;
-$nilai_bahasa_inggris = $nilai_bahasa_inggris;
-$nilai_ipa = $nilai_ipa;
-$nilai_ips = $nilai_ips;
+include '../config/koneksi.php';
+// jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
+if (isset($_POST['tahun'])) {
+$query = "SELECT *,AVG((nilai_harian+nilai_uts+nilai_uas)/3) as nilai_akhir FROM nilai_siswa WHERE id_siswa = '$_POST[id_siswa]' AND tahun = '$_POST[tahun]' GROUP BY semester,tahun ORDER BY tahun,semester";
+}else{
+  $query = "SELECT *,avg(nilai_harian+nilai_uts+nilai_uas) as nilai_akhir FROM nilai_siswa WHERE id_siswa = 'a'";
+}
+$result = mysqli_query($koneksi, $query);
+//mengecek apakah ada error ketika menjalankan query
+if(!$result){
+die ("Query Error: ".mysqli_errno($koneksi).
+" - ".mysqli_error($koneksi));
+}
+// Store the values in an array
+$nilai = array();
+while ($row = mysqli_fetch_assoc($result)) {
+    $nilai[] = $row['nilai_akhir'];
+    $labels[]= "Semester ".$row['semester']." ".$row['tahun'];
+}
 
 // Generate JSON data for Chart.js
 $json_labels = json_encode($labels);
@@ -59,8 +66,58 @@ $json_nilai_ips = json_encode($nilai_ips);
           <div class="col-12">
           <div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title">
-                Grafik Perkembangan Siswa</h3>
+                <h3 class="card-title">					
+                Grafik Perkembangan Siswa
+					<form action='data_grafik_perkembangan.php' method='post'>
+						<div class='row'>
+						<div class='form-group'>
+					
+					<select name='id_siswa' class='form-control'>
+					<?php
+                    // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
+                    $query = "SELECT * FROM data_siswa 
+                    INNER JOIN data_guru ON data_siswa.kelas = data_guru.kelas
+                    WHERE id_guru = '$_SESSION[id_user]'";
+                    $result = mysqli_query($koneksi, $query);
+                    //mengecek apakah ada error ketika menjalankan query
+                    if(!$result){
+                        die ("Query Error: ".mysqli_errno($koneksi).
+                        " - ".mysqli_error($koneksi));
+                    }
+                    while($row = mysqli_fetch_assoc($result))
+                    {
+                    ?>
+						<option value=<?php echo $row['id_siswa'] ?>><?php echo $row['nama_siswa'] ?></option>
+						<?php } ?>
+					</select>   
+						</div>
+            <div class='form-group'>
+					
+					<select name='tahun' class='form-control'>
+					<?php
+                    // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
+                    $query = "SELECT * FROM nilai_siswa 
+                    INNER JOIN mata_pelajaran ON nilai_siswa.id_pelajaran = mata_pelajaran.id_pelajaran                    
+                    WHERE mata_pelajaran.id_guru = '$_SESSION[id_user]' GROUP BY nilai_siswa.tahun";
+                    $result = mysqli_query($koneksi, $query);
+                    //mengecek apakah ada error ketika menjalankan query
+                    if(!$result){
+                        die ("Query Error: ".mysqli_errno($koneksi).
+                        " - ".mysqli_error($koneksi));
+                    }
+                    while($row = mysqli_fetch_assoc($result))
+                    {
+                    ?>
+						<option value=<?php echo $row['tahun'] ?>><?php echo $row['tahun'] ?></option>
+						<?php } ?>
+					</select>   
+						</div>
+						<div class='form-group'>&nbsp;
+						<input type='submit' value='Lihat Data' class='btn btn-md btn-primary'>
+							</div>
+							</div>
+					</form>
+				  </h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
