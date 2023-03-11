@@ -51,7 +51,7 @@ include '../layouts/sidebar.php';
                     // menghubungkan dengan koneksi
                     include '../config/koneksi.php';
                     // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
-                    $query = "SELECT * FROM mata_pelajaran 
+                    $query = "SELECT mata_pelajaran.nama_mata_pelajaran,data_guru.nama_guru,mata_pelajaran.kelas FROM mata_pelajaran 
                     INNER JOIN data_guru ON mata_pelajaran.id_guru = data_guru.id_guru
 					WHERE mata_pelajaran.id_guru='$_SESSION[id_user]'
 					ORDER BY id_pelajaran ASC";

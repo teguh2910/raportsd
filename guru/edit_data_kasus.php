@@ -78,7 +78,9 @@ include '../layouts/sidebar.php';
                     $id_siswa_edit = $data['id_siswa'];
 
                     // query to retrieve the list of teachers, with an additional column to indicate if the teacher is selected or not
-                    $query = "SELECT *, IF(id_siswa = $id_siswa_edit, 1, 0) AS is_selected FROM data_siswa";
+                    $query = "SELECT *, IF(id_siswa = $id_siswa_edit, 1, 0) AS is_selected FROM data_siswa                    
+                    INNER JOIN data_guru ON data_siswa.kelas=data_guru.kelas
+                    WHERE id_guru='$_SESSION[id_user]'";
 
                     $result = mysqli_query($koneksi, $query);
 
