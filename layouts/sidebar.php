@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>E-Raport</title>
+  <title>PenilaianSiswaSD</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -44,7 +44,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="../dist/img/AdminLTELogo.png" alt="E-Gudang" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">E-Raport</span>
+      <span class="brand-text font-weight-light">PenilaianSiswaSD</span>
     </a>
 
     <!-- Sidebar -->
@@ -52,7 +52,14 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../dist/img/user1-128x128.jpg" class="img-circle elevation-2" alt="">
+          <?php if(isset($_SESSION['jk'])){
+            if($_SESSION['jk']=="L"){ ?>
+          <img src="../dist/img/avatar.png" class="img-circle elevation-2" alt="">
+          <?php }else{ ?>
+            <img src="../dist/img/avatar2.png" class="img-circle elevation-2" alt="">
+          <?php }}else{?>
+            <img src="../dist/img/user.png" class="img-circle elevation-2" alt="">
+          <?php } ?>
         </div>
         <div class="info">
           <a href="#"><?php echo $_SESSION['username'] ?></a>
