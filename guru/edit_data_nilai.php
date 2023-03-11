@@ -17,7 +17,8 @@ include '../layouts/sidebar.php';
     // menampilkan data dari database yang mempunyai id=$id
     $query = "SELECT * FROM nilai_siswa 
                     INNER JOIN data_siswa ON nilai_siswa.id_siswa  = data_siswa.id_siswa
-                    INNER JOIN mata_pelajaran ON nilai_siswa.id_pelajaran  = mata_pelajaran.id_pelajaran";                    
+                    INNER JOIN mata_pelajaran ON nilai_siswa.id_pelajaran  = mata_pelajaran.id_pelajaran
+                    WHERE nilai_siswa.id_nilai = '$id";                    
     $result = mysqli_query($koneksi, $query);
     // jika data gagal diambil maka akan tampil error berikut
     if(!$result){
