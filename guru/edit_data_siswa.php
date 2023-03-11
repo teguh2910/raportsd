@@ -93,6 +93,10 @@ include '../layouts/sidebar.php';
                     <label>Password</label>
                     <input type="password" name="password" class="form-control" value="<?php echo $data['password'] ?>">
                   </div>
+                  <div class="form-group">
+                    <label>Foto</label>
+                    <input type="file" name="photo" class="form-control">
+                  </div>
                 </div>
                 <!-- /.card-body -->
 

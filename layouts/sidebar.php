@@ -52,14 +52,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <?php if(isset($_SESSION['jk'])){
-            if($_SESSION['jk']=="L"){ ?>
-          <img src="../dist/img/avatar.png" class="img-circle elevation-2" alt="">
-          <?php }else{ ?>
-            <img src="../dist/img/avatar2.png" class="img-circle elevation-2" alt="">
-          <?php }}else{?>
-            <img src="../dist/img/user.png" class="img-circle elevation-2" alt="">
-          <?php } ?>
+          <img src="../img/<?php echo $_SESSION['foto'] ?>" class="img-circle elevation-2" alt="">          
         </div>
         <div class="info">
           <a href="#"><?php echo $_SESSION['username'] ?></a>
