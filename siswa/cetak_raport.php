@@ -18,8 +18,7 @@
     INNER JOIN mata_pelajaran ON nilai_siswa.id_pelajaran  = mata_pelajaran.id_pelajaran
     WHERE nilai_siswa.id_siswa = '$_SESSION[id_user]' 
     AND nilai_siswa.semester = '$_POST[semester]' 
-    AND nilai_siswa.tahun = '$_POST[tahun]'
-    GROUP BY mata_pelajaran.nama_mata_pelajaran";                    
+    AND nilai_siswa.tahun = '$_POST[tahun]'";                    
     $result = mysqli_query($koneksi, $query);
     // jika data gagal diambil maka akan tampil error berikut
     if(!$result){
@@ -136,7 +135,10 @@
                     $query = "SELECT * FROM nilai_siswa 
                     INNER JOIN data_siswa ON nilai_siswa.id_siswa  = data_siswa.id_siswa
                     INNER JOIN mata_pelajaran ON nilai_siswa.id_pelajaran  = mata_pelajaran.id_pelajaran
-                    WHERE nilai_siswa.id_siswa = '$_SESSION[id_user]' AND nilai_siswa.semester = '$_POST[semester]' AND nilai_siswa.tahun = '$_POST[tahun]'";
+                    WHERE nilai_siswa.id_siswa = '$_SESSION[id_user]' 
+                    AND nilai_siswa.semester = '$_POST[semester]' 
+                    AND nilai_siswa.tahun = '$_POST[tahun]'
+                    GROUP BY mata_pelajaran.nama_mata_pelajaran";
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
                     if(!$result){
