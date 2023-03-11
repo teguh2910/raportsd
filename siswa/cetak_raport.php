@@ -165,10 +165,12 @@
             <?php
             $query_update="DROP VIEW nilai_siswa_ranked";
             $query2="CREATE VIEW nilai_siswa_ranked AS
-            SELECT id_siswa,avg(nilai_harian+nilai_uts+nilai_uas) as nilai_akhir_avg,
+            SELECT id_siswa,avg((nilai_harian+nilai_uts+nilai_uas)/3) as nilai_akhir_avg,
             DENSE_RANK() OVER (ORDER BY avg(nilai_harian+nilai_uts+nilai_uas) DESC) as rank               
             FROM nilai_siswa
-            GROUP BY id_siswa";
+            INNER JOIN mata_pelajaran ON mata_pelajaran.id_pelajaran = nilai_siswa.id_pelajaran
+            WHERE mata_pelajaran.kelas='$_SESSION[kelas]'
+            GROUP BY nilai_siswa.id_siswa";
             $query_rank="SELECT rank FROM nilai_siswa_ranked WHERE id_siswa = '$_SESSION[id_user]'";
             $result_update = mysqli_query($koneksi, $query_update);
             $query2 = mysqli_query($koneksi, $query2);
