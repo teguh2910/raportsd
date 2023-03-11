@@ -107,7 +107,7 @@ include '../layouts/sidebar.php';
                     $id_pelajaran_edit = $data['id_pelajaran'];
 
                     // query to retrieve the list of teachers, with an additional column to indicate if the teacher is selected or not
-                    $query = "SELECT *, IF(id_pelajaran = $id_pelajaran_edit, 1, 0) AS is_selected FROM mata_pelajaran";
+                    $query = "SELECT *, IF(id_pelajaran = $id_pelajaran_edit, 1, 0) AS is_selected FROM mata_pelajaran GROUP BY nama_mata_pelajaran";
 
                     $result = mysqli_query($koneksi, $query);
 
