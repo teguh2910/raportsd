@@ -35,10 +35,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 // Generate JSON data for Chart.js
 $json_labels = json_encode($labels);
-$json_nilai_matematika = json_encode($nilai_matematika);
-$json_nilai_bahasa_inggris = json_encode($nilai_bahasa_inggris);
-$json_nilai_ipa = json_encode($nilai_ipa);
-$json_nilai_ips = json_encode($nilai_ips);
+$json_nilai = json_encode($nilai);
 ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -66,65 +63,8 @@ $json_nilai_ips = json_encode($nilai_ips);
           <div class="col-12">
           <div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title">					
-                Grafik Perkembangan Siswa
-					<form action='data_grafik_perkembangan.php' method='post'>
-						<div class='row'>
-						<div class='form-group'>
-					
-					<select name='id_siswa' class='form-control'>
-					<?php
-                    // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
-                    if (isset($_POST['tahun'])) {
-                    $query = "SELECT *, IF(id_siswa = $_POST[id_siswa], 1, 0) AS is_selected FROM data_siswa 
-                    INNER JOIN data_guru ON data_siswa.kelas = data_guru.kelas
-                    WHERE id_guru = '$_SESSION[id_user]'";
-                    }{
-                      $query = "SELECT * FROM data_siswa 
-                      INNER JOIN data_guru ON data_siswa.kelas = data_guru.kelas
-                      WHERE id_guru = '$_SESSION[id_user]'";
-                    }
-                    $result = mysqli_query($koneksi, $query);
-                    //mengecek apakah ada error ketika menjalankan query
-                    if(!$result){
-                        die ("Query Error: ".mysqli_errno($koneksi).
-                        " - ".mysqli_error($koneksi));
-                    }
-                    while($row = mysqli_fetch_assoc($result))
-                    {
-                      $selected = $row['is_selected'] ? 'selected' : '';?>
-                    ?>
-						<option value="<?php echo $row['id_siswa'] ?>" <?php echo $selected ?>><?php echo $row['nama_siswa'] ?></option>
-						<?php } ?>
-					</select>   
-						</div>
-            <div class='form-group'>
-					
-					<select name='tahun' class='form-control'>
-					<?php
-                    // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
-                    $query = "SELECT * FROM nilai_siswa 
-                    INNER JOIN mata_pelajaran ON nilai_siswa.id_pelajaran = mata_pelajaran.id_pelajaran                    
-                    WHERE mata_pelajaran.id_guru = '$_SESSION[id_user]' GROUP BY nilai_siswa.tahun";
-                    $result = mysqli_query($koneksi, $query);
-                    //mengecek apakah ada error ketika menjalankan query
-                    if(!$result){
-                        die ("Query Error: ".mysqli_errno($koneksi).
-                        " - ".mysqli_error($koneksi));
-                    }
-                    while($row = mysqli_fetch_assoc($result))
-                    {
-                    ?>
-						<option value=<?php echo $row['tahun'] ?>><?php echo $row['tahun'] ?></option>
-						<?php } ?>
-					</select>   
-						</div>
-						<div class='form-group'>&nbsp;
-						<input type='submit' value='Lihat Data' class='btn btn-md btn-primary'>
-							</div>
-							</div>
-					</form>
-				  </h3>
+                <h3 class="card-title">
+                Grafik Perkembangan Siswa</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -152,24 +92,9 @@ $json_nilai_ips = json_encode($nilai_ips);
         data: {
           labels: <?php echo $json_labels; ?>,
           datasets: [{
-            label: 'Matematika',
-            data: <?php echo $json_nilai_matematika; ?>,
+            label: 'Nilai Akhir',
+            data: <?php echo $json_nilai; ?>,
             backgroundColor: 'rgb(75, 192, 192)',
-          },
-          {
-            label: 'Bahasa Ingris',
-            data: <?php echo $json_nilai_bahasa_inggris; ?>,
-            backgroundColor: 'rgb(255, 99, 132)',
-          },
-          {
-            label: 'IPA',
-            data: <?php echo $json_nilai_ipa; ?>,
-            backgroundColor: 'rgb(54, 162, 235)',
-          },
-          {
-            label: 'IPS',
-            data: <?php echo $json_nilai_ips; ?>,
-            backgroundColor: 'rgb(255, 205, 86)',
           }]
         },
         options: {
