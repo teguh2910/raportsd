@@ -75,9 +75,15 @@ $json_nilai_ips = json_encode($nilai_ips);
 					<select name='id_siswa' class='form-control'>
 					<?php
                     // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
-                    $query = "SELECT * FROM data_siswa 
+                    if (isset($_POST['tahun'])) {
+                    $query = "SELECT *, IF(id_siswa = $_POST[id_siswa], 1, 0) AS is_selected FROM data_siswa 
                     INNER JOIN data_guru ON data_siswa.kelas = data_guru.kelas
                     WHERE id_guru = '$_SESSION[id_user]'";
+                    }{
+                      $query = "SELECT * FROM data_siswa 
+                      INNER JOIN data_guru ON data_siswa.kelas = data_guru.kelas
+                      WHERE id_guru = '$_SESSION[id_user]'";
+                    }
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
                     if(!$result){
@@ -86,8 +92,9 @@ $json_nilai_ips = json_encode($nilai_ips);
                     }
                     while($row = mysqli_fetch_assoc($result))
                     {
+                      $selected = $row['is_selected'] ? 'selected' : '';?>
                     ?>
-						<option value=<?php echo $row['id_siswa'] ?>><?php echo $row['nama_siswa'] ?></option>
+						<option value="<?php echo $row['id_siswa'] ?>" <?php echo $selected ?>><?php echo $row['nama_siswa'] ?></option>
 						<?php } ?>
 					</select>   
 						</div>
