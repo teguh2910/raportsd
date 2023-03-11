@@ -8,10 +8,12 @@ include '../../config/koneksi.php';
   $jabatan  = $_POST['jabatan'];
   $password = $_POST['password'];
   $nip = $_POST['nip'];
+$kelas = $_POST['kelas'];
       // jalankan query UPDATE berdasarkan ID yang produknya kita edit
       $query  = "UPDATE data_guru SET 
       nama_guru = '$nama_guru', 
       jabatan = '$jabatan',
+	  kelas = '$kelas',
       password = '$password',
       nip = '$nip'";
       $query .= "WHERE id_guru = '$id'";
@@ -23,5 +25,5 @@ include '../../config/koneksi.php';
       } else {
         //tampil alert dan akan redirect ke halaman index.php
         //silahkan ganti index.php sesuai halaman yang akan dituju
-          echo "<script>alert('Data berhasil diubah.');window.location='../data_guru.php';</script>";
+          echo "<script>alert('Data berhasil diubah.');window.location='../../admin/data_guru.php';</script>";
       }

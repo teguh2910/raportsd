@@ -19,6 +19,7 @@ if($login_as == 'siswa'){
 	$_SESSION['hak_akses'] = 'siswa';
 	$_SESSION['status'] = "login";
 	$_SESSION['id_user'] = $row['id_siswa'];
+	$_SESSION['kelas'] = $row['kelas'];
 		header("location:siswa/index.php");
 	}else
 	{

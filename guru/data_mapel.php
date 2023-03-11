@@ -33,7 +33,6 @@ include '../layouts/sidebar.php';
           <div class="card card-info">
               <div class="card-header">
                 <h3 class="card-title">
-                <a href="tambah_data_mapel.php" class="btn btn-sm btn-primary">Tambah</a>    
                 Data Mapel</h3>
               </div>
               <!-- /.card-header -->
@@ -44,7 +43,7 @@ include '../layouts/sidebar.php';
                     <th>No</th>
                     <th>Nama Mapel</th>
                     <th>Guru</th>
-                    <th>Action</th>
+					<th>Kelas</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -53,7 +52,9 @@ include '../layouts/sidebar.php';
                     include '../config/koneksi.php';
                     // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
                     $query = "SELECT * FROM mata_pelajaran 
-                    INNER JOIN data_guru ON mata_pelajaran.id_guru = data_guru.id_guru ORDER BY id_pelajaran ASC";
+                    INNER JOIN data_guru ON mata_pelajaran.id_guru = data_guru.id_guru
+					WHERE mata_pelajaran.id_guru='$_SESSION[id_user]'
+					ORDER BY id_pelajaran ASC";
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
                     if(!$result){
@@ -72,10 +73,8 @@ include '../layouts/sidebar.php';
                     <td><?php echo $no; ?></td>
                     <td><?php echo $row['nama_mata_pelajaran']; ?></td>
                     <td><?php echo $row['nama_guru']; ?></td>
-                    <td>
-                        <a href="edit_data_mapel.php?id_mapel=<?php echo $row['id_pelajaran']; ?>" class="btn btn-xs btn-warning">Edit</a>
-                        <a href="mapel/hapus_data_mapel.php?id_mapel=<?php echo $row['id_pelajaran']; ?>" class="btn btn-xs btn-danger">Delete</a>                        
-                    </td>
+					  <td><?php echo $row['kelas']; ?></td>
+                    
                   </tr>
                   <?php
                         $no++; //untuk nomor urut terus bertambah 1

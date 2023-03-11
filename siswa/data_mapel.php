@@ -43,6 +43,7 @@ include '../layouts/sidebar.php';
                     <th>No</th>
                     <th>Nama Mapel</th>
                     <th>Guru</th>
+					<th>Kelas</th>  
                   </tr>
                   </thead>
                   <tbody>
@@ -51,7 +52,11 @@ include '../layouts/sidebar.php';
                     include '../config/koneksi.php';
                     // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
                     $query = "SELECT * FROM mata_pelajaran 
-                    INNER JOIN data_guru ON mata_pelajaran.id_guru = data_guru.id_guru ORDER BY id_pelajaran ASC";
+                    INNER JOIN data_guru ON mata_pelajaran.id_guru = data_guru.id_guru 
+					INNER JOIN data_siswa ON data_siswa.kelas = mata_pelajaran.kelas
+					WHERE data_siswa.kelas='$_SESSION[kelas]'
+					GROUP BY mata_pelajaran.nama_mata_pelajaran
+					ORDER BY id_pelajaran ASC";
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
                     if(!$result){
@@ -70,7 +75,7 @@ include '../layouts/sidebar.php';
                     <td><?php echo $no; ?></td>
                     <td><?php echo $row['nama_mata_pelajaran']; ?></td>
                     <td><?php echo $row['nama_guru']; ?></td>
-                    
+                    <td><?php echo $row['kelas']; ?></td>
                   </tr>
                   <?php
                         $no++; //untuk nomor urut terus bertambah 1

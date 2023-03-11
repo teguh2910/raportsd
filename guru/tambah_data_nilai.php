@@ -47,7 +47,9 @@ include '../layouts/sidebar.php';
                     // menghubungkan dengan koneksi
                     include '../config/koneksi.php';
                     // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
-                    $query = "SELECT * FROM data_siswa";
+                    $query = "SELECT * FROM `data_guru`
+								INNER JOIN data_siswa ON data_siswa.kelas=data_guru.kelas
+								WHERE id_guru='$_SESSION[id_user]'";
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
                     if(!$result){
@@ -69,7 +71,7 @@ include '../layouts/sidebar.php';
                     // menghubungkan dengan koneksi
                     include '../config/koneksi.php';
                     // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
-                    $query = "SELECT * FROM mata_pelajaran";
+                    $query = "SELECT * FROM mata_pelajaran WHERE id_guru='$_SESSION[id_user]'";
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
                     if(!$result){

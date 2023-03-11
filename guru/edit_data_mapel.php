@@ -16,7 +16,7 @@ include '../layouts/sidebar.php';
 
     // menampilkan data dari database yang mempunyai id=$id
     $query = "SELECT * FROM mata_pelajaran 
-                    INNER JOIN data_guru ON mata_pelajaran.id_guru = data_guru.id_guru ORDER BY id_pelajaran ASC";
+                    INNER JOIN data_guru ON mata_pelajaran.id_guru = data_guru.id_guru WHERE id_pelajaran='$_GET[id_mapel]' ORDER BY id_pelajaran ASC";
     $result = mysqli_query($koneksi, $query);
     // jika data gagal diambil maka akan tampil error berikut
     if(!$result){
@@ -73,6 +73,10 @@ include '../layouts/sidebar.php';
                   <div class="form-group">
                     <label>Nama Mapel</label>
                     <input type="text" name="nama_mapel" value="<?php echo $data['nama_mata_pelajaran']; ?>" class="form-control">
+                  </div>
+					<div class="form-group">
+                    <label>Kelas</label>
+                    <input type="text" name="kelas" value="<?php echo $data['kelas']; ?>" class="form-control">
                   </div>
                   <div class="form-group">
                     <label>Nama Guru</label>

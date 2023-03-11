@@ -83,12 +83,12 @@
     </div>
     <div class="row">
     <div class="col-12">
-    <table class="table table-bordered table-hover table-sm text-center">
+    <table class="table table-bordered table-hover table-sm">
         <tr>
-            <th>No</th>
-            <th>Mata Pelajaran</th>
-            <th>Nilai Akhir</th>
-            <th>Keterangan</th>
+            <th class="text-center">No</th>
+            <th class="text-center">Mata Pelajaran</th>
+            <th class="text-center">Nilai Akhir</th>
+            <th class="text-center">Keterangan</th>
         </tr>
         
         <?php
@@ -150,9 +150,9 @@
                         $nilai_akhir=round(($row['nilai_harian']+$row['nilai_uts']+$row['nilai_uas'])/3,0);
                     ?>
         <tr>
-            <td><?php echo $no; ?></td>
+            <td class="text-center"><?php echo $no; ?></td>
             <td><?php echo $row['nama_mata_pelajaran']; ?></td>
-            <td><?php echo $nilai_akhir; ?></td>
+            <td class="text-center"><?php echo $nilai_akhir; ?></td>
             <td><?php echo terbilang($nilai_akhir); ?></td>            
         </tr>
         <?php $no++; } ?>

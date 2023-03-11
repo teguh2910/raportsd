@@ -12,12 +12,12 @@ include '../layouts/sidebar.php';
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Data Presensi</h1>
+            <h1 class="m-0">Data Mapel</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Data Presensi</li>
+              <li class="breadcrumb-item active">Data Mapel</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -33,8 +33,8 @@ include '../layouts/sidebar.php';
           <div class="card card-info">
               <div class="card-header">
                 <h3 class="card-title">
-                <a href="tambah_data_presensi.php" class="btn btn-sm btn-primary">Tambah</a>    
-                Data Presensi</h3>
+                <a href="../guru/tambah_data_mapel.php" class="btn btn-sm btn-primary">Tambah</a>    
+                Data Mapel</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -42,10 +42,9 @@ include '../layouts/sidebar.php';
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>Nama Siswa</th>
-                    <th>Mata Pelajaran</th>
-                    <th>Presensi</th>
-                    <th>Tanggal</th>
+                    <th>Nama Mapel</th>
+                    <th>Guru</th>
+					<th>Kelas</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -54,18 +53,7 @@ include '../layouts/sidebar.php';
                     // menghubungkan dengan koneksi
                     include '../config/koneksi.php';
                     // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
-                    if (isset($_GET['id_siswa'])) {
-                      $query = "SELECT * FROM presensi_siswa 
-                      INNER JOIN data_siswa ON presensi_siswa.id_siswa  = data_siswa.id_siswa
-                      INNER JOIN mata_pelajaran ON presensi_siswa.id_pelajaran  = mata_pelajaran.id_pelajaran
-                      WHERE presensi_siswa.id_siswa = '$_GET[id_siswa]'";                      
-                    }else{
-                    $query = "SELECT * FROM presensi_siswa 
-                    INNER JOIN data_siswa ON presensi_siswa.id_siswa  = data_siswa.id_siswa
-                    INNER JOIN mata_pelajaran ON presensi_siswa.id_pelajaran  = mata_pelajaran.id_pelajaran
-					INNER JOIN data_guru ON data_guru.kelas = data_siswa.kelas
-					WHERE data_guru.id_guru='$_SESSION[id_user]'";
-                    }
+                    $query = "SELECT * FROM mata_pelajaran INNER JOIN data_guru ON data_guru.id_guru=mata_pelajaran.id_guru";
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
                     if(!$result){
@@ -82,13 +70,12 @@ include '../layouts/sidebar.php';
                     ?>
                   <tr>
                     <td><?php echo $no; ?></td>
-                    <td><?php echo $row['nama_siswa']; ?></td>
                     <td><?php echo $row['nama_mata_pelajaran']; ?></td>
-                    <td><?php echo $row['presensi']; ?></td>
-                    <td><?php echo $row['tgl']; ?></td>
+                    <td><?php echo $row['nama_guru']; ?></td>
+					  <td><?php echo $row['kelas']; ?></td>
                     <td>
-                        <a href="edit_data_presensi.php?id_presensi=<?php echo $row['id_presensi']; ?>" class="btn btn-xs btn-warning">Edit</a>
-                        <a href="presensi/hapus_data_presensi.php?id_presensi=<?php echo $row['id_presensi']; ?>" class="btn btn-xs btn-danger">Delete</a>                        
+                        <a href="../guru/edit_data_mapel.php?id_mapel=<?php echo $row['id_pelajaran']; ?>" class="btn btn-xs btn-warning">Edit</a>
+                        <a href="../guru/mapel/hapus_data_mapel.php?id_mapel=<?php echo $row['id_pelajaran']; ?>" class="btn btn-xs btn-danger">Delete</a>                        
                     </td>
                   </tr>
                   <?php

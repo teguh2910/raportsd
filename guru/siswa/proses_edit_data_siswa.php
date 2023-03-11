@@ -27,5 +27,5 @@ include '../../config/koneksi.php';
       } else {
         //tampil alert dan akan redirect ke halaman index.php
         //silahkan ganti index.php sesuai halaman yang akan dituju
-          echo "<script>alert('Data berhasil diubah.');window.location='../data_siswa.php';</script>";
+          echo "<script>alert('Data berhasil diubah.');window.location='../../admin/data_siswa.php';</script>";
       }

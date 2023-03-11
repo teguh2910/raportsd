@@ -12,5 +12,5 @@ $id = $_GET["id_guru"];
       die ("Gagal menghapus data: ".mysqli_errno($koneksi).
        " - ".mysqli_error($koneksi));
     } else {
-      echo "<script>alert('Data berhasil dihapus.');window.location='../data_guru.php';</script>";
+      echo "<script>alert('Data berhasil dihapus.');window.location='../../admin/data_guru.php';</script>";
     }

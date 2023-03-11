@@ -17,5 +17,5 @@ include '../../config/koneksi.php';
                       die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
                            " - ".mysqli_error($koneksi));
                   } else {
-                    echo "<script>alert('Data berhasil ditambah.');window.location='../data_siswa.php';</script>";
+                    echo "<script>alert('Data berhasil ditambah.');window.location='../../admin/data_siswa.php';</script>";
                   }
