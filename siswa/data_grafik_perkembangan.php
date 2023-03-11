@@ -16,9 +16,9 @@ include '../layouts/sidebar.php';
 include '../config/koneksi.php';
 // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
 if (isset($_POST['tahun'])) {
-$query = "SELECT *,(nilai_harian+nilai_uts+nilai_uas)/3 as nilai_akhir FROM nilai_siswa WHERE id_siswa = '$_SESSION[id_user]' AND tahun = '$_POST[tahun]' GROUP BY semester,tahun ORDER BY tahun";
+$query = "SELECT *,AVG((nilai_harian+nilai_uts+nilai_uas)/3) as nilai_akhir FROM nilai_siswa WHERE id_siswa = '$_SESSION[id_user]' AND tahun = '$_POST[tahun]' GROUP BY semester,tahun ORDER BY tahun,semester";
 }else{
-  $query = "SELECT *,(nilai_harian+nilai_uts+nilai_uas)/3 as nilai_akhir FROM nilai_siswa WHERE id_siswa = '$_SESSION[id_user]' GROUP BY semester,tahun ORDER BY tahun";
+  $query = "SELECT *,AVG((nilai_harian+nilai_uts+nilai_uas)/3) as nilai_akhir FROM nilai_siswa WHERE id_siswa = '$_SESSION[id_user]' GROUP BY semester,tahun ORDER BY tahun,semester";
 }
 $result = mysqli_query($koneksi, $query);
 //mengecek apakah ada error ketika menjalankan query
