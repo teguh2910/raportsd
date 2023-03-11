@@ -63,8 +63,65 @@ $json_nilai = json_encode($nilai);
           <div class="col-12">
           <div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title">
-                Grafik Perkembangan Siswa</h3>
+                <h3 class="card-title">					
+                Grafik Perkembangan Siswa
+					<form action='data_grafik_perkembangan.php' method='post'>
+						<div class='row'>
+						<div class='form-group'>
+					
+					<select name='id_siswa' class='form-control'>
+					<?php
+                    // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
+                    if(isset($_POST['tahun'])){
+                    $query = "SELECT *, IF(id_siswa = '$_POST[id_siswa]', 1, 0) AS is_selected FROM data_siswa 
+                    INNER JOIN data_guru ON data_siswa.kelas = data_guru.kelas
+                    WHERE id_guru = '$_SESSION[id_user]'";
+                    }else{
+                      $query = "SELECT * FROM data_siswa 
+                    INNER JOIN data_guru ON data_siswa.kelas = data_guru.kelas
+                    WHERE id_guru = '$_SESSION[id_user]'";
+                    }
+                    $result = mysqli_query($koneksi, $query);
+                    //mengecek apakah ada error ketika menjalankan query
+                    if(!$result){
+                        die ("Query Error: ".mysqli_errno($koneksi).
+                        " - ".mysqli_error($koneksi));
+                    }
+                    while($row = mysqli_fetch_assoc($result))
+                    {
+                      $selected = $row['is_selected'] ? 'selected' : '';?>
+                    ?>
+						<option value=<?php echo $row['id_siswa'] ?> <?php echo $selected ?>><?php echo $row['nama_siswa'] ?></option>
+						<?php } ?>
+					</select>   
+						</div>
+            <div class='form-group'>
+					
+					<select name='tahun' class='form-control'>
+					<?php
+                    // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
+                    $query = "SELECT * FROM nilai_siswa 
+                    INNER JOIN mata_pelajaran ON nilai_siswa.id_pelajaran = mata_pelajaran.id_pelajaran                    
+                    WHERE mata_pelajaran.id_guru = '$_SESSION[id_user]' GROUP BY nilai_siswa.tahun";
+                    $result = mysqli_query($koneksi, $query);
+                    //mengecek apakah ada error ketika menjalankan query
+                    if(!$result){
+                        die ("Query Error: ".mysqli_errno($koneksi).
+                        " - ".mysqli_error($koneksi));
+                    }
+                    while($row = mysqli_fetch_assoc($result))
+                    {
+                    ?>
+						<option value=<?php echo $row['tahun'] ?>><?php echo $row['tahun'] ?></option>
+						<?php } ?>
+					</select>   
+						</div>
+						<div class='form-group'>&nbsp;
+						<input type='submit' value='Lihat Data' class='btn btn-md btn-primary'>
+							</div>
+							</div>
+					</form>
+				  </h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
