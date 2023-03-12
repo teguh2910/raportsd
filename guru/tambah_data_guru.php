@@ -50,7 +50,15 @@ include '../layouts/sidebar.php';
                   </div> 
 					<div class="form-group">
                     <label>Kelas</label>
-                    <input type="text" name="kelas" class="form-control" />
+                    <select name="kelas" class="form-control">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                    </select>
+                   
                   </div> 
                   <div class="form-group">
                     <label>Jabatan</label>
