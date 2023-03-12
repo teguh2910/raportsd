@@ -79,7 +79,7 @@ include '../layouts/sidebar.php';
                     <td><?php echo $row['kelas']; ?></td>                    
                     <td>
                         <a href="../guru/edit_data_siswa.php?id_siswa=<?php echo $row['id_siswa']; ?>" class="btn btn-xs btn-warning">Edit</a>
-                        <a href="../guru/siswa/hapus_data_siswa.php?id_siswa=<?php echo $row['id_siswa']; ?>" class="btn btn-xs btn-danger">Delete</a>                        
+                        <a href="../guru/siswa/hapus_data_siswa.php?id_siswa=<?php echo $row['id_siswa']; ?>" onclick="return confirm('Are you sure you want to delete this item?')" class="btn btn-xs btn-danger">Delete</a>                        
                     </td>
                   </tr>
                   <?php

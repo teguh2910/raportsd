@@ -36,6 +36,7 @@ if($login_as == 'siswa'){
 	$_SESSION['hak_akses'] = 'guru';
 	$_SESSION['status'] = "login";
 	$_SESSION['id_user'] = $row['id_guru'];
+	$_SESSION['foto'] = $row['foto'];
 		header("location:guru/index.php");
 	}else
 	{

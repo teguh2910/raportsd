@@ -76,7 +76,7 @@ include '../layouts/sidebar.php';
                     <td><?php echo $row['jabatan']; ?></td>
                     <td>
                         <a href="../guru/edit_data_guru.php?id_guru=<?php echo $row['id_guru']; ?>" class="btn btn-xs btn-warning">Edit</a>
-                        <a href="../guru/guru/hapus_data_guru.php?id_guru=<?php echo $row['id_guru']; ?>" class="btn btn-xs btn-danger">Hapus</a>                                                
+                        <a href="../guru/guru/hapus_data_guru.php?id_guru=<?php echo $row['id_guru']; ?>" onclick="return confirm('Are you sure you want to delete this item?')" class="btn btn-xs btn-danger">Hapus</a>                                                
                     </td>
                   </tr>
                   <?php

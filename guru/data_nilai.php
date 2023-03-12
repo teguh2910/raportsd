@@ -91,7 +91,7 @@ include '../layouts/sidebar.php';
                     <td><?php echo $row['tahun']; ?></td>
                     <td>
                         <a href="edit_data_nilai.php?id_nilai=<?php echo $row['id_nilai']; ?>" class="btn btn-xs btn-warning">Edit</a>
-                        <a href="nilai/hapus_data_nilai.php?id_nilai=<?php echo $row['id_nilai']; ?>" class="btn btn-xs btn-danger">Delete</a>                        
+                        <a href="nilai/hapus_data_nilai.php?id_nilai=<?php echo $row['id_nilai']; ?>" onclick="return confirm('Are you sure you want to delete this item?')" class="btn btn-xs btn-danger">Delete</a>                        
                     </td>
                   </tr>
                   <?php

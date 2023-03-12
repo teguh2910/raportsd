@@ -10,12 +10,12 @@ include '../layouts/sidebar.php';
     include '../config/koneksi.php';
 
   // mengecek apakah di url ada nilai GET id
-  if (isset($_GET['id_guru'])) {
+  if (isset($_GET['id_user'])) {
     // ambil nilai id dari url dan disimpan dalam variabel $id
-    $id = ($_GET["id_guru"]);
+    $id = ($_GET["id_user"]);
 
     // menampilkan data dari database yang mempunyai id=$id
-    $query = "SELECT * FROM data_guru WHERE id_guru='$id'";
+    $query = "SELECT * FROM user WHERE id_user='$id'";
     $result = mysqli_query($koneksi, $query);
     // jika data gagal diambil maka akan tampil error berikut
     if(!$result){
@@ -26,11 +26,11 @@ include '../layouts/sidebar.php';
     $data = mysqli_fetch_assoc($result);
       // apabila data tidak ada pada database maka akan dijalankan perintah ini
        if (!count($data)) {
-          echo "<script>alert('Data tidak ditemukan pada database');window.location='data_guru.php';</script>";
+          echo "<script>alert('Data tidak ditemukan pada database');window.location='data_admin.php';</script>";
        }
   } else {
     // apabila tidak ada data GET id pada akan di redirect ke index.php
-    echo "<script>alert('Masukkan data id.');window.location='data_guru.php';</script>";
+    echo "<script>alert('Masukkan data id.');window.location='data_admin.php';</script>";
   }         
   ?>
   <!-- Content Wrapper. Contains page content -->
@@ -40,12 +40,12 @@ include '../layouts/sidebar.php';
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Data Guru</h1>
+            <h1 class="m-0">Data Admin</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Data Guru</li>
+              <li class="breadcrumb-item active">Data Admin</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -61,38 +61,27 @@ include '../layouts/sidebar.php';
           <div class="card card-info">
               <div class="card-header">
                 <h3 class="card-title">
-                Edit Data Guru <b> <?php echo $data['nama_guru']; ?> </b></h3>
+                Edit Data Admin </h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <form method="POST" action="guru/proses_edit_data_guru.php" enctype="multipart/form-data">
+              <form method="POST" action="proses_edit_data_admin.php" enctype="multipart/form-data">
                  <!-- menampung nilai id produk yang akan di edit -->
-                <input name="id" value="<?php echo $data['id_guru']; ?>"  hidden />
+                <input name="id" value="<?php echo $data['id_user']; ?>"  hidden />
                 <div class="card-body">
+                
                 <div class="form-group">
-                    <label>NIP</label>
-                    <input type="text" name="nip" value="<?php echo $data['nip']; ?>" class="form-control">
-                  </div>  
-                <div class="form-group">
-                    <label>Nama Guru</label>
-                    <input type="text" name="nama_guru" value="<?php echo $data['nama_guru']; ?>" class="form-control">
-                  </div>
-					<div class="form-group">
-                    <label>Kelas</label>
-                    <input type="text" name="kelas" value="<?php echo $data['kelas']; ?>" class="form-control">
+                    <label>Username</label>
+                    <input type="text" name="username" value="<?php echo $data['username']; ?>" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label>Jabatan</label>
-                    <input type="text" name="jabatan" value="<?php echo $data['jabatan']; ?>" class="form-control">
-                  </div> 
+                    <label>Hak akses</label>
+                    <input type="text" name="hak_akses" value="<?php echo $data['hak_akses']; ?>" class="form-control">
+                  </div>
                   <div class="form-group">
                     <label>Password</label>
-                    <input type="password" name="password" value="<?php echo $data['password']; ?>" class="form-control">
-                  </div>  
-                  <div class="form-group">
-                    <label>Foto</label>
-                    <input type="file" name="photo" class="form-control">
-                  </div>                
+                    <input type="password" name="password" class="form-control" value="<?php echo $data['password'] ?>">
+                  </div>                  
                 </div>
                 <!-- /.card-body -->
 

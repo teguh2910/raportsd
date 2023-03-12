@@ -88,7 +88,7 @@ include '../layouts/sidebar.php';
                     <td><?php echo $row['tgl']; ?></td>
                     <td>
                         <a href="edit_data_presensi.php?id_presensi=<?php echo $row['id_presensi']; ?>" class="btn btn-xs btn-warning">Edit</a>
-                        <a href="presensi/hapus_data_presensi.php?id_presensi=<?php echo $row['id_presensi']; ?>" class="btn btn-xs btn-danger">Delete</a>                        
+                        <a href="presensi/hapus_data_presensi.php?id_presensi=<?php echo $row['id_presensi']; ?>" onclick="return confirm('Are you sure you want to delete this item?')" class="btn btn-xs btn-danger">Delete</a>                        
                     </td>
                   </tr>
                   <?php
