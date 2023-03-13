@@ -51,7 +51,11 @@ include '../layouts/sidebar.php';
                   <div class="form-group">
                     <label>Password</label>
                     <input type="password" name="password" class="form-control">
-                  </div>                  
+                  </div> 
+                  <div class="form-group">
+                    <label>Foto</label>
+                    <input type="file" name="photo" class="form-control">
+                  </div>                 
                 </div>
                 <!-- /.card-body -->
 

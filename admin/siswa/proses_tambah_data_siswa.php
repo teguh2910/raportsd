@@ -3,11 +3,13 @@
 include '../../config/koneksi.php';
 
 	// membuat variabel untuk menampung data dari form
-  $nama_guru    = $_POST['nama_guru'];
-  $jabatan         = $_POST['jabatan'];
-  $password         = $_POST['password'];
-$kelas         = $_POST['kelas'];
-$file_name = $_FILES['photo']['name'];
+  $nama_siswa    = $_POST['nama_siswa'];
+  $kelas         = $_POST['kelas'];
+  $alamat        = $_POST['alamat'];
+  $password      = $_POST['password'];
+  $nis          = $_POST['nis'];
+  $jen_kel       = $_POST['jen_kel'];
+  $file_name = $_FILES['photo']['name'];
     $file_size = $_FILES['photo']['size'];
     $file_tmp = $_FILES['photo']['tmp_name'];
     $file_type = $_FILES['photo']['type'];
@@ -37,20 +39,19 @@ $file_name = $_FILES['photo']['name'];
     }
     
     $upload_path = '../../img/';
-    $target_file = $upload_path . basename($nama_guru.".".$file_ext);
+    $target_file = $upload_path . basename($nama_siswa.".".$file_ext);
     if(move_uploaded_file($file_tmp, $target_file)){
       echo "The file ". basename( $_FILES["photo"]["name"]). " has been uploaded.";
   } else{
       echo "Sorry, there was an error uploading your file.";
   }
-  $nip = $_POST['nip'];
-    $query = "INSERT INTO data_guru (nama_guru, jabatan, password , nip,kelas,foto) 
-    VALUES ('$nama_guru', '$jabatan', '$password', '$nip','$kelas','$nama_guru.$file_ext')";
+    $query = "INSERT INTO data_siswa (nama_siswa, kelas, alamat, password, nis, jen_kel,foto) 
+    VALUES ('$nama_siswa', '$kelas', '$alamat', '$password', '$nis', '$jen_kel','$nama_siswa.$file_ext')";
                   $result = mysqli_query($koneksi, $query);
                   // periska query apakah ada error
                   if(!$result){
                       die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
                            " - ".mysqli_error($koneksi));
                   } else {
-                    echo "<script>alert('Data berhasil ditambah.');window.location='../data_guru.php';</script>";
+                    echo "<script>alert('Data berhasil ditambah.');window.location='../data_siswa.php';</script>";
                   }

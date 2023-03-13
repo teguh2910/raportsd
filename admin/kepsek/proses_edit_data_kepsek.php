@@ -38,7 +38,7 @@ $file_name = $_FILES['photo']['name'];
     }
     
     $upload_path = '../../img/';
-    $target_file = $upload_path . basename($_SESSION['username'].".".$file_ext);
+    $target_file = $upload_path . basename($nama_guru.".".$file_ext);
     if(move_uploaded_file($file_tmp, $target_file)){
       echo "The file ". basename( $_FILES["photo"]["name"]). " has been uploaded.";
   } else{
@@ -49,7 +49,7 @@ $file_name = $_FILES['photo']['name'];
       nama_guru = '$nama_guru', 
       password = '$password',
       nip = '$nip',
-      foto = '$_SESSION[username].$file_ext'";
+      foto = '$nama_guru.$file_ext'";
       $query .= "WHERE id_guru = '$id'";
       $result = mysqli_query($koneksi, $query);
       // periska query apakah ada error

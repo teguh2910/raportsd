@@ -15,10 +15,10 @@ include '../layouts/sidebar.php';
 <?php
 include '../config/koneksi.php';
 // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
-if (isset($_POST['tahun'])) {
-$query = "SELECT *,AVG((nilai_harian+nilai_uts+nilai_uas)/3) as nilai_akhir FROM nilai_siswa WHERE id_siswa = '$_POST[id_siswa]' AND tahun = '$_POST[tahun]' GROUP BY semester,tahun ORDER BY tahun,semester";
+if (isset($_POST['id_siswa'])) {
+$query = "SELECT *,AVG((nilai_harian+nilai_uts+nilai_uas)/3) as nilai_akhir FROM nilai_siswa WHERE id_siswa = '$_POST[id_siswa]' GROUP BY semester,tahun ORDER BY tahun,semester";
 }else{
-  $query = "SELECT *,avg(nilai_harian+nilai_uts+nilai_uas) as nilai_akhir FROM nilai_siswa WHERE id_siswa = 'a'";
+  $query = "SELECT *,AVG((nilai_harian+nilai_uts+nilai_uas)/3) as nilai_akhir FROM nilai_siswa WHERE id_siswa='xxx' GROUP BY semester,tahun ORDER BY tahun,semester";
 }
 $result = mysqli_query($koneksi, $query);
 //mengecek apakah ada error ketika menjalankan query
@@ -34,7 +34,11 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 
 // Generate JSON data for Chart.js
+if (isset($_POST['id_siswa'])) {
 $json_labels = json_encode($labels);
+}else{
+  $json_labels = "";
+}
 $json_nilai = json_encode($nilai);
 ?>
   <!-- Content Wrapper. Contains page content -->
@@ -94,28 +98,7 @@ $json_nilai = json_encode($nilai);
 						<option value=<?php echo $row['id_siswa'] ?> <?php echo $selected ?>><?php echo $row['nama_siswa'] ?></option>
 						<?php } ?>
 					</select>   
-						</div>
-            <div class='form-group'>
-					
-					<select name='tahun' class='form-control'>
-					<?php
-                    // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
-                    $query = "SELECT * FROM nilai_siswa 
-                    INNER JOIN mata_pelajaran ON nilai_siswa.id_pelajaran = mata_pelajaran.id_pelajaran                    
-                    WHERE mata_pelajaran.id_guru = '$_SESSION[id_user]' GROUP BY nilai_siswa.tahun";
-                    $result = mysqli_query($koneksi, $query);
-                    //mengecek apakah ada error ketika menjalankan query
-                    if(!$result){
-                        die ("Query Error: ".mysqli_errno($koneksi).
-                        " - ".mysqli_error($koneksi));
-                    }
-                    while($row = mysqli_fetch_assoc($result))
-                    {
-                    ?>
-						<option value=<?php echo $row['tahun'] ?>><?php echo $row['tahun'] ?></option>
-						<?php } ?>
-					</select>   
-						</div>
+						</div>           
 						<div class='form-group'>&nbsp;
 						<input type='submit' value='Lihat Data' class='btn btn-md btn-primary'>
 							</div>

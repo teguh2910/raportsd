@@ -13,12 +13,12 @@ include '../layouts/sidebar.php';
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Data Guru</h1>
+            <h1 class="m-0">Data Siswa</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Data Guru</li>
+              <li class="breadcrumb-item active">Data Siswa</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -34,21 +34,28 @@ include '../layouts/sidebar.php';
           <div class="card card-info">
               <div class="card-header">
                 <h3 class="card-title">
-                Data Guru</h3>
+                Data Siswa</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <form method="POST" action="guru/proses_tambah_data_guru.php" enctype="multipart/form-data">
+              <form method="POST" action="siswa/proses_tambah_data_siswa.php" enctype="multipart/form-data">
                 <div class="card-body">
                 <div class="form-group">
-                    <label>NIP</label>
-                    <input type="text" name="nip" class="form-control" />
+                    <label>NIS</label>
+                    <input type="text" name="nis" class="form-control" />
                   </div>   
-                <div class="form-group">
-                    <label>Nama Guru</label>
-                    <input type="text" name="nama_guru" class="form-control" />
+                  <div class="form-group">
+                    <label>Jenis Kelamin</label>
+                    <select name="jen_kel" class="form-control">
+                      <option value="l">Laki Laki</option>
+                      <option value="p">Perempuan</option>
+                    </select>
                   </div> 
-					<div class="form-group">
+                <div class="form-group">
+                    <label>Nama Siswa</label>
+                    <input type="text" name="nama_siswa" class="form-control" />
+                  </div>                  
+                  <div class="form-group">
                     <label>Kelas</label>
                     <select name="kelas" class="form-control">
                       <option value="1">1</option>
@@ -58,22 +65,19 @@ include '../layouts/sidebar.php';
                       <option value="5">5</option>
                       <option value="6">6</option>
                     </select>
-                   
-                  </div> 
+                  </div>
                   <div class="form-group">
-                    <label>Jabatan</label>
-                    <select name="jabatan" class="form-control">
-                      <option value="walikelas">Wali Kelas</option>
-                    </select>
-                  </div> 
+                    <label>Alamat</label>
+                    <textarea name="alamat" rows="3" class="form-control"></textarea>
+                  </div>
                   <div class="form-group">
                     <label>Password</label>
                     <input type="password" name="password" class="form-control">
-                  </div>   
+                  </div>
                   <div class="form-group">
                     <label>Foto</label>
                     <input type="file" name="photo" class="form-control">
-                  </div>               
+                  </div>
                 </div>
                 <!-- /.card-body -->
 

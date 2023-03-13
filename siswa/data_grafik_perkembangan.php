@@ -65,33 +65,6 @@ $json_nilai = json_encode($nilai);
               <div class="card-header">
                 <h3 class="card-title">					
                 Grafik Perkembangan Siswa
-					<form action='data_grafik_perkembangan.php' method='post'>
-						<div class='row'>
-						
-            <div class='form-group'>
-					
-					<select name='tahun' class='form-control'>
-					<?php
-                    // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
-                    $query = "SELECT * FROM nilai_siswa WHERE id_siswa = '$_SESSION[id_user]' GROUP BY tahun";
-                    $result = mysqli_query($koneksi, $query);
-                    //mengecek apakah ada error ketika menjalankan query
-                    if(!$result){
-                        die ("Query Error: ".mysqli_errno($koneksi).
-                        " - ".mysqli_error($koneksi));
-                    }
-                    while($row = mysqli_fetch_assoc($result))
-                    {
-                    ?>
-						<option value=<?php echo $row['tahun'] ?>><?php echo $row['tahun'] ?></option>
-						<?php } ?>
-					</select>   
-						</div>
-						<div class='form-group'>&nbsp;
-						<input type='submit' value='Lihat Data' class='btn btn-md btn-primary'>
-							</div>
-							</div>
-					</form>
 				  </h3>
               </div>
               <!-- /.card-header -->

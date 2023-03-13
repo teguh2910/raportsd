@@ -33,7 +33,7 @@ include '../layouts/sidebar.php';
           <div class="card card-info">
               <div class="card-header">
                 <h3 class="card-title">
-                <a href="../guru/tambah_data_siswa.php" class="btn btn-sm btn-primary">Tambah</a>    
+                <a href="tambah_data_siswa.php" class="btn btn-sm btn-primary">Tambah</a>    
                 Data Siswa</h3>
               </div>
               <!-- /.card-header -->
@@ -78,8 +78,8 @@ include '../layouts/sidebar.php';
                     <td><?php echo $row['alamat']; ?></td>
                     <td><?php echo $row['kelas']; ?></td>                    
                     <td>
-                        <a href="../guru/edit_data_siswa.php?id_siswa=<?php echo $row['id_siswa']; ?>" class="btn btn-xs btn-warning">Edit</a>
-                        <a href="../guru/siswa/hapus_data_siswa.php?id_siswa=<?php echo $row['id_siswa']; ?>" onclick="return confirm('Are you sure you want to delete this item?')" class="btn btn-xs btn-danger">Delete</a>                        
+                        <a href="edit_data_siswa.php?id_siswa=<?php echo $row['id_siswa']; ?>" class="btn btn-xs btn-warning">Edit</a>
+                        <a href="siswa/hapus_data_siswa.php?id_siswa=<?php echo $row['id_siswa']; ?>" onclick="return confirm('Are you sure you want to delete this item?')" class="btn btn-xs btn-danger">Delete</a>                        
                     </td>
                   </tr>
                   <?php
