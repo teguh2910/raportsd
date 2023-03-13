@@ -12,12 +12,12 @@ include '../layouts/sidebar.php';
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Data Guru</h1>
+            <h1 class="m-0">Data Siswa</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Data Guru</li>
+              <li class="breadcrumb-item active">Data Siswa</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -32,8 +32,8 @@ include '../layouts/sidebar.php';
           <div class="col-12">
           <div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title"><a href="tambah_data_guru.php" class="btn btn-sm btn-primary">Tambah</a>  
-                Data Guru</h3>
+                <h3 class="card-title">
+                Data Siswa</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -41,10 +41,11 @@ include '../layouts/sidebar.php';
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>NIP</th>
-                    <th>Nama Guru</th>
-					  <th>Kelas</th>
-                    <th>Jabatan</th>
+                    <th>NIS</th>
+                    <th>Nama Siswa</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Alamat</th>
+                    <th>Kelas</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -53,7 +54,7 @@ include '../layouts/sidebar.php';
                     // menghubungkan dengan koneksi
                     include '../config/koneksi.php';
                     // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
-                    $query = "SELECT * FROM data_guru";
+                    $query = "SELECT * FROM data_siswa WHERE id_siswa='$_SESSION[id_user]'";
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
                     if(!$result){
@@ -70,14 +71,14 @@ include '../layouts/sidebar.php';
                     ?>
                   <tr>
                     <td><?php echo $no; ?></td>
-                    <td><?php echo $row['nip']; ?></td>
-                    <td><?php echo $row['nama_guru']; ?></td>
-					  <td><?php echo $row['kelas']; ?></td>
-                    <td><?php echo $row['jabatan']; ?></td>
+                    <td><?php echo $row['nis']; ?></td>
+                    <td><?php echo $row['nama_siswa']; ?></td>
+                    <td><?php echo $row['jen_kel']; ?></td>
+                    <td><?php echo $row['alamat']; ?></td>
+                    <td><?php echo $row['kelas']; ?></td>                    
                     <td>
-                        <a href="../edit_data_guru.php?id_guru=<?php echo $row['id_guru']; ?>" class="btn btn-xs btn-warning">Edit</a>
-                        <a href="../guru/hapus_data_guru.php?id_guru=<?php echo $row['id_guru']; ?>" onclick="return confirm('Are you sure you want to delete this item?')" class="btn btn-xs btn-danger">Hapus</a>                                                
-                    </td>
+                        <a href="../guru/edit_data_siswa.php?id_siswa=<?php echo $row['id_siswa']; ?>" class="btn btn-xs btn-warning">Edit</a>
+                       </td>
                   </tr>
                   <?php
                         $no++; //untuk nomor urut terus bertambah 1

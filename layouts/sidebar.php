@@ -121,7 +121,7 @@
             </a>
           </li>
             <?php } ?>
-            <?php if($_SESSION['hak_akses']=="guru"){ ?>
+            <?php if($_SESSION['hak_akses']=="guru"|| $_SESSION['hak_akses']=="kepsek"){ ?>
             <li class="nav-item">
             <a href="data_guru.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -131,7 +131,17 @@
             </a>
           </li>
             <?php } ?>
-        <?php if($_SESSION['hak_akses']=="guru" || $_SESSION['hak_akses']=="siswa"){ ?>                    
+            <?php if($_SESSION['hak_akses']=="kepsek" || $_SESSION['hak_akses']=="admin"){ ?>
+            <li class="nav-item">
+            <a href="data_kepsek.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Data Kepala Sekolah
+              </p>
+            </a>
+          </li>
+            <?php } ?>
+        <?php if($_SESSION['hak_akses']=="guru" || $_SESSION['hak_akses']=="siswa" || $_SESSION['hak_akses']=="kepsek"){ ?>                    
           
           <li class="nav-item">
             <a href="data_mapel.php" class="nav-link">

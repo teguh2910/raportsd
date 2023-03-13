@@ -49,6 +49,7 @@
         <option value="siswa">Siswa</option>
         <option value="guru">Guru</option>
         <option value="admin">Admin</option>
+        <option value="kepsek">Kepala Sekolah</option>
       </select>
           <div class="input-group-append">
             <div class="input-group-text">
@@ -65,12 +66,25 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" id='password' class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-lock"></span>
+            <span class="fas fa-eye"></span> &nbsp; <input type="checkbox" id="show-password">
+
             </div>
           </div>
+          <script>
+            const passwordInput = document.getElementById("password");
+            const showPasswordCheckbox = document.getElementById("show-password");
+
+            showPasswordCheckbox.addEventListener("change", function() {
+              if (this.checked) {
+                passwordInput.type = "text";
+              } else {
+                passwordInput.type = "password";
+              }
+            });
+          </script>
         </div>
         <div class="row">
           <div class="col-8">

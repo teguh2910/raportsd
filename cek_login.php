@@ -52,9 +52,19 @@ if($login_as == 'siswa'){
 	$_SESSION['status'] = "login";
 	$_SESSION['id_user'] = $row['id_user'];
 		header("location:admin/index.php");
-	}else
-	{
+	}
+}elseif($login_as == 'kepsek'){
+		$data = mysqli_query($koneksi,"select * from data_guru where nama_guru='$username' and password='$password'");
+		$row = mysqli_fetch_assoc($data);
+		$cek = mysqli_num_rows($data);
+		if($cek>0){
+		$_SESSION['username'] = $username;
+		$_SESSION['hak_akses'] = 'kepsek';
+		$_SESSION['status'] = "login";
+		$_SESSION['foto'] = $row['foto'];
+			header("location:kepsek/index.php");
+		}
+	}else{
 		header("location:index.php?pesan=gagal");
 	}
-}
 ?>
