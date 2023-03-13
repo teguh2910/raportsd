@@ -53,7 +53,7 @@ include '../layouts/sidebar.php';
                     // menghubungkan dengan koneksi
                     include '../config/koneksi.php';
                     // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
-                    $query = "SELECT * FROM data_guru";
+                    $query = "SELECT * FROM data_guru WHERE jabatan!='kepsek' ORDER BY id_guru ASC";
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
                     if(!$result){
