@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2023 at 04:16 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Mar 14, 2023 at 05:40 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.3.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -151,18 +152,6 @@ INSERT INTO `nilai_siswa` (`id_nilai`, `id_siswa`, `id_pelajaran`, `nilai_harian
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `nilai_siswa_ranked`
--- (See below for the actual view)
---
-CREATE TABLE `nilai_siswa_ranked` (
-`id_siswa` int(11)
-,`nilai_akhir_avg` decimal(20,8)
-,`rank` bigint(21)
-);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `presensi_siswa`
 --
 
@@ -202,15 +191,6 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `hak_akses`) VALUES
 (3, 'admin', '123', 'admin');
-
--- --------------------------------------------------------
-
---
--- Structure for view `nilai_siswa_ranked`
---
-DROP TABLE IF EXISTS `nilai_siswa_ranked`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `nilai_siswa_ranked`  AS SELECT `nilai_siswa`.`id_siswa` AS `id_siswa`, avg((`nilai_siswa`.`nilai_harian` + `nilai_siswa`.`nilai_uts` + `nilai_siswa`.`nilai_uas`) / 3) AS `nilai_akhir_avg`, dense_rank() over ( order by avg(`nilai_siswa`.`nilai_harian` + `nilai_siswa`.`nilai_uts` + `nilai_siswa`.`nilai_uas`) desc) AS `rank` FROM (`nilai_siswa` join `mata_pelajaran` on(`mata_pelajaran`.`id_pelajaran` = `nilai_siswa`.`id_pelajaran`)) WHERE `mata_pelajaran`.`kelas` = '2' GROUP BY `nilai_siswa`.`id_siswa``id_siswa`  ;
 
 --
 -- Indexes for dumped tables

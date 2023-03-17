@@ -43,7 +43,7 @@ include '../layouts/sidebar.php';
                     <th>No</th>
                     <th>NIP</th>
                     <th>Nama Guru</th>
-					        <th>Jabatan</th>
+					          <th>Jabatan</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -69,9 +69,9 @@ include '../layouts/sidebar.php';
                     ?>
                   <tr>
                     <td><?php echo $no; ?></td>
-                    <td><?php echo $row['nip']; ?></td>
+                    <td><?php echo $row['id_guru']; ?></td>
                     <td><?php echo $row['nama_guru']; ?></td>
-					<td><?php echo $row['jabatan']; ?></td>
+					          <td><?php echo $row['jabatan']; ?></td>
                     <td>
                         <a href="edit_data_kepsek.php?id_guru=<?php echo $row['id_guru']; ?>" class="btn btn-xs btn-warning">Edit</a>
                         <a href="kepsek/hapus_data_kepsek.php?id_guru=<?php echo $row['id_guru']; ?>" onclick="return confirm('Are you sure you want to delete this item?')" class="btn btn-xs btn-danger">Hapus</a>                                                

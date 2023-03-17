@@ -46,7 +46,14 @@ include '../layouts/sidebar.php';
                   </div>
 					<div class="form-group">
                     <label>Kelas</label>
-                    <input type="text" name="kelas" class="form-control" />
+                    <select name="kelas" class="form-control">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                    </select>
                   </div>
                   <div class="form-group">
                     <label>Nama Guru</label>
@@ -55,7 +62,7 @@ include '../layouts/sidebar.php';
                     // menghubungkan dengan koneksi
                     include '../config/koneksi.php';
                     // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
-                    $query = "SELECT * FROM data_guru";
+                    $query = "SELECT * FROM data_guru WHERE jabatan='wali_kelas'";
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
                     if(!$result){

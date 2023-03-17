@@ -45,7 +45,7 @@ include '../../config/koneksi.php';
   } else{
       echo "Sorry, there was an error uploading your file.";
   }
-    $query = "INSERT INTO data_siswa (nama_siswa, kelas, alamat, password, nis, jen_kel,foto) 
+    $query = "INSERT INTO data_siswa (nama_siswa, kelas, alamat, password, id_siswa, jen_kel,foto) 
     VALUES ('$nama_siswa', '$kelas', '$alamat', '$password', '$nis', '$jen_kel','$nama_siswa.$file_ext')";
                   $result = mysqli_query($koneksi, $query);
                   // periska query apakah ada error

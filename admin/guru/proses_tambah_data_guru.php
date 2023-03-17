@@ -44,7 +44,7 @@ $file_name = $_FILES['photo']['name'];
       echo "Sorry, there was an error uploading your file.";
   }
   $nip = $_POST['nip'];
-    $query = "INSERT INTO data_guru (nama_guru, jabatan, password , nip,kelas,foto) 
+    $query = "INSERT INTO data_guru (nama_guru, jabatan, password , id_guru,kelas,foto) 
     VALUES ('$nama_guru', '$jabatan', '$password', '$nip','$kelas','$nama_guru.$file_ext')";
                   $result = mysqli_query($koneksi, $query);
                   // periska query apakah ada error

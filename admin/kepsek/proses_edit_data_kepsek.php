@@ -48,7 +48,7 @@ $file_name = $_FILES['photo']['name'];
       $query  = "UPDATE data_guru SET 
       nama_guru = '$nama_guru', 
       password = '$password',
-      nip = '$nip',
+      id_guru = '$nip',
       foto = '$nama_guru.$file_ext'";
       $query .= "WHERE id_guru = '$id'";
       $result = mysqli_query($koneksi, $query);

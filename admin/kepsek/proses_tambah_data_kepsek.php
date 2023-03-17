@@ -43,7 +43,7 @@ include '../../config/koneksi.php';
   } else{
       echo "Sorry, there was an error uploading your file.";
   }
-    $query = "INSERT INTO data_guru (nama_guru, jabatan, password , nip,foto) 
+    $query = "INSERT INTO data_guru (nama_guru, jabatan, password , id_guru,foto) 
     VALUES ('$nama_guru', '$jabatan', '$password', '$nip','$nama_guru.$file_ext')";
                   $result = mysqli_query($koneksi, $query);
                   // periska query apakah ada error

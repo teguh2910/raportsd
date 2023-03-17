@@ -52,7 +52,7 @@ $kelas = $_POST['kelas'];
       jabatan = '$jabatan',
 	  kelas = '$kelas',
       password = '$password',
-      nip = '$nip',
+      id_guru = '$nip',
       foto = '$nama_guru.$file_ext'";
       $query .= "WHERE id_guru = '$id'";
       $result = mysqli_query($koneksi, $query);

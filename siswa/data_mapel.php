@@ -43,7 +43,7 @@ include '../layouts/sidebar.php';
                     <th>No</th>
                     <th>Nama Mapel</th>
                     <th>Guru</th>
-					<th>Kelas</th>  
+					          <th>Kelas</th>  
                   </tr>
                   </thead>
                   <tbody>

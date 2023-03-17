@@ -43,7 +43,7 @@ include '../layouts/sidebar.php';
                     <th>No</th>
                     <th>NIP</th>
                     <th>Nama Guru</th>
-					  <th>Kelas</th>
+					          <th>Kelas</th>
                     <th>Jabatan</th>
                     <th>Action</th>
                   </tr>
@@ -70,9 +70,9 @@ include '../layouts/sidebar.php';
                     ?>
                   <tr>
                     <td><?php echo $no; ?></td>
-                    <td><?php echo $row['nip']; ?></td>
+                    <td><?php echo $row['id_guru']; ?></td>
                     <td><?php echo $row['nama_guru']; ?></td>
-					  <td><?php echo $row['kelas']; ?></td>
+					          <td><?php echo $row['kelas']; ?></td>
                     <td><?php echo $row['jabatan']; ?></td>
                     <td>
                         <a href="edit_data_guru.php?id_guru=<?php echo $row['id_guru']; ?>" class="btn btn-xs btn-warning">Edit</a>

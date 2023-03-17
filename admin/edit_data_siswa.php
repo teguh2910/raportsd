@@ -71,7 +71,7 @@ include '../layouts/sidebar.php';
                 <div class="card-body">
                 <div class="form-group">
                     <label>NIS</label>
-                    <input type="text" name="nis" value="<?php echo $data['nis']; ?>" class="form-control">
+                    <input type="text" name="nis" value="<?php echo $data['id_siswa']; ?>" class="form-control">
                   </div>  
                   <div class="form-group">
                     <label>Jenis Kelamin</label>

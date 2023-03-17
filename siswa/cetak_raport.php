@@ -43,7 +43,7 @@
     <tr>
         <td>NISN</td>
         <td>:</td>
-        <td><?php echo $data['nis']?></td>
+        <td><?php echo $data['id_siswa']?></td>
     </tr>
     <tr>
         <td>Sekolah</td>

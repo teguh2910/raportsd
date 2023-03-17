@@ -52,7 +52,7 @@ $file_name = $_FILES['photo']['name'];
       jabatan = '$jabatan',
 	  kelas = '$kelas',
       password = '$password',
-      nip = '$nip',
+      id_guru = '$nip',
       foto = '$_SESSION[username].$file_ext'";
       $query .= "WHERE id_guru = '$id'";
       $result = mysqli_query($koneksi, $query);

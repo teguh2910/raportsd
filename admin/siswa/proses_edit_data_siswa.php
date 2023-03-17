@@ -53,7 +53,7 @@ session_start();
       kelas = '$kelas', 
       alamat = '$alamat',
       password = '$password',
-      nis = '$nis',
+      id_siswa = '$nis',
       jen_kel = '$jen_kel',
       foto = '$nama_siswa.$file_ext'";
       $query .= "WHERE id_siswa = '$id'";

@@ -72,7 +72,7 @@ include '../layouts/sidebar.php';
                     ?>
                   <tr>
                     <td><?php echo $no; ?></td>
-                    <td><?php echo $row['nis']; ?></td>
+                    <td><?php echo $row['id_siswa']; ?></td>
                     <td><?php echo $row['nama_siswa']; ?></td>
                     <td><?php echo $row['jen_kel']; ?></td>
                     <td><?php echo $row['alamat']; ?></td>
