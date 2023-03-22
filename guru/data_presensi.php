@@ -43,7 +43,6 @@ include '../layouts/sidebar.php';
                   <tr>
                     <th>No</th>
                     <th>Nama Siswa</th>
-                    <th>Mata Pelajaran</th>
                     <th>Presensi</th>
                     <th>Tanggal</th>
                     <th>Action</th>
@@ -57,12 +56,10 @@ include '../layouts/sidebar.php';
                     if (isset($_GET['id_siswa'])) {
                       $query = "SELECT * FROM presensi_siswa 
                       INNER JOIN data_siswa ON presensi_siswa.id_siswa  = data_siswa.id_siswa
-                      INNER JOIN mata_pelajaran ON presensi_siswa.id_pelajaran  = mata_pelajaran.id_pelajaran
                       WHERE presensi_siswa.id_siswa = '$_GET[id_siswa]'";                      
                     }else{
                     $query = "SELECT * FROM presensi_siswa 
-                    INNER JOIN data_siswa ON presensi_siswa.id_siswa  = data_siswa.id_siswa
-                    INNER JOIN mata_pelajaran ON presensi_siswa.id_pelajaran  = mata_pelajaran.id_pelajaran
+                    INNER JOIN data_siswa ON presensi_siswa.id_siswa  = data_siswa.id_siswa                    
 					INNER JOIN data_guru ON data_guru.kelas = data_siswa.kelas
 					WHERE data_guru.id_guru='$_SESSION[id_user]'";
                     }
@@ -83,7 +80,6 @@ include '../layouts/sidebar.php';
                   <tr>
                     <td><?php echo $no; ?></td>
                     <td><?php echo $row['nama_siswa']; ?></td>
-                    <td><?php echo $row['nama_mata_pelajaran']; ?></td>
                     <td><?php echo $row['presensi']; ?></td>
                     <td><?php echo $row['tgl']; ?></td>
                     <td>

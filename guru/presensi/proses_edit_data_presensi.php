@@ -5,13 +5,11 @@ include '../../config/koneksi.php';
 	// membuat variabel untuk menampung data dari form
   $id= $_POST['id'];
   $id_siswa    = $_POST['id_siswa'];
-  $id_pelajaran= $_POST['id_pelajaran'];
   $presensi= $_POST['presensi'];
   $tgl= $_POST['tgl'];
       // jalankan query UPDATE berdasarkan ID yang produknya kita edit
       $query  = "UPDATE presensi_siswa SET 
       id_siswa = '$id_siswa', 
-      id_pelajaran = '$id_pelajaran',
       presensi = '$presensi',
       tgl = '$tgl'";
       $query .= "WHERE id_presensi = '$id'";

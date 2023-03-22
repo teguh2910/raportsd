@@ -17,7 +17,7 @@ include '../layouts/sidebar.php';
     // menampilkan data dari database yang mempunyai id=$id
     $query = "SELECT * FROM presensi_siswa 
                     INNER JOIN data_siswa ON presensi_siswa.id_siswa  = data_siswa.id_siswa
-                    INNER JOIN mata_pelajaran ON presensi_siswa.id_pelajaran  = mata_pelajaran.id_pelajaran";                    
+                    WHERE presensi_siswa.id_presensi='$_GET[id_presensi]'";                    
     $result = mysqli_query($koneksi, $query);
     // jika data gagal diambil maka akan tampil error berikut
     if(!$result){
@@ -79,10 +79,10 @@ include '../layouts/sidebar.php';
                     $id_siswa_edit = $data['id_siswa'];
 
                     // query to retrieve the list of teachers, with an additional column to indicate if the teacher is selected or not
-                    $query = "SELECT *, IF(id_siswa = $id_siswa_edit, 1, 0) AS is_selected FROM data_siswa";
-					$query="SELECT *, IF(id_siswa = $id_siswa_edit, 1, 0) AS is_selected FROM `data_guru`
-							INNER JOIN data_siswa ON data_siswa.kelas=data_guru.kelas
-							WHERE id_guru='$_SESSION[id_user]'";
+                    
+					$query="SELECT *, IF(presensi_siswa.id_siswa = $id_siswa_edit, 1, 0) AS is_selected FROM `presensi_siswa`
+							INNER JOIN data_siswa ON data_siswa.id_siswa=presensi_siswa.id_siswa
+							WHERE presensi_siswa.id_presensi='$_GET[id_presensi]'";
                     $result = mysqli_query($koneksi, $query);
 
                     if (!$result) {
@@ -101,36 +101,7 @@ include '../layouts/sidebar.php';
                       <?php } ?>
                     </select>
                   </div> 
-                  <div class="form-group">
-                    <label>Nama Mapel</label>
-                    <select name="id_pelajaran" class="form-control">
-                    <?php
-                    // get the id_guru of the data being edited
-                    $id_pelajaran_edit = $data['id_pelajaran'];
-
-                    // query to retrieve the list of teachers, with an additional column to indicate if the teacher is selected or not
-                    $query = "SELECT *, IF(id_pelajaran = $id_pelajaran_edit, 1, 0) AS is_selected FROM mata_pelajaran
-                    WHERE id_guru='$_SESSION[id_user]'
-                    GROUP BY nama_mata_pelajaran";
-
-                    $result = mysqli_query($koneksi, $query);
-
-                    if (!$result) {
-                        die ("Query Error: ".mysqli_errno($koneksi)." - ".mysqli_error($koneksi));
-                    }
-
-                    while($row = mysqli_fetch_assoc($result))
-                    {
-                    ?>
-                    <?php 
-                    // check if the current teacher is selected or not
-                    $selected = $row['is_selected'] ? 'selected' : '';?>
-                      <option value="<?php echo $row['id_pelajaran']; ?>" <?php echo $selected ?> >
-                      <?php echo $row['nama_mata_pelajaran']; ?>
-                      </option>
-                      <?php } ?>
-                    </select>
-                  </div>     
+                  
                   <div class="form-group">
                     <label>Tanggal</label>
                     <input type="date" name="tgl" value="<?php echo $data['tgl']; ?>" class="form-control" />

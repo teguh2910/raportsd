@@ -64,28 +64,7 @@ include '../layouts/sidebar.php';
                       <?php } ?>
                     </select>
                   </div>                  
-                  <div class="form-group">
-                    <label>Nama Mapel</label>
-                    <select name="id_pelajaran" class="form-control">
-                    <?php
-                    // menghubungkan dengan koneksi
-                    include '../config/koneksi.php';
-                    // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
-                    $query = "SELECT * FROM mata_pelajaran WHERE id_guru='$_SESSION[id_user]'";
-                    $result = mysqli_query($koneksi, $query);
-                    //mengecek apakah ada error ketika menjalankan query
-                    if(!$result){
-                        die ("Query Error: ".mysqli_errno($koneksi).
-                        " - ".mysqli_error($koneksi));
-                    }
-
-                    while($row = mysqli_fetch_assoc($result))
-                    {
-                    ?>
-                      <option value="<?php echo $row['id_pelajaran']; ?>"><?php echo $row['nama_mata_pelajaran']; ?></option>
-                      <?php } ?>
-                    </select>
-                  </div>
+                  
                   <div class="form-group">
                     <label>Tanggal</label>
                     <input type="date" name="tgl" class="form-control" />
