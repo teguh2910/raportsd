@@ -31,47 +31,7 @@ include '../layouts/sidebar.php';
         <div class="row">
           <div class="col-12">
           <div class="card card-info">
-              <div class="card-header">
-                <h1 class="card-title">
-                  <form action="cetak_raport.php" method="POST">
-                    <div class="row">
-                  <div class="form-group">
-                  <select name="semester"class="form-control">
-                    <option value="1">Semester Ganjil</option>
-                    <option value="2">Semester Genap</option>
-                  </select>                  
-                  </div> 
-                  <div class="form-group">
-                  <select name="tahun"class="form-control">
-                    <?php
-                    include '../config/koneksi.php';
-                    $query = "SELECT * FROM nilai_siswa GROUP BY tahun";
-                    $result = mysqli_query($koneksi, $query);
-                    //mengecek apakah ada error ketika menjalankan query
-                    if(!$result){
-                        die ("Query Error: ".mysqli_errno($koneksi).
-                        " - ".mysqli_error($koneksi));
-                    }
-
-                    //buat perulangan untuk element tabel dari data mahasiswa
-                    $no = 1; //variabel untuk membuat nomor urut
-                    // hasil query akan disimpan dalam variabel $data dalam bentuk array
-                    // kemudian dicetak dengan perulangan while
-                    while($row = mysqli_fetch_assoc($result))
-                    {
-                    ?>
-                    <option value="<?php echo $row['tahun'] ?>"><?php echo $row['tahun'] ?></option>
-                    <?php } ?>
-                  </select>  
-                  </div>
-                  <div class="form-group">                
-                  &nbsp;<input type="submit" value="Cetak Raport" class="btn btn-md btn-primary">
-                  </div>  
-                  </div>
-                </form>
-
-                </h1>
-              </div>
+              
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">

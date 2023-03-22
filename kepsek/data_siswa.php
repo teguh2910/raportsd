@@ -46,7 +46,6 @@ include '../layouts/sidebar.php';
                     <th>Jenis Kelamin</th>
                     <th>Alamat</th>
                     <th>Kelas</th>
-                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -54,7 +53,7 @@ include '../layouts/sidebar.php';
                     // menghubungkan dengan koneksi
                     include '../config/koneksi.php';
                     // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
-                    $query = "SELECT * FROM data_siswa WHERE id_siswa='$_SESSION[id_user]'";
+                    $query = "SELECT * FROM data_siswa";
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
                     if(!$result){
@@ -71,14 +70,12 @@ include '../layouts/sidebar.php';
                     ?>
                   <tr>
                     <td><?php echo $no; ?></td>
-                    <td><?php echo $row['nis']; ?></td>
+                    <td><?php echo $row['id_siswa']; ?></td>
                     <td><?php echo $row['nama_siswa']; ?></td>
                     <td><?php echo $row['jen_kel']; ?></td>
                     <td><?php echo $row['alamat']; ?></td>
                     <td><?php echo $row['kelas']; ?></td>                    
-                    <td>
-                        <a href="../guru/edit_data_siswa.php?id_siswa=<?php echo $row['id_siswa']; ?>" class="btn btn-xs btn-warning">Edit</a>
-                       </td>
+                    
                   </tr>
                   <?php
                         $no++; //untuk nomor urut terus bertambah 1

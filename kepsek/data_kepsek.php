@@ -69,7 +69,7 @@ include '../layouts/sidebar.php';
                     ?>
                   <tr>
                     <td><?php echo $no; ?></td>
-                    <td><?php echo $row['nip']; ?></td>
+                    <td><?php echo $row['id_guru']; ?></td>
                     <td><?php echo $row['nama_guru']; ?></td>
 					<td><?php echo $row['jabatan']; ?></td>
                     <td>

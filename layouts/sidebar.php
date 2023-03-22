@@ -153,6 +153,15 @@
           </li> 
 
           <li class="nav-item">
+            <a href="data_siswa.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Data Siswa
+              </p>
+            </a>
+          </li> 
+
+          <li class="nav-item">
             <a href="data_nilai.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
