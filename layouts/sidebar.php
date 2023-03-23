@@ -112,14 +112,7 @@
 
           <?php } ?>
           <?php if($_SESSION['hak_akses']=="siswa"){ ?>
-            <li class="nav-item">
-            <a href="data_siswa.php" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Data Siswa
-              </p>
-            </a>
-          </li>
+           
             <?php } ?>
             <?php if($_SESSION['hak_akses']=="guru"|| $_SESSION['hak_akses']=="kepsek"){ ?>
             <li class="nav-item">

@@ -33,7 +33,9 @@ include '../layouts/sidebar.php';
           <div class="card card-info">
               <div class="card-header">
                 <h3 class="card-title">
+                <?php if($_SESSION['hak_akses']=="admin"){ ?>
                 <a href="tambah_data_siswa.php" class="btn btn-sm btn-primary">Tambah</a>    
+                <?php }?>
                 Data Siswa</h3>
               </div>
               <!-- /.card-header -->
