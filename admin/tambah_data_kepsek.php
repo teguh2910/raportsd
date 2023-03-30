@@ -42,11 +42,11 @@ include '../layouts/sidebar.php';
                 <div class="card-body">
                 <div class="form-group">
                     <label>NIP</label>
-                    <input type="text" name="nip" class="form-control" />
+                    <input type="text" id="nip" pattern="[0-9]+" name="nip" minlength="15" required oninvalid="this.setCustomValidity('NIP/NISN hanya bisa diisi dengan angka')" oninput="this.setCustomValidity('')" class="form-control">
                   </div>   
                 <div class="form-group">
                     <label>Nama</label>
-                    <input type="text" name="nama_kepsek" class="form-control" />
+                    <input type="text" pattern="[A-Za-z]+" id="nama_kepsek" name="nama_kepsek" required oninvalid="this.setCustomValidity('nama harus diisi dengan huruf')" oninput="this.setCustomValidity('')" class="form-control" />
                   </div>  
                   <div class="form-group">
                     <label>Password</label>

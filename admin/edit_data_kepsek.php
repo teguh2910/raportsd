@@ -71,11 +71,11 @@ include '../layouts/sidebar.php';
                 <div class="card-body">
                 <div class="form-group">
                     <label>NIP</label>
-                    <input type="text" name="nip" value="<?php echo $data['id_guru']; ?>" class="form-control">
+                    <input type="text" id="nip" pattern="[0-9]+" name="nip" value="<?php echo $data['id_guru']; ?>" minlength="15" required oninvalid="this.setCustomValidity('NIP/NISN hanya bisa diisi dengan angka')" oninput="this.setCustomValidity('')" class="form-control">
                   </div>  
                 <div class="form-group">
                     <label>Nama Kepsek</label>
-                    <input type="text" name="nama_guru" value="<?php echo $data['nama_guru']; ?>" class="form-control">
+                    <input type="text" pattern="[A-Za-z]+" id="nama_kepsek" value="<?php echo $data['nama_guru']; ?>" name="nama_kepsek" required oninvalid="this.setCustomValidity('nama harus diisi dengan huruf')" oninput="this.setCustomValidity('')" class="form-control" />
                   </div>
 					
                   <div class="form-group">

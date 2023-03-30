@@ -71,15 +71,15 @@ include '../layouts/sidebar.php';
                 <div class="card-body">
                 <div class="form-group">
                     <label>NIS</label>
-                    <input type="text" name="nis" value="<?php echo $data['id_siswa']; ?>" class="form-control">
+                    <input type="text" id="nis" pattern="[0-9]+" name="nis" minlength="15" value="<?php echo $data['id_siswa']; ?> required oninvalid="this.setCustomValidity('NIP/NISN hanya bisa diisi dengan angka')" oninput="this.setCustomValidity('')" class="form-control">
                   </div>  
                   <div class="form-group">
                     <label>Jenis Kelamin</label>
                     <input type="text" name="jen_kel" value="<?php echo $data['jen_kel']; ?>" class="form-control">
                   </div>
                 <div class="form-group">
-                    <label>Nama Siswa</label>
-                    <input type="text" name="nama_siswa" value="<?php echo $data['nama_siswa']; ?>" class="form-control">
+                    <label>Nama Siswa</label>                    
+                    <input type="text" pattern="[A-Za-z]+" id="nama" value="<?php echo $data['nama_siswa']; ?>" name="nama_siswa" required oninvalid="this.setCustomValidity('nama harus diisi dengan huruf')" oninput="this.setCustomValidity('')" class="form-control" />
                   </div>
                   <div class="form-group">
                     <label>Kelas</label>

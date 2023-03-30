@@ -90,7 +90,7 @@
             <th class="text-center">No</th>
             <th class="text-center">Mata Pelajaran</th>
             <th class="text-center">Nilai Akhir</th>
-            <th class="text-center">Keterangan</th>
+            <th class="text-center">Capaian Kompetensi  </th>
         </tr>
         
         <?php
