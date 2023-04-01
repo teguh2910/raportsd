@@ -2,23 +2,16 @@
 // memanggil file koneksi.php untuk melakukan koneksi database
 include '../../config/koneksi.php';
 
-	// membuat variabel untuk menampung data dari form
-  $id_siswa    = $_POST['id_siswa'];
-  $presensi= $_POST['presensi'];
-  $tgl= $_POST['tgl'];
-  $Q_cek_tgl="SELECT * FROM presensi_siswa WHERE tgl='$tgl' AND id_siswa='$id_siswa'";
-  $resulrt_check=mysqli_query($koneksi,$Q_cek_tgl);
-  if(mysqli_num_rows($resulrt_check)>0){
-    echo "<script>alert('Sudah ada presensi pada hari tersebut, gagal simpan.');window.location='../data_presensi.php';</script>";
-  }else{
-    $query = "INSERT INTO presensi_siswa (id_siswa,presensi,tgl) 
-    VALUES ('$id_siswa', '$presensi', '$tgl')";
-                  $result = mysqli_query($koneksi, $query);
-                  // periska query apakah ada error
-                  if(!$result){
-                      die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
-                           " - ".mysqli_error($koneksi));
-                  } else {
-                    echo "<script>alert('Data berhasil ditambah.');window.location='../data_presensi.php';</script>";
-                  }
-                }
+// membuat variabel untuk menampung data dari form
+$id_guru       = $_POST['id'];
+$tgl           = $_POST['tanggal'];
+
+$query1="SELECT * FROM data_siswa INNER JOIN data_guru ON data_siswa.kelas = data_guru.kelas WHERE data_guru.id_guru='$id_guru'";
+$result1 = mysqli_query($koneksi, $query1);
+while($data = mysqli_fetch_assoc($result1)){
+  $id_siswa = $data['id_siswa'];
+  $query = "INSERT INTO presensi_siswa (id_siswa,tgl) 
+    VALUES ('$id_siswa', '$tgl')";
+  $result = mysqli_query($koneksi, $query);
+}
+  echo "<script>alert('Data berhasil ditambah.');window.location='../data_presensi.php';</script>";
