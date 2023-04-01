@@ -12,12 +12,12 @@ include '../layouts/sidebar.php';
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Data Kasus</h1>
+            <h1 class="m-0">Data Ekstrakulikuler</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Data Kasus</li>
+              <li class="breadcrumb-item active">Data Ekstrakulikuler</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -33,7 +33,7 @@ include '../layouts/sidebar.php';
           <div class="card card-info">
               <div class="card-header">
                 <h3 class="card-title">
-                Data Kasus</h3>
+                Data Ekstrakulikuler</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -42,8 +42,8 @@ include '../layouts/sidebar.php';
                   <tr>
                     <th>No</th>
                     <th>Nama Siswa</th>
-                    <th>Kasus</th>
-                    <th>Tanggal</th>
+                    <th>Ekstrakulikuler</th>
+                    <th>Keterangan</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -52,12 +52,12 @@ include '../layouts/sidebar.php';
                     include '../config/koneksi.php';
                     // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
                     if (isset($_SESSION['id_user'])) {
-                      $query = "SELECT * FROM kasus_siswa 
-                      INNER JOIN data_siswa ON kasus_siswa.id_siswa  = data_siswa.id_siswa
-                      WHERE kasus_siswa.id_siswa = '$_SESSION[id_user]'";
+                      $query = "SELECT * FROM extra_siswa 
+                      INNER JOIN data_siswa ON extra_siswa.id_siswa  = data_siswa.id_siswa
+                      WHERE extra_siswa.id_siswa = '$_SESSION[id_user]'";
                     } else {
-                      $query = "SELECT * FROM kasus_siswa 
-                      INNER JOIN data_siswa ON kasus_siswa.id_siswa  = data_siswa.id_siswa";
+                      $query = "SELECT * FROM extra_siswa 
+                      INNER JOIN data_siswa ON extra_siswa.id_siswa  = data_siswa.id_siswa";
                     }
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
@@ -76,8 +76,8 @@ include '../layouts/sidebar.php';
                   <tr>
                     <td><?php echo $no; ?></td>
                     <td><?php echo $row['nama_siswa']; ?></td>
-                    <td><?php echo $row['kasus']; ?></td>
-                    <td><?php echo $row['tgl_kasus']; ?></td>
+                    <td><?php echo $row['ekskul']; ?></td>
+                    <td><?php echo $row['keterangan']; ?></td>
                     
                   </tr>
                   <?php

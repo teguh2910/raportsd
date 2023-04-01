@@ -109,6 +109,10 @@ include '../layouts/sidebar.php';
                     <label>Tahun</label>
                     <input type="number" name="tahun" class="form-control" />
                   </div>
+                  <div class="form-group">
+                    <label>Keterangan</label>
+                    <input type="text" name="keterangan" class="form-control" />
+                  </div>
                 </div>
                 <!-- /.card-body -->
 

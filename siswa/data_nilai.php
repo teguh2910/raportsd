@@ -86,6 +86,7 @@ include '../layouts/sidebar.php';
                     <th>Nilai Akhir</th>
                     <th>Semester</th>
                     <th>Tahun</th>
+                    <th>Keterangan</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -121,7 +122,7 @@ include '../layouts/sidebar.php';
                       <td><?php echo round(($row['nilai_harian'] + $row['nilai_uts'] + $row['nilai_uas']) / 3, 0); ?></td>
                       <td><?php echo $row['semester']; ?></td>
                       <td><?php echo $row['tahun']; ?></td>
-
+                      <td><?php echo $row['keterangan']; ?></td>
                     </tr>
                   <?php
                     $no++; //untuk nomor urut terus bertambah 1

@@ -178,7 +178,7 @@
                 <a href="data_kasus.php" class="nav-link">
                   <i class="nav-icon fas fa-th"></i>
                   <p>
-                    Data Kasus Siswa
+                    Data Ekstrakulikuler
                   </p>
                 </a>
               </li>

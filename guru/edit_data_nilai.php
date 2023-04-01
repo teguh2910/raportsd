@@ -154,6 +154,10 @@ include '../layouts/sidebar.php';
                   <div class="form-group">
                     <label>Tahun</label>
                     <input type="number" name="tahun" value="<?php echo $data['tahun']; ?>" class="form-control" />
+                  </div> 
+                  <div class="form-group">
+                    <label>Keterangan</label>
+                    <input type="text" name="keterangan" value="<?php echo $data['keterangan']; ?>" class="form-control" />
                   </div>                         
                 </div>
                 <!-- /.card-body -->

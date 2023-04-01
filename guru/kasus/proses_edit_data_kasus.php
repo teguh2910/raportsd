@@ -5,14 +5,14 @@ include '../../config/koneksi.php';
 	// membuat variabel untuk menampung data dari form
   $id= $_POST['id'];
   $id_siswa    = $_POST['id_siswa'];
-  $kasus= $_POST['kasus'];
-  $tgl= $_POST['tgl'];
+  $ekskul= $_POST['ekskul'];
+  $keterangan= $_POST['keterangan'];
       // jalankan query UPDATE berdasarkan ID yang produknya kita edit
-      $query  = "UPDATE kasus_siswa SET 
+      $query  = "UPDATE extra_siswa SET 
       id_siswa = '$id_siswa', 
-      kasus = '$kasus',
-      tgl_kasus = '$tgl'";
-      $query .= "WHERE id_kasus = '$id'";
+      ekskul = '$ekskul',
+      keterangan = '$keterangan'";
+      $query .= "WHERE id_ekskul = '$id'";
       $result = mysqli_query($koneksi, $query);
       // periska query apakah ada error
       if(!$result){

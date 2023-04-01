@@ -51,6 +51,7 @@ include '../layouts/sidebar.php';
                     <th>Nilai Akhir</th>
                     <th>Semester</th>
                     <th>Tahun</th>
+                    <th>Keterangan</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -89,6 +90,7 @@ include '../layouts/sidebar.php';
                     <td><?php echo round(($row['nilai_harian']+$row['nilai_uts']+$row['nilai_uas'])/3,0); ?></td>
                     <td><?php echo $row['semester']; ?></td>
                     <td><?php echo $row['tahun']; ?></td>
+                    <td><?php echo $row['keterangan']; ?></td>
                     <td>
                         <a href="edit_data_nilai.php?id_nilai=<?php echo $row['id_nilai']; ?>" class="btn btn-xs btn-warning">Edit</a>
                         <a href="nilai/hapus_data_nilai.php?id_nilai=<?php echo $row['id_nilai']; ?>" onclick="return confirm('Are you sure you want to delete this item?')" class="btn btn-xs btn-danger">Delete</a>                        

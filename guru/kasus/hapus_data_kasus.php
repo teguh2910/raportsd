@@ -4,7 +4,7 @@ $id = $_GET["id_kasus"];
 //mengambil id yang ingin dihapus
 
     //jalankan query DELETE untuk menghapus data
-    $query = "DELETE FROM kasus_siswa WHERE id_kasus='$id' ";
+    $query = "DELETE FROM extra_siswa WHERE id_ekskul='$id' ";
     $hasil_query = mysqli_query($koneksi, $query);
 
     //periksa query, apakah ada kesalahan

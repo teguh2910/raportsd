@@ -15,8 +15,8 @@ include '../layouts/sidebar.php';
     $id = ($_GET["id_kasus"]);
 
     // menampilkan data dari database yang mempunyai id=$id
-    $query = "SELECT * FROM kasus_siswa 
-                    INNER JOIN data_siswa ON kasus_siswa.id_siswa  = data_siswa.id_siswa";                    
+    $query = "SELECT * FROM extra_siswa 
+                    INNER JOIN data_siswa ON extra_siswa.id_siswa  = data_siswa.id_siswa";                    
     $result = mysqli_query($koneksi, $query);
     // jika data gagal diambil maka akan tampil error berikut
     if(!$result){
@@ -41,12 +41,12 @@ include '../layouts/sidebar.php';
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Data Kasus</h1>
+            <h1 class="m-0">Data Ekstrakulikuler</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Data Kasus</li>
+              <li class="breadcrumb-item active">Data Ekstrakulikuler</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -68,7 +68,7 @@ include '../layouts/sidebar.php';
               <div class="card-body">
               <form method="POST" action="kasus/proses_edit_data_kasus.php" enctype="multipart/form-data">
                  <!-- menampung nilai id produk yang akan di edit -->
-                <input name="id" value="<?php echo $data['id_kasus']; ?>"  hidden />
+                <input name="id" value="<?php echo $data['id_ekskul']; ?>"  hidden />
                 <div class="card-body">
                 <div class="form-group">
                     <label>Nama Siswa</label>
@@ -101,12 +101,12 @@ include '../layouts/sidebar.php';
                     </select>
                   </div>                   
                   <div class="form-group">
-                    <label>Tanggal</label>
-                    <input type="date" name="tgl" value="<?php echo $data['tgl_kasus']; ?>" class="form-control" />
+                    <label>Ekstrakulikuler</label>
+                    <input type="text" name="ekskul" value="<?php echo $data['ekskul']; ?>" class="form-control" />
                   </div>
                   <div class="form-group">
-                    <label>Kasus</label>
-                    <textarea name="kasus" rows="3" class="form-control"><?php echo $data['kasus']; ?></textarea>
+                    <label>Keterangan</label>
+                    <textarea name="keterangan" rows="3" class="form-control"><?php echo $data['keterangan']; ?></textarea>
                   </div>                       
                 </div>
                 <!-- /.card-body -->
