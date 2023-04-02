@@ -83,7 +83,7 @@ include '../layouts/sidebar.php';
                   </div>
                 <div class="form-group">
                     <label>Nama Siswa</label>                    
-                    <input type="text" pattern="[A-Za-z.,]+" id="nama" value="<?php echo $data['nama_siswa']; ?>" name="nama_siswa" required oninvalid="this.setCustomValidity('nama harus diisi dengan huruf')" oninput="this.setCustomValidity('')" class="form-control" />
+                    <input type="text" pattern="[A-Za-z., ]+" id="nama" value="<?php echo $data['nama_siswa']; ?>" name="nama_siswa" required oninvalid="this.setCustomValidity('nama harus diisi dengan huruf')" oninput="this.setCustomValidity('')" class="form-control" />
                   </div>
                   <div class="form-group">
                     <label>Kelas</label>
