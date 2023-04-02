@@ -58,6 +58,7 @@ $file_name = $_FILES['photo']['name'];
   if (validate_password($password)) { 
     $query = "INSERT INTO data_guru (nama_guru, jabatan, password , id_guru,kelas,foto) 
     VALUES ('$nama_guru', '$jabatan', '$password', '$nip','$kelas','$nama_guru.$file_ext')";
+    
   } else {
     echo "<script>alert('Gagal Simpan,password harus menggunakan batasan minimal 8 karakter maximal 20 karakter dan kombinasikan antara huruf, angka dan tanda');window.location='../tambah_data_guru.php';</script>";
   }
