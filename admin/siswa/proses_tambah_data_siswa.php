@@ -16,9 +16,11 @@ function validate_password($password)
 // membuat variabel untuk menampung data dari form
 $nama_siswa    = $_POST['nama_siswa'];
 $kelas         = $_POST['kelas'];
+$fase         = $_POST['fase'];
 $alamat        = $_POST['alamat'];
 $password      = $_POST['password'];
 $nis          = $_POST['nis'];
+$nisn          = $_POST['nisn'];
 $jen_kel       = $_POST['jen_kel'];
 $file_name = $_FILES['photo']['name'];
 $file_size = $_FILES['photo']['size'];
@@ -57,8 +59,8 @@ if (move_uploaded_file($file_tmp, $target_file)) {
   echo "Sorry, there was an error uploading your file.";
 }
 if (validate_password($password)) { 
-  $query = "INSERT INTO data_siswa (nama_siswa, kelas, alamat, password, id_siswa, jen_kel,foto) 
-    VALUES ('$nama_siswa', '$kelas', '$alamat', '$password', '$nis', '$jen_kel','$nama_siswa.$file_ext')";
+  $query = "INSERT INTO data_siswa (nama_siswa, kelas,fase, alamat, password, id_siswa,nisn, jen_kel,foto) 
+    VALUES ('$nama_siswa', '$kelas','$fase', '$alamat', '$password', '$nis','$nisn', '$jen_kel','$nama_siswa.$file_ext')";
 } else {
   echo "<script>alert('Gagal Simpan,password harus menggunakan batasan minimal 8 karakter maximal 20 karakter dan kombinasikan antara huruf, angka dan tanda');window.location='../tambah_data_siswa.php';</script>";
 }

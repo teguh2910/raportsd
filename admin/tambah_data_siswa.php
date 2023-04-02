@@ -43,6 +43,10 @@ include '../layouts/sidebar.php';
                 <div class="form-group">
                     <label>NIS</label>
                     <input type="text" id="nis" pattern="[0-9]+" name="nis" minlength="9" required oninvalid="this.setCustomValidity('NIP/NISN hanya bisa diisi dengan angka')" oninput="this.setCustomValidity('')" class="form-control">
+                  </div>  
+                  <div class="form-group">
+                    <label>NISN</label>
+                    <input type="text" id="nisn" pattern="[0-9]+" name="nis" minlength="10" required oninvalid="this.setCustomValidity('NIP/NISN hanya bisa diisi dengan angka')" oninput="this.setCustomValidity('')" class="form-control">
                   </div>   
                   <div class="form-group">
                     <label>Jenis Kelamin</label>
@@ -66,6 +70,10 @@ include '../layouts/sidebar.php';
                       <option value="5">5</option>
                       <option value="6">6</option>
                     </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Fase</label>
+                    <input type="text" name="fase" class="form-control">
                   </div>
                   <div class="form-group">
                     <label>Alamat</label>

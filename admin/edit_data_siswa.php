@@ -72,6 +72,10 @@ include '../layouts/sidebar.php';
                 <div class="form-group">
                     <label>NIS</label>
                     <input type="text" id="nis" pattern="[0-9]+" name="nis" minlength="9" value="<?php echo $data['id_siswa']; ?>" required oninvalid="this.setCustomValidity('NIP/NISN hanya bisa diisi dengan angka')" oninput="this.setCustomValidity('')" class="form-control">
+                  </div> 
+                  <div class="form-group">
+                    <label>NISN</label>
+                    <input type="text" id="nisn" pattern="[0-9]+" name="nisn" minlength="10" value="<?php echo $data['nisn']; ?>" required oninvalid="this.setCustomValidity('NIP/NISN hanya bisa diisi dengan angka')" oninput="this.setCustomValidity('')" class="form-control">
                   </div>  
                   <div class="form-group">
                     <label>Jenis Kelamin</label>
@@ -84,6 +88,10 @@ include '../layouts/sidebar.php';
                   <div class="form-group">
                     <label>Kelas</label>
                     <input type="text" name="kelas" value="<?php echo $data['kelas']; ?>" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Fase</label>
+                    <input type="text" name="fase" value="<?php echo $data['fase']; ?>" class="form-control">
                   </div>
                   <div class="form-group">
                     <label>Alamat</label>

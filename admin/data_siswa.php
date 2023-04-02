@@ -43,10 +43,12 @@ include '../layouts/sidebar.php';
                   <tr>
                     <th>No</th>
                     <th>NIS</th>
+                    <th>NISN</th>
                     <th>Nama Siswa</th>
                     <th>Jenis Kelamin</th>
                     <th>Alamat</th>
                     <th>Kelas</th>
+                    <th>Fase</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -73,10 +75,12 @@ include '../layouts/sidebar.php';
                   <tr>
                     <td><?php echo $no; ?></td>
                     <td><?php echo $row['id_siswa']; ?></td>
+                    <td><?php echo $row['nisn']; ?></td>
                     <td><?php echo $row['nama_siswa']; ?></td>
                     <td><?php echo $row['jen_kel']; ?></td>
                     <td><?php echo $row['alamat']; ?></td>
-                    <td><?php echo $row['kelas']; ?></td>                    
+                    <td><?php echo $row['kelas']; ?></td> 
+                    <td><?php echo $row['fase']; ?></td>                    
                     <td>
                         <a href="edit_data_siswa.php?id_siswa=<?php echo $row['id_siswa']; ?>" class="btn btn-xs btn-warning">Edit</a>
                         <a href="siswa/hapus_data_siswa.php?id_siswa=<?php echo $row['id_siswa']; ?>" onclick="return confirm('Are you sure you want to delete this item?')" class="btn btn-xs btn-danger">Delete</a>                        

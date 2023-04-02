@@ -43,9 +43,9 @@
                         <td><?php echo $_SESSION['username'] ?></td>
                     </tr>
                     <tr>
-                        <td>NISN</td>
+                        <td>NIS/NISN</td>
                         <td>:</td>
-                        <td><?php echo $data['id_siswa'] ?></td>
+                        <td><?php echo $data['id_siswa'] ?>/<?php echo $data['nisn'] ?></td>
                     </tr>
                     <tr>
                         <td>Sekolah</td>
@@ -66,6 +66,11 @@
                         <td>Kelas</td>
                         <td>:</td>
                         <td><?php echo $data['kelas'] ?></td>
+                    </tr>
+                    <tr>
+                        <td>Fase</td>
+                        <td>:</td>
+                        <td><?php echo $data['fase'] ?></td>
                     </tr>
                     <tr>
                         <td></td>

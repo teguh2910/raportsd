@@ -42,6 +42,7 @@ include '../layouts/sidebar.php';
                   <tr>
                     <th>No</th>
                     <th>NIS</th>
+                    <th>NISN</th>
                     <th>Nama Siswa</th>
                     <th>Jenis Kelamin</th>
                     <th>Alamat</th>
@@ -72,6 +73,7 @@ include '../layouts/sidebar.php';
                   <tr>
                     <td><?php echo $no; ?></td>
                     <td><?php echo $row['id_siswa']; ?></td>
+                    <td><?php echo $row['nisn']; ?></td>
                     <td><?php echo $row['nama_siswa']; ?></td>
                     <td><?php echo $row['jen_kel']; ?></td>
                     <td><?php echo $row['alamat']; ?></td>

@@ -6,9 +6,11 @@ session_start();
   $id = $_POST['id'];
   $nama_siswa  = $_POST['nama_siswa'];
   $kelas  = $_POST['kelas'];
+  $fase  = $_POST['fase'];
   $alamat    = $_POST['alamat'];
   $password  = $_POST['password'];
   $nis  = $_POST['nis'];
+  $nisn  = $_POST['nisn'];
   $jen_kel  = $_POST['jen_kel'];
 
     $file_name = $_FILES['photo']['name'];
@@ -51,9 +53,11 @@ session_start();
       $query  = "UPDATE data_siswa SET 
       nama_siswa = '$nama_siswa', 
       kelas = '$kelas', 
+      fase = '$fase', 
       alamat = '$alamat',
       password = '$password',
       id_siswa = '$nis',
+      nisn = '$nisn',
       jen_kel = '$jen_kel',
       foto = '$nama_siswa.$file_ext'";
       $query .= "WHERE id_siswa = '$id'";
