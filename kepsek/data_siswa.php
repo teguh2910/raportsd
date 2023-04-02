@@ -47,6 +47,7 @@ include '../layouts/sidebar.php';
                     <th>Jenis Kelamin</th>
                     <th>Alamat</th>
                     <th>Kelas</th>
+                    <th>Fase</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -77,7 +78,7 @@ include '../layouts/sidebar.php';
                     <td><?php echo $row['jen_kel']; ?></td>
                     <td><?php echo $row['alamat']; ?></td>
                     <td><?php echo $row['kelas']; ?></td>                    
-                    
+                    <td><?php echo $row['fase']; ?></td>
                   </tr>
                   <?php
                         $no++; //untuk nomor urut terus bertambah 1
