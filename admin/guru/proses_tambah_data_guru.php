@@ -1,7 +1,18 @@
 <?php
 // memanggil file koneksi.php untuk melakukan koneksi database
 include '../../config/koneksi.php';
-
+function validate_password($password)
+{
+  // Periksa panjang password
+  if (strlen($password) < 8 || strlen($password) > 20) {
+    return false;
+  }
+  // Periksa apakah password mengandung huruf, angka, dan tanda
+  if (!preg_match('/[A-Za-z]/', $password) || !preg_match('/[0-9]/', $password) || !preg_match('/[^A-Za-z0-9]/', $password)) {
+    return false;
+  }
+  return true;
+}
 	// membuat variabel untuk menampung data dari form
   $nama_guru    = $_POST['nama_guru'];
   $jabatan         = $_POST['jabatan'];
@@ -44,8 +55,12 @@ $file_name = $_FILES['photo']['name'];
       echo "Sorry, there was an error uploading your file.";
   }
   $nip = $_POST['nip'];
+  if (validate_password($password)) { 
     $query = "INSERT INTO data_guru (nama_guru, jabatan, password , id_guru,kelas,foto) 
     VALUES ('$nama_guru', '$jabatan', '$password', '$nip','$kelas','$nama_guru.$file_ext')";
+  } else {
+    echo "<script>alert('Gagal Simpan,password harus menggunakan batasan minimal 8 karakter maximal 20 karakter dan kombinasikan antara huruf, angka dan tanda');window.location='../tambah_data_guru.php';</script>";
+  }
                   $result = mysqli_query($koneksi, $query);
                   // periska query apakah ada error
                   if(!$result){

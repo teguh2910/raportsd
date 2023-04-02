@@ -71,7 +71,7 @@ include '../layouts/sidebar.php';
                 <div class="card-body">
                 <div class="form-group">
                     <label>NIS</label>
-                    <input type="text" id="nis" pattern="[0-9]+" name="nis" minlength="15" value="<?php echo $data['id_siswa']; ?> required oninvalid="this.setCustomValidity('NIP/NISN hanya bisa diisi dengan angka')" oninput="this.setCustomValidity('')" class="form-control">
+                    <input type="text" id="nis" pattern="[0-9]+" name="nis" minlength="9" value="<?php echo $data['id_siswa']; ?> required oninvalid="this.setCustomValidity('NIP/NISN hanya bisa diisi dengan angka')" oninput="this.setCustomValidity('')" class="form-control">
                   </div>  
                   <div class="form-group">
                     <label>Jenis Kelamin</label>
@@ -79,7 +79,7 @@ include '../layouts/sidebar.php';
                   </div>
                 <div class="form-group">
                     <label>Nama Siswa</label>                    
-                    <input type="text" pattern="[A-Za-z]+" id="nama" value="<?php echo $data['nama_siswa']; ?>" name="nama_siswa" required oninvalid="this.setCustomValidity('nama harus diisi dengan huruf')" oninput="this.setCustomValidity('')" class="form-control" />
+                    <input type="text" pattern="[A-Za-z.,]+" id="nama" value="<?php echo $data['nama_siswa']; ?>" name="nama_siswa" required oninvalid="this.setCustomValidity('nama harus diisi dengan huruf')" oninput="this.setCustomValidity('')" class="form-control" />
                   </div>
                   <div class="form-group">
                     <label>Kelas</label>

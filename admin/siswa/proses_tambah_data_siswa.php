@@ -56,7 +56,7 @@ if (move_uploaded_file($file_tmp, $target_file)) {
 } else {
   echo "Sorry, there was an error uploading your file.";
 }
-if (validate_password($password)) {
+if (validate_password($password)) { 
   $query = "INSERT INTO data_siswa (nama_siswa, kelas, alamat, password, id_siswa, jen_kel,foto) 
     VALUES ('$nama_siswa', '$kelas', '$alamat', '$password', '$nis', '$jen_kel','$nama_siswa.$file_ext')";
 } else {

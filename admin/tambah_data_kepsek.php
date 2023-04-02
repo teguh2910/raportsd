@@ -46,7 +46,7 @@ include '../layouts/sidebar.php';
                   </div>   
                 <div class="form-group">
                     <label>Nama</label>
-                    <input type="text" pattern="[A-Za-z.]+" id="nama_kepsek" name="nama_kepsek" required oninvalid="this.setCustomValidity('nama harus diisi dengan huruf')" oninput="this.setCustomValidity('')" class="form-control" />
+                    <input type="text" pattern="[A-Za-z.,]+" id="nama_kepsek" name="nama_kepsek" required oninvalid="this.setCustomValidity('nama harus diisi dengan huruf')" oninput="this.setCustomValidity('')" class="form-control" />
                   </div>  
                   <div class="form-group">
                     <label>Password</label>
