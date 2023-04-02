@@ -42,7 +42,7 @@ include '../layouts/sidebar.php';
                 <div class="card-body">
                 <div class="form-group">
                     <label>NIS</label>
-                    <input type="text" id="nis" pattern="[0-9]+" name="nis" minlength="15" required oninvalid="this.setCustomValidity('NIP/NISN hanya bisa diisi dengan angka')" oninput="this.setCustomValidity('')" class="form-control">
+                    <input type="text" id="nis" pattern="[0-9]+" name="nis" minlength="18" required oninvalid="this.setCustomValidity('NIP/NISN hanya bisa diisi dengan angka')" oninput="this.setCustomValidity('')" class="form-control">
                   </div>   
                   <div class="form-group">
                     <label>Jenis Kelamin</label>
@@ -53,7 +53,7 @@ include '../layouts/sidebar.php';
                   </div> 
                 <div class="form-group">
                     <label>Nama Siswa</label>
-                    <input type="text" pattern="[A-Za-z]+" id="nama" name="nama_siswa" required oninvalid="this.setCustomValidity('nama harus diisi dengan huruf')" oninput="this.setCustomValidity('')" class="form-control" />
+                    <input type="text" pattern="[A-Za-z.]+" id="nama" name="nama_siswa" required oninvalid="this.setCustomValidity('nama harus diisi dengan huruf')" oninput="this.setCustomValidity('')" class="form-control" />
                     
                   </div>                  
                   <div class="form-group">
@@ -73,7 +73,7 @@ include '../layouts/sidebar.php';
                   </div>
                   <div class="form-group">
                     <label>Password</label>
-                    <input type="password" name="password" class="form-control">
+                    <input type="password" required name="password" class="form-control">
                   </div>
                   <div class="form-group">
                     <label>Foto</label>
