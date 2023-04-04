@@ -97,6 +97,29 @@ $json_nilai = json_encode($nilai);
                     ?>
 						<option value=<?php echo $row['id_siswa'] ?> <?php echo $selected ?>><?php echo $row['nama_siswa'] ?></option>
 						<?php } ?>
+					</select>  
+          </div>
+          <div class='form-group'>
+          <select name='kelas' class='form-control'>
+					<?php
+                    // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
+                    
+                      $query = "SELECT * FROM data_siswa 
+                    INNER JOIN data_guru ON data_siswa.kelas = data_guru.kelas
+                    GROUP BY data_siswa.kelas";
+                    
+                    $result = mysqli_query($koneksi, $query);
+                    //mengecek apakah ada error ketika menjalankan query
+                    if(!$result){
+                        die ("Query Error: ".mysqli_errno($koneksi).
+                        " - ".mysqli_error($koneksi));
+                    }
+                    while($row = mysqli_fetch_assoc($result))
+                    {
+                      
+                    ?>
+						<option value=<?php echo $row['kelas'] ?> ><?php echo $row['kelas'] ?></option>
+						<?php } ?>
 					</select>   
 						</div>           
 						<div class='form-group'>&nbsp;

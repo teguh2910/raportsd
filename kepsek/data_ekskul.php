@@ -42,6 +42,7 @@ include '../layouts/sidebar.php';
                   <tr>
                     <th>No</th>
                     <th>Nama Siswa</th>
+                    <th>Kelas</th>
                     <th>Ekstrakulikuler</th>
                     <th>Keterangan</th>
                   </tr>
@@ -76,6 +77,7 @@ include '../layouts/sidebar.php';
                   <tr>
                     <td><?php echo $no; ?></td>
                     <td><?php echo $row['nama_siswa']; ?></td>
+                    <td><?php echo $row['kelas']; ?></td>
                     <td><?php echo $row['ekskul']; ?></td>
                     <td><?php echo $row['keterangan']; ?></td>
                     
