@@ -82,7 +82,7 @@ $json_nilai = json_encode($nilai);
                                                 <?php
                     // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
                     
-                      $query = "SELECT * FROM data_siswa";
+                      $query = "SELECT * FROM data_siswa GROUP BY kelas";
                     
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
