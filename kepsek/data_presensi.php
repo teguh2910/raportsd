@@ -43,6 +43,7 @@ include '../layouts/sidebar.php';
                     <th>No</th>
                     <th>NIS</th>
                     <th>Nama Siswa</th>
+                    <th>Kelas</th>
                     <th>Presensi</th>
                     <th>Tanggal</th>                    
                   </tr>
@@ -80,6 +81,7 @@ include '../layouts/sidebar.php';
                     <td><?php echo $no; ?></td>
                     <td><?php echo $row['id_siswa']; ?></td>
                     <td><?php echo $row['nama_siswa']; ?></td>
+                    <td><?php echo $row['kelas']; ?></td>
                     <td><?php echo $row['presensi']; ?></td>
                     <td><?php echo $row['tgl']; ?></td>
                       
