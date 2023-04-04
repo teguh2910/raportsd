@@ -193,7 +193,11 @@
           </li>  -->
 
               <li class="nav-item">
-                <a href="data_grafik_perkembangan.php" class="nav-link">
+                <?php if($_SESSION['hak_akses'] == "kepsek"){ ?>
+                <a href="filter_kelas_data_grafik_perkembangan.php" class="nav-link">
+              <?php }else{ ?> 
+              <a href="data_grafik_perkembangan.php" class="nav-link">
+                <?php } ?>
                   <i class="nav-icon fas fa-th"></i>
                   <p>
                     Grafik Perkembangan

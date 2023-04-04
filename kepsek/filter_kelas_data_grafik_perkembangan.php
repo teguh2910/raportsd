@@ -74,17 +74,15 @@ $json_nilai = json_encode($nilai);
                         <div class="card-header">
                             <h3 class="card-title">
                                 Grafik Perkembangan Siswa
-                                <form action='#' method='post'>
+                                <form action='data_grafik_perkembangan.php' method='get'>
                                     <div class='row'>
-                                        <div class='form-group'>
 
-                                            <select name='id_siswa' class='form-control'>
+                                        <div class='form-group'>
+                                            <select name='kelas' class='form-control'>
                                                 <?php
                     // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
                     
-                      $query = "SELECT * FROM data_siswa 
-                    WHERE kelas='$_GET[kelas]' 
-                    GROUP BY id_siswa";
+                      $query = "SELECT * FROM data_siswa";
                     
                     $result = mysqli_query($koneksi, $query);
                     //mengecek apakah ada error ketika menjalankan query
@@ -94,15 +92,14 @@ $json_nilai = json_encode($nilai);
                     }
                     while($row = mysqli_fetch_assoc($result))
                     {
-                     
+                      
                     ?>
-                                                <option value=<?php echo $row['id_siswa'] ?>><?php echo $row['nama_siswa'] ?></option>
+                                                <option value=<?php echo $row['kelas'] ?>><?php echo $row['kelas'] ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
-                                       
                                         <div class='form-group'>&nbsp;
-                                            <input type='submit' value='Lihat Data' class='btn btn-md btn-primary'>
+                                            <input type='submit' value='Pilih Kelas' class='btn btn-md btn-primary'>
                                         </div>
                                     </div>
                                 </form>
