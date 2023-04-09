@@ -55,6 +55,7 @@ session_start();
       kelas = '$kelas', 
       fase = '$fase', 
       alamat = '$alamat',
+      nama_ortu = '$nama_ortu',
       password = '$password',
       id_siswa = '$nis',
       nisn = '$nisn',

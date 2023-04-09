@@ -168,12 +168,20 @@
                 <table class="table table-bordered table-sm text-center">
                     <?php
                     $query_sakit = "SELECT count(id_siswa) as sakit FROM `presensi_siswa` WHERE presensi='Sakit' AND id_siswa=$_SESSION[id_user]";
-                    $result_sakit = mysqli_query($koneksi, $query_sakit);
-                    // jika data gagal diambil maka akan tampil error berikut
-                    if (!$result) {
-                        die("Query Error: " . mysqli_errno($koneksi) .
-                            " - " . mysqli_error($koneksi));
-                    }
+                    $result_sakit = mysqli_query($koneksi, $query_sakit);                    
+                    $query_ortu = "SELECT nama_ortu FROM `data_siswa` WHERE id_siswa=$_SESSION[id_user]";
+                    $result_nama_ortu = mysqli_query($koneksi, $query_ortu);                    
+                    $data_ortu = mysqli_fetch_assoc($result_nama_ortu);
+                    
+                    $query_kepsek = "SELECT * FROM `data_guru` WHERE jabatan='kepsek'";
+                    $result_kepsek = mysqli_query($koneksi, $query_kepsek);                    
+                    $data_kepsek = mysqli_fetch_assoc($result_kepsek);
+
+                    $query_wali_kelas = "SELECT * FROM `data_guru` 
+                    INNER JOIN data_siswa ON data_guru.kelas = data_siswa.kelas 
+                    WHERE data_siswa.id_siswa=$_SESSION[id_user]";
+                    $result_wali_kelas = mysqli_query($koneksi, $query_wali_kelas);                    
+                    $data_wali_kelas = mysqli_fetch_assoc($result_wali_kelas);
                     // mengambil data dari database
                     $data_sakit = mysqli_fetch_assoc($result_sakit);
                     $query_alpha = "SELECT count(id_siswa) as alpha FROM `presensi_siswa` WHERE presensi='Alpha' AND id_siswa=$_SESSION[id_user]";
@@ -235,9 +243,9 @@
                 <th>TTD Wali Kelas</th>
                 </tr>
                 <tr>
-                    <td><br><br><br><br><br><br></td>
-                    <td><br><br><br><br><br><br></td>
-                    <td><br><br><br><br><br><br></td>
+                    <td><br><br><br><br><br><br> <?php echo $data_ortu['nama_ortu'] ?></td>
+                    <td><br><br><br><br><br><br><?php echo $data_kepsek['nama_guru'] ?></td>
+                    <td><br><br><br><br><br><br><?php echo $data_wali_kelas['nama_guru'] ?></td>
                 </tr>
             </table>
             </div>
