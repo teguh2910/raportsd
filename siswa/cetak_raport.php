@@ -51,7 +51,7 @@
                     <tr>
                         <td>Alamat</td>
                         <td>:</td>
-                        <td><?php echo $data['alamat'] ?></td>
+                        <td>Desa Kemlakagede, Kec. Tengah Tani, Kabupaten Cirebon, Jawa Barat 45153</td>
                     </tr>
                 </table>
             </div>
@@ -103,7 +103,7 @@
                     WHERE nilai.id_siswa = '$_SESSION[id_user]' 
                     AND nilai.semester = '$_POST[semester]' 
                     AND nilai.tahun = '$_POST[tahun]'
-                    GROUP BY mata_pelajaran.nama_mata_pelajaran";
+                    GROUP BY mata_pelajaran.nama_mapel";
                     $result = mysqli_query($koneksi, $query);
                     if (!$result) {
                         die("Query Error: " . mysqli_errno($koneksi) .
@@ -115,7 +115,7 @@
                     ?>
                         <tr>
                             <td class="text-center"><?php echo $no; ?></td>
-                            <td><?php echo $row['nama_mata_pelajaran']; ?></td>
+                            <td><?php echo $row['nama_mapel']; ?></td>
                             <td class="text-center"><?php echo $nilai_akhir; ?></td>
                             <td><?php echo $row['keterangan']; ?></td>
                         </tr>
@@ -127,7 +127,7 @@
                         <th colspan="2">Keterangan</th>
                     </tr>
                     <?php
-                    $query5 = "SELECT * FROM `extra_siswa` WHERE id_siswa=$_SESSION[id_user]";
+                    $query5 = "SELECT * FROM `ekstrakurikuler` WHERE id_siswa=$_SESSION[id_user]";
                     $result5 = mysqli_query($koneksi, $query5);
                     if (!$result) {
                         die("Query Error: " . mysqli_errno($koneksi) .
@@ -181,7 +181,7 @@
                             " - " . mysqli_error($koneksi));
                     }
                     $data_izin = mysqli_fetch_assoc($result_izin);
-                    $query_kasus = "SELECT * FROM `extra_siswa` WHERE id_siswa=$_SESSION[id_user]";
+                    $query_kasus = "SELECT * FROM `ekstrakurikuler` WHERE id_siswa=$_SESSION[id_user]";
                     $result_kasus = mysqli_query($koneksi, $query_kasus);
                     if (!$result) {
                         die("Query Error: " . mysqli_errno($koneksi) .
