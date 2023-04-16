@@ -56,7 +56,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <?php if ($_SESSION['username'] == 'admin') {
+            <?php if ($_SESSION['hak_akses'] == 'admin') {
 
               ?>
               <?php
