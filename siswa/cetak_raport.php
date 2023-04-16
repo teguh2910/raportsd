@@ -31,8 +31,9 @@
 <body>
     <div class="container border mt-5">
         <div class="row">
-            <center><h1>LAPORAN HASIL BELAJAR (RAPOR)</h1>
-            <h1>(RAPOR)</h1></center>
+            <center><h1>LAPORAN HASIL BELAJAR SISWA (RAPOR) SDN 2 KEMLAKAGEDE KABUPATEN CIREBON</h1>
+                <h3>Desa Kemlakagede, Kec. Tengah Tani, Kabupaten Cirebon, Jawa Barat 45153</h3>
+            </center>
             <div class="col-4">
                 <table class="table no-border table-sm">
                     <tr>
@@ -53,7 +54,7 @@
                     <tr>
                         <td>Alamat</td>
                         <td>:</td>
-                        <td>Desa Kemlakagede, Kec. Tengah Tani, Kabupaten Cirebon, Jawa Barat 45153</td>
+                        <td><?php echo $data['alamat'] ?></td>
                     </tr>
                 </table>
             </div>
