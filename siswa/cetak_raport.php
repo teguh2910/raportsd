@@ -31,8 +31,8 @@
 <body>
     <div class="container border mt-5">
         <div class="row">
-            <center><h1>LAPORAN HASIL BELAJAR SISWA (RAPOR) SDN 2 KEMLAKAGEDE KABUPATEN CIREBON</h1>
-                <h3>Desa Kemlakagede, Kec. Tengah Tani, Kabupaten Cirebon, Jawa Barat 45153</h3>
+            <center><h3>LAPORAN HASIL BELAJAR SISWA (RAPOR) SDN 2 KEMLAKAGEDE KABUPATEN CIREBON</h3>
+                <h4>Desa Kemlakagede, Kec. Tengah Tani, Kabupaten Cirebon, Jawa Barat 45153</h4>
             </center>
             <div class="col-4">
                 <table class="table no-border table-sm">
