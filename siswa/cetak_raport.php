@@ -34,6 +34,7 @@
             <center><h3>LAPORAN HASIL BELAJAR SISWA (RAPOR) SDN 2 KEMLAKAGEDE KABUPATEN CIREBON</h3>
                 <h4>Desa Kemlakagede, Kec. Tengah Tani, Kabupaten Cirebon, Jawa Barat 45153</h4>
             </center>
+            <br><br><br><br><br>
             <div class="col-4">
                 <table class="table no-border table-sm">
                     <tr>
