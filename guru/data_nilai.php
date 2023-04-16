@@ -26,7 +26,8 @@ include '../layouts/sidebar.php';
                     INNER JOIN siswa ON nilai.id_siswa  = siswa.id_siswa
                     INNER JOIN mata_pelajaran ON nilai.id_pelajaran  = mata_pelajaran.id_pelajaran
                     INNER JOIN guru ON guru.kelas = siswa.kelas
-                    WHERE guru.id_guru='$_SESSION[id_user]'";
+                    WHERE guru.id_guru='$_SESSION[id_user]'
+                    GROUP BY siswa.nama_siswa";
             $result_nama_siswa = mysqli_query($koneksi, $query_siswa);
             if (!$result_nama_siswa) {
               die("Query Error: " . mysqli_errno($koneksi) .
