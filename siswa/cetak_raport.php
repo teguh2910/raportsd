@@ -124,6 +124,10 @@
                         </tr>
                     <?php $no++;
                     } ?>
+                    <tr>
+                        <th colspan="4"></th>
+                        
+                    </tr>
                     <tr align="center">
                         <th>No</th>
                         <th class="text-center">Ekstrakulikuler</th>
