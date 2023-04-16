@@ -11,7 +11,7 @@ $password = $_POST['password'];
 $login_as = $_POST['login_as'];
 // menyeleksi data admin dengan username dan password yang sesuai
 if($login_as == 'siswa'){
-	$data = mysqli_query($koneksi,"select * from data_siswa where nama_siswa='$username' and password='$password'");
+	$data = mysqli_query($koneksi,"select * from siswa where nama_siswa='$username' and password='$password'");
 	$row = mysqli_fetch_assoc($data); 
 	$cek = mysqli_num_rows($data);
 	if($cek > 0){
@@ -28,7 +28,7 @@ if($login_as == 'siswa'){
 		header("location:index.php?pesan=gagal");
 	}	
 }elseif($login_as == 'guru'){
-	$data = mysqli_query($koneksi,"select * from data_guru where nama_guru='$username' and password='$password'");
+	$data = mysqli_query($koneksi,"select * from guru where nama_guru='$username' and password='$password'");
 	$row = mysqli_fetch_assoc($data);
 	$cek = mysqli_num_rows($data);
 	if($cek>0){
@@ -52,9 +52,12 @@ if($login_as == 'siswa'){
 	$_SESSION['status'] = "login";
 	$_SESSION['id_user'] = $row['id_user'];
 		header("location:admin/index.php");
+	}else
+	{
+		header("location:index.php?pesan=gagal");
 	}
 }elseif($login_as == 'kepsek'){
-		$data = mysqli_query($koneksi,"select * from data_guru where nama_guru='$username' and password='$password'");
+		$data = mysqli_query($koneksi,"select * from guru where nama_guru='$username' and password='$password'");
 		$row = mysqli_fetch_assoc($data);
 		$cek = mysqli_num_rows($data);
 		if($cek>0){

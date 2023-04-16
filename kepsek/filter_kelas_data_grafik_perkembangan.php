@@ -1,7 +1,7 @@
-<?php 
+<?php
 session_start();
-if($_SESSION['status']!="login"){
-header("location:../index.php?pesan=belum_login");
+if ($_SESSION['status'] != "login") {
+    header("location:../index.php?pesan=belum_login");
 }
 include '../layouts/sidebar.php';
 ?>
@@ -16,28 +16,28 @@ include '../layouts/sidebar.php';
 include '../config/koneksi.php';
 // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
 if (isset($_POST['id_siswa'])) {
-$query = "SELECT *,AVG((nilai_harian+nilai_uts+nilai_uas)/3) as nilai_akhir FROM nilai_siswa WHERE id_siswa = '$_POST[id_siswa]' GROUP BY semester,tahun ORDER BY tahun,semester";
-}else{
-  $query = "SELECT *,AVG((nilai_harian+nilai_uts+nilai_uas)/3) as nilai_akhir FROM nilai_siswa WHERE id_siswa='xxx' GROUP BY semester,tahun ORDER BY tahun,semester";
+    $query = "SELECT *,AVG((nilai_harian+nilai_uts+nilai_uas)/3) as nilai_akhir FROM nilai WHERE id_siswa = '$_POST[id_siswa]' GROUP BY semester,tahun ORDER BY tahun,semester";
+} else {
+    $query = "SELECT *,AVG((nilai_harian+nilai_uts+nilai_uas)/3) as nilai_akhir FROM nilai WHERE id_siswa='xxx' GROUP BY semester,tahun ORDER BY tahun,semester";
 }
 $result = mysqli_query($koneksi, $query);
 //mengecek apakah ada error ketika menjalankan query
-if(!$result){
-die ("Query Error: ".mysqli_errno($koneksi).
-" - ".mysqli_error($koneksi));
+if (!$result) {
+    die("Query Error: " . mysqli_errno($koneksi) .
+        " - " . mysqli_error($koneksi));
 }
 // Store the values in an array
 $nilai = array();
 while ($row = mysqli_fetch_assoc($result)) {
     $nilai[] = $row['nilai_akhir'];
-    $labels[]= "Semester ".$row['semester']." ".$row['tahun'];
+    $labels[] = "Semester " . $row['semester'] . " " . $row['tahun'];
 }
 
 // Generate JSON data for Chart.js
 if (isset($_POST['id_siswa'])) {
-$json_labels = json_encode($labels);
-}else{
-  $json_labels = "";
+    $json_labels = json_encode($labels);
+} else {
+    $json_labels = "";
 }
 $json_nilai = json_encode($nilai);
 ?>
@@ -80,21 +80,16 @@ $json_nilai = json_encode($nilai);
                                         <div class='form-group'>
                                             <select name='kelas' class='form-control'>
                                                 <?php
-                    // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
-                    
-                      $query = "SELECT * FROM data_siswa GROUP BY kelas";
-                    
-                    $result = mysqli_query($koneksi, $query);
-                    //mengecek apakah ada error ketika menjalankan query
-                    if(!$result){
-                        die ("Query Error: ".mysqli_errno($koneksi).
-                        " - ".mysqli_error($koneksi));
-                    }
-                    while($row = mysqli_fetch_assoc($result))
-                    {
-                      
-                    ?>
-                                                <option value=<?php echo $row['kelas'] ?>><?php echo $row['kelas'] ?></option>
+                                                $query = "SELECT * FROM siswa GROUP BY kelas";
+                                                $result = mysqli_query($koneksi, $query);
+                                                if (!$result) {
+                                                    die("Query Error: " . mysqli_errno($koneksi) .
+                                                        " - " . mysqli_error($koneksi));
+                                                }
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                    ?>
+                                                    <option value=<?php echo $row['kelas'] ?>><?php echo $row['kelas'] ?>
+                                                    </option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -123,8 +118,8 @@ $json_nilai = json_encode($nilai);
 <!-- /.content-wrapper -->
 
 <?php
-    include '../layouts/footer.php';
-  ?>
+include '../layouts/footer.php';
+?>
 
 <script>
     var ctx = document
@@ -157,4 +152,5 @@ $json_nilai = json_encode($nilai);
     });
 </script>
 </body>
+
 </html>

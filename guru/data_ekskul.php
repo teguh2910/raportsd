@@ -33,7 +33,7 @@ include '../layouts/sidebar.php';
           <div class="card card-info">
             <div class="card-header">
               <h3 class="card-title">
-                <a href="tambah_data_kasus.php" class="btn btn-sm btn-primary">Tambah</a>
+                <a href="tambah_data_ekskul.php" class="btn btn-sm btn-primary">Tambah</a>
                 Data Ekstrakulikuler
               </h3>
             </div>
@@ -51,43 +51,47 @@ include '../layouts/sidebar.php';
                 </thead>
                 <tbody>
                   <?php
-                  // menghubungkan dengan koneksi
                   include '../config/koneksi.php';
-                  // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
                   if (isset($_GET['id_siswa'])) {
-                    $query = "SELECT * FROM extra_siswa 
-                      INNER JOIN data_siswa ON extra_siswa.id_siswa  = data_siswa.id_siswa
-                      WHERE kasus_siswa.id_siswa = '$_GET[id_siswa]'";
+                    $query = "SELECT * FROM ekstrakurikuler 
+                      INNER JOIN siswa ON ekstrakurikuler.id_siswa  = siswa.id_siswa
+                      WHERE ekstrakurikuler.id_siswa = '$_GET[id_siswa]'";
                   } else {
-                    $query = "SELECT * FROM extra_siswa 
-                      INNER JOIN data_siswa ON extra_siswa.id_siswa  = data_siswa.id_siswa
-					  INNER JOIN data_guru ON data_guru.kelas=data_siswa.kelas
-					  WHERE data_guru.id_guru='$_SESSION[id_user]'";
+                    $query = "SELECT * FROM ekstrakurikuler 
+                      INNER JOIN siswa ON ekstrakurikuler.id_siswa  = siswa.id_siswa
+                      INNER JOIN guru ON guru.kelas=siswa.kelas
+                      WHERE guru.id_guru='$_SESSION[id_user]'";
                   }
                   $result = mysqli_query($koneksi, $query);
-                  //mengecek apakah ada error ketika menjalankan query
                   if (!$result) {
                     die("Query Error: " . mysqli_errno($koneksi) .
                       " - " . mysqli_error($koneksi));
                   }
-
-                  //buat perulangan untuk element tabel dari data mahasiswa
                   $no = 1; //variabel untuk membuat nomor urut
-                  // hasil query akan disimpan dalam variabel $data dalam bentuk array
-                  // kemudian dicetak dengan perulangan while
                   while ($row = mysqli_fetch_assoc($result)) {
-                  ?>
+                    ?>
                     <tr>
-                      <td><?php echo $no; ?></td>
-                      <td><?php echo $row['nama_siswa']; ?></td>
-                      <td><?php echo $row['ekskul']; ?></td>
-                      <td><?php echo $row['keterangan']; ?></td>
                       <td>
-                        <a href="edit_data_kasus.php?id_kasus=<?php echo $row['id_ekskul']; ?>" class="btn btn-xs btn-warning">Edit</a>
-                        <a href="kasus/hapus_data_kasus.php?id_kasus=<?php echo $row['id_ekskul']; ?>" onclick="return confirm('Are you sure you want to delete this item?')" class="btn btn-xs btn-danger">Delete</a>
+                        <?php echo $no; ?>
+                      </td>
+                      <td>
+                        <?php echo $row['nama_siswa']; ?>
+                      </td>
+                      <td>
+                        <?php echo $row['ekskul']; ?>
+                      </td>
+                      <td>
+                        <?php echo $row['keterangan']; ?>
+                      </td>
+                      <td>
+                        <a href="edit_data_ekskul.php?id_ekskul=<?php echo $row['id_ekskul']; ?>"
+                          class="btn btn-xs btn-warning">Edit</a>
+                        <a href="ekskul/hapus_data_ekskul.php?id_ekskul=<?php echo $row['id_ekskul']; ?>"
+                          onclick="return confirm('Are you sure you want to delete this item?')"
+                          class="btn btn-xs btn-danger">Delete</a>
                       </td>
                     </tr>
-                  <?php
+                    <?php
                     $no++; //untuk nomor urut terus bertambah 1
                   }
                   ?>

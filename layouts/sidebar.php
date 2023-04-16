@@ -7,14 +7,16 @@
   <title>PenilaianSiswaSD</title>
 
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css"
+    rel="stylesheet" />
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 
@@ -46,7 +48,6 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="index3.html" class="brand-link">
-        <img src="../dist/img/AdminLTELogo.png" alt="E-Gudang" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">PenilaianSiswaSD</span>
       </a>
 
@@ -57,18 +58,22 @@
           <div class="image">
             <?php if ($_SESSION['username'] == 'admin') {
 
-            ?>
-            <?php
+              ?>
+              <?php
             } else {
-            ?>
+              ?>
               <img src="../img/<?php echo $_SESSION['foto'] ?>" class="img-circle elevation-2" alt="">
-            <?php
+              <?php
             }
             ?>
           </div>
           <div class="info">
-            <a href="#"><?php echo $_SESSION['username'] ?></a> <br>
-            <a href=""><?php echo $_SESSION['hak_akses'] ?></a>
+            <a href="#">
+              <?php echo $_SESSION['username'] ?>
+            </a> <br>
+            <a href="">
+              <?php echo $_SESSION['hak_akses'] ?>
+            </a>
           </div>
         </div>
 
@@ -193,16 +198,16 @@
           </li>  -->
 
               <li class="nav-item">
-                <?php if($_SESSION['hak_akses'] == "kepsek"){ ?>
-                <a href="filter_kelas_data_grafik_perkembangan.php" class="nav-link">
-              <?php }else{ ?> 
-              <a href="data_grafik_perkembangan.php" class="nav-link">
-                <?php } ?>
-                  <i class="nav-icon fas fa-th"></i>
-                  <p>
-                    Grafik Perkembangan
-                  </p>
-                </a>
+                <?php if ($_SESSION['hak_akses'] == "kepsek") { ?>
+                  <a href="filter_kelas_data_grafik_perkembangan.php" class="nav-link">
+                  <?php } else { ?>
+                    <a href="data_grafik_perkembangan.php" class="nav-link">
+                    <?php } ?>
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                      Grafik Perkembangan
+                    </p>
+                  </a>
               </li>
             <?php } ?>
 

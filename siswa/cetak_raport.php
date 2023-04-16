@@ -11,22 +11,18 @@
     <title>Raport</title>
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
     <?php
-    // menghubungkan dengan koneksi
     include '../config/koneksi.php';
-
-    $query = "SELECT * FROM nilai_siswa 
-    INNER JOIN data_siswa ON nilai_siswa.id_siswa  = data_siswa.id_siswa
-    INNER JOIN mata_pelajaran ON nilai_siswa.id_pelajaran  = mata_pelajaran.id_pelajaran
-    WHERE nilai_siswa.id_siswa = '$_SESSION[id_user]' 
-    AND nilai_siswa.semester = '$_POST[semester]' 
-    AND nilai_siswa.tahun = '$_POST[tahun]'";
+    $query = "SELECT * FROM nilai 
+    INNER JOIN siswa ON nilai.id_siswa  = siswa.id_siswa
+    INNER JOIN mata_pelajaran ON nilai.id_pelajaran  = mata_pelajaran.id_pelajaran
+    WHERE nilai.id_siswa = '$_SESSION[id_user]' 
+    AND nilai.semester = '$_POST[semester]' 
+    AND nilai.tahun = '$_POST[tahun]'";
     $result = mysqli_query($koneksi, $query);
-    // jika data gagal diambil maka akan tampil error berikut
     if (!$result) {
         die("Query Error: " . mysqli_errno($koneksi) .
             " - " . mysqli_error($koneksi));
     }
-    // mengambil data dari database
     $data = mysqli_fetch_assoc($result);
 
     ?>
@@ -101,25 +97,19 @@
                     </tr>
 
                     <?php
-                    // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
-                    $query = "SELECT * FROM nilai_siswa 
-                    INNER JOIN data_siswa ON nilai_siswa.id_siswa  = data_siswa.id_siswa
-                    INNER JOIN mata_pelajaran ON nilai_siswa.id_pelajaran  = mata_pelajaran.id_pelajaran
-                    WHERE nilai_siswa.id_siswa = '$_SESSION[id_user]' 
-                    AND nilai_siswa.semester = '$_POST[semester]' 
-                    AND nilai_siswa.tahun = '$_POST[tahun]'
+                    $query = "SELECT * FROM nilai 
+                    INNER JOIN siswa ON nilai.id_siswa  = siswa.id_siswa
+                    INNER JOIN mata_pelajaran ON nilai.id_pelajaran  = mata_pelajaran.id_pelajaran
+                    WHERE nilai.id_siswa = '$_SESSION[id_user]' 
+                    AND nilai.semester = '$_POST[semester]' 
+                    AND nilai.tahun = '$_POST[tahun]'
                     GROUP BY mata_pelajaran.nama_mata_pelajaran";
                     $result = mysqli_query($koneksi, $query);
-                    //mengecek apakah ada error ketika menjalankan query
                     if (!$result) {
                         die("Query Error: " . mysqli_errno($koneksi) .
                             " - " . mysqli_error($koneksi));
                     }
-
-                    //buat perulangan untuk element tabel dari data mahasiswa
                     $no = 1; //variabel untuk membuat nomor urut
-                    // hasil query akan disimpan dalam variabel $data dalam bentuk array
-                    // kemudian dicetak dengan perulangan while
                     while ($row = mysqli_fetch_assoc($result)) {
                         $nilai_akhir = round(($row['nilai_harian'] + $row['nilai_uts'] + $row['nilai_uas']) / 3, 0);
                     ?>
@@ -137,19 +127,13 @@
                         <th colspan="2">Keterangan</th>
                     </tr>
                     <?php
-                    // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
                     $query5 = "SELECT * FROM `extra_siswa` WHERE id_siswa=$_SESSION[id_user]";
                     $result5 = mysqli_query($koneksi, $query5);
-                    //mengecek apakah ada error ketika menjalankan query
                     if (!$result) {
                         die("Query Error: " . mysqli_errno($koneksi) .
                             " - " . mysqli_error($koneksi));
                     }
-
-                    //buat perulangan untuk element tabel dari data mahasiswa
                     $no = 1; //variabel untuk membuat nomor urut
-                    // hasil query akan disimpan dalam variabel $data dalam bentuk array
-                    // kemudian dicetak dengan perulangan while
                     while ($row5 = mysqli_fetch_assoc($result5)) {                        
                     ?>                                            
                     <tr>
@@ -167,49 +151,42 @@
             <div class="col-3">
                 <table class="table table-bordered table-sm text-center">
                     <?php
-                    $query_sakit = "SELECT count(id_siswa) as sakit FROM `presensi_siswa` WHERE presensi='Sakit' AND id_siswa=$_SESSION[id_user]";
+                    $query_sakit = "SELECT count(id_siswa) as sakit FROM `presensi` WHERE presensi='Sakit' AND id_siswa=$_SESSION[id_user]";
                     $result_sakit = mysqli_query($koneksi, $query_sakit);                    
-                    $query_ortu = "SELECT nama_ortu FROM `data_siswa` WHERE id_siswa=$_SESSION[id_user]";
+                    $query_ortu = "SELECT nama_ortu FROM `siswa` WHERE id_siswa=$_SESSION[id_user]";
                     $result_nama_ortu = mysqli_query($koneksi, $query_ortu);                    
                     $data_ortu = mysqli_fetch_assoc($result_nama_ortu);
                     
-                    $query_kepsek = "SELECT * FROM `data_guru` WHERE jabatan='kepsek'";
+                    $query_kepsek = "SELECT * FROM `guru` WHERE jabatan='kepsek'";
                     $result_kepsek = mysqli_query($koneksi, $query_kepsek);                    
                     $data_kepsek = mysqli_fetch_assoc($result_kepsek);
 
-                    $query_wali_kelas = "SELECT * FROM `data_guru` 
-                    INNER JOIN data_siswa ON data_guru.kelas = data_siswa.kelas 
-                    WHERE data_siswa.id_siswa=$_SESSION[id_user]";
+                    $query_wali_kelas = "SELECT * FROM `guru` 
+                    INNER JOIN siswa ON guru.kelas = siswa.kelas 
+                    WHERE siswa.id_siswa=$_SESSION[id_user]";
                     $result_wali_kelas = mysqli_query($koneksi, $query_wali_kelas);                    
                     $data_wali_kelas = mysqli_fetch_assoc($result_wali_kelas);
-                    // mengambil data dari database
                     $data_sakit = mysqli_fetch_assoc($result_sakit);
-                    $query_alpha = "SELECT count(id_siswa) as alpha FROM `presensi_siswa` WHERE presensi='Alpha' AND id_siswa=$_SESSION[id_user]";
+                    $query_alpha = "SELECT count(id_siswa) as alpha FROM `presensi` WHERE presensi='Alpha' AND id_siswa=$_SESSION[id_user]";
                     $result_alpha = mysqli_query($koneksi, $query_alpha);
-                    // jika data gagal diambil maka akan tampil error berikut
                     if (!$result) {
                         die("Query Error: " . mysqli_errno($koneksi) .
                             " - " . mysqli_error($koneksi));
                     }
-                    // mengambil data dari database
                     $data_alpha = mysqli_fetch_assoc($result_alpha);
-                    $query_izin = "SELECT count(id_siswa) as izin FROM `presensi_siswa` WHERE presensi='Izin' AND id_siswa=$_SESSION[id_user]";
+                    $query_izin = "SELECT count(id_siswa) as izin FROM `presensi` WHERE presensi='Izin' AND id_siswa=$_SESSION[id_user]";
                     $result_izin = mysqli_query($koneksi, $query_izin);
-                    // jika data gagal diambil maka akan tampil error berikut
                     if (!$result) {
                         die("Query Error: " . mysqli_errno($koneksi) .
                             " - " . mysqli_error($koneksi));
                     }
-                    // mengambil data dari database
                     $data_izin = mysqli_fetch_assoc($result_izin);
                     $query_kasus = "SELECT * FROM `extra_siswa` WHERE id_siswa=$_SESSION[id_user]";
                     $result_kasus = mysqli_query($koneksi, $query_kasus);
-                    // jika data gagal diambil maka akan tampil error berikut
                     if (!$result) {
                         die("Query Error: " . mysqli_errno($koneksi) .
                             " - " . mysqli_error($koneksi));
                     }
-                    // mengambil data dari database
                     $data_kasus = mysqli_fetch_assoc($result_kasus);
                     ?>
                     <tr>

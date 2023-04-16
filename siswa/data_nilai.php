@@ -45,20 +45,15 @@ include '../layouts/sidebar.php';
                       <select name="tahun" class="form-control">
                         <?php
                         include '../config/koneksi.php';
-                        $query = "SELECT * FROM nilai_siswa GROUP BY tahun";
+                        $query = "SELECT * FROM nilai GROUP BY tahun";
                         $result = mysqli_query($koneksi, $query);
-                        //mengecek apakah ada error ketika menjalankan query
                         if (!$result) {
                           die("Query Error: " . mysqli_errno($koneksi) .
                             " - " . mysqli_error($koneksi));
                         }
-
-                        //buat perulangan untuk element tabel dari data mahasiswa
                         $no = 1; //variabel untuk membuat nomor urut
-                        // hasil query akan disimpan dalam variabel $data dalam bentuk array
-                        // kemudian dicetak dengan perulangan while
                         while ($row = mysqli_fetch_assoc($result)) {
-                        ?>
+                          ?>
                           <option value="<?php echo $row['tahun'] ?>"><?php echo $row['tahun'] ?></option>
                         <?php } ?>
                       </select>
@@ -91,40 +86,59 @@ include '../layouts/sidebar.php';
                 </thead>
                 <tbody>
                   <?php
-                  // menghubungkan dengan koneksi
                   include '../config/koneksi.php';
-                  // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
-                  $query = "SELECT * FROM nilai_siswa 
-                    INNER JOIN data_siswa ON nilai_siswa.id_siswa  = data_siswa.id_siswa
-                    INNER JOIN mata_pelajaran ON nilai_siswa.id_pelajaran  = mata_pelajaran.id_pelajaran
-                    WHERE nilai_siswa.id_siswa = '$_SESSION[id_user]'";
+                  $query = "SELECT * FROM nilai 
+                    INNER JOIN siswa ON nilai.id_siswa  = siswa.id_siswa
+                    INNER JOIN mata_pelajaran ON nilai.id_pelajaran  = mata_pelajaran.id_pelajaran
+                    WHERE nilai.id_siswa = '$_SESSION[id_user]'";
                   $result = mysqli_query($koneksi, $query);
-                  //mengecek apakah ada error ketika menjalankan query
                   if (!$result) {
                     die("Query Error: " . mysqli_errno($koneksi) .
                       " - " . mysqli_error($koneksi));
                   }
-
-                  //buat perulangan untuk element tabel dari data mahasiswa
                   $no = 1; //variabel untuk membuat nomor urut
-                  // hasil query akan disimpan dalam variabel $data dalam bentuk array
-                  // kemudian dicetak dengan perulangan while
                   while ($row = mysqli_fetch_assoc($result)) {
-                  ?>
+                    ?>
                     <tr>
-                      <td><?php echo $no; ?></td>
-                      <td><?php echo $row['nama_siswa']; ?></td>
-                      <td><?php echo $row['jen_kel']; ?></td>
-                      <td><?php echo $row['nama_mata_pelajaran']; ?></td>
-                      <td><?php echo $row['nilai_harian']; ?></td>
-                      <td><?php echo $row['nilai_uts']; ?></td>
-                      <td><?php echo $row['nilai_uas']; ?></td>
-                      <td><?php echo round(($row['nilai_harian'] + $row['nilai_uts'] + $row['nilai_uas']) / 3, 0); ?></td>
-                      <td><?php echo $row['semester']; ?></td>
-                      <td><?php echo $row['tahun']; ?></td>
-                      <td><?php echo $row['keterangan']; ?></td>
+                      <td>
+                        <?php echo $no; ?>
+                      </td>
+                      <td>
+                        <?php echo $row['nama_siswa']; ?>
+                      </td>
+                      <td>
+                        <?php if ($row['jk'] == "l") {
+                          echo "Laki-laki";
+                        } else {
+                          echo "Perempuan";
+                        } ?>
+                      </td>
+                      <td>
+                        <?php echo $row['nama_mapel']; ?>
+                      </td>
+                      <td>
+                        <?php echo $row['nilai_harian']; ?>
+                      </td>
+                      <td>
+                        <?php echo $row['nilai_uts']; ?>
+                      </td>
+                      <td>
+                        <?php echo $row['nilai_uas']; ?>
+                      </td>
+                      <td>
+                        <?php echo round(($row['nilai_harian'] + $row['nilai_uts'] + $row['nilai_uas']) / 3, 0); ?>
+                      </td>
+                      <td>
+                        <?php echo $row['semester']; ?>
+                      </td>
+                      <td>
+                        <?php echo $row['tahun']; ?>
+                      </td>
+                      <td>
+                        <?php echo $row['keterangan']; ?>
+                      </td>
                     </tr>
-                  <?php
+                    <?php
                     $no++; //untuk nomor urut terus bertambah 1
                   }
                   ?>
