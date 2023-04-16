@@ -5,6 +5,67 @@ if ($_SESSION['status'] != "login") {
 }
 include '../layouts/sidebar.php';
 ?>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cetak Raport</h4>
+      </div>
+      <div class="modal-body">
+        <form action="cetak_raport.php" method="POST">          
+          <label for="">Nama</label>
+          <select name="id_user" class="form-control">
+            <?php
+            include '../config/koneksi.php';
+            $query_siswa = "SELECT * FROM nilai 
+                    INNER JOIN siswa ON nilai.id_siswa  = siswa.id_siswa
+                    INNER JOIN mata_pelajaran ON nilai.id_pelajaran  = mata_pelajaran.id_pelajaran
+                    INNER JOIN guru ON guru.kelas = siswa.kelas
+                    WHERE guru.id_guru='$_SESSION[id_user]'";
+            $result_nama_siswa = mysqli_query($koneksi, $query_siswa);
+            if (!$result_nama_siswa) {
+              die("Query Error: " . mysqli_errno($koneksi) .
+                " - " . mysqli_error($koneksi));
+            }
+            while ($row_nama_siswa = mysqli_fetch_assoc($result_nama_siswa)) {
+              ?>            
+            <option value="<?php echo $row_nama_siswa['id_siswa']; ?>"><?php echo $row_nama_siswa['nama_siswa']; ?></option>            
+            <?php } ?>
+          </select>
+          <label for="">Semester</label>
+          <select name="semester" class="form-control">
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </select>
+          <label for="">Tahun</label>
+          <select name="tahun" class="form-control">
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+            <option value="2026">2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+            <option value="2029">2029</option>
+            <option value="2030">2030</option>
+          </select>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Cetak</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -34,7 +95,10 @@ include '../layouts/sidebar.php';
             <div class="card-header">
               <h3 class="card-title">
                 <a href="tambah_data_nilai.php" class="btn btn-sm btn-primary">Tambah</a>
-                Data Nilai
+                <!-- Trigger the modal with a button -->
+                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">Cetak
+                  Raport</button>
+
               </h3>
             </div>
             <!-- /.card-header -->
@@ -58,7 +122,6 @@ include '../layouts/sidebar.php';
                 </thead>
                 <tbody>
                   <?php
-                  include '../config/koneksi.php';
                   $query = "SELECT * FROM nilai 
                     INNER JOIN siswa ON nilai.id_siswa  = siswa.id_siswa
                     INNER JOIN mata_pelajaran ON nilai.id_pelajaran  = mata_pelajaran.id_pelajaran
