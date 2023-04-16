@@ -31,6 +31,8 @@
 <body>
     <div class="container border mt-5">
         <div class="row">
+            <center><h1>LAPORAN HASIL BELAJAR (RAPOR)</h1>
+            <h1>(RAPOR)</h1></center>
             <div class="col-4">
                 <table class="table no-border table-sm">
                     <tr>
